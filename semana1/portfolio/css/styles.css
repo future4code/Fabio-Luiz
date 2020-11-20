@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+.bloco1 {
+    background-image: url(../img/eu_completo.png);
+    height: 800px;
+}
+
+footer {
+    background-color: indigo;
+}
+
+.logo_footer {
+    width: 50px;
+}
+
+#eu_rosto {
+    width: 50%;
+}
