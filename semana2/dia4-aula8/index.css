@@ -69,6 +69,8 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    box-sizing: border-box;
+    padding-top: 10%;
 }
 
 #container-de-descricao>ol {
