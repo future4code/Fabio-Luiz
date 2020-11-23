@@ -112,6 +112,11 @@ td > img {
     background-color: #FFF;
 }
 
+.icone {
+    background-color: #FFF;
+    width: 15px;
+}
+
 td button {
     background-color: #fadf63;
     width: 150px;
