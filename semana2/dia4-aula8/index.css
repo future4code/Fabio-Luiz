@@ -4,7 +4,7 @@
   *
   **/
 
-* {
+  * {
     margin: 0;
     padding: 0;
 }
@@ -77,12 +77,14 @@ div img {
 
 #container-para-comprar {
     background-color: #e7eb90;
+    text-align: center;
 }
 
 #container-para-comprar>p {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+    display: block;
 }
 
 
