@@ -108,6 +108,10 @@ table {
     font-weight: bold;
 }
 
+td > img {
+    background-color: #FFF;
+}
+
 td button {
     background-color: #fadf63;
     width: 150px;
