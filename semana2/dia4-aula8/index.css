@@ -140,8 +140,17 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    font-weight: bold;
 }
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+td > button:hover {
+    background-color: #c44f00;
+}
+
+td > button:active, #back-button:active {
+    color: #FFF;
 }
