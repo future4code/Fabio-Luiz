@@ -1,80 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <title>Fabio Dev</title>
 </head>
 <body>
-        <section>
-            <!-- navigation -->
+    <!-- Barra do topo -->
+    <header>
+        <div class="topbar">
+            <span class="logo">Fabio Dev</span>
             <nav>
-                <!-- logo -->
-                <a href="#" class="logo">Fabio Dev</a>
-                <!-- menu -->
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#sobre">Sobre mim</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#social-media">Redes Sociais</a></li>
                 </ul>
             </nav>
-            <!-- texto -->
-            <div class="text-container">
-                <p>Olá!</p>
-                <p>Eu sou o Fabio</p>
-                <p>Desenvolvedor Front end</p>
-                <button class="hire-btn">Contratar</button>
-                <button class="down-cv">Download CV</button>
+        </div>
+    </header>
+    <!-- Bloco inicial -->
+    <section class="bloco-1">
+        <div class="bloco-1-texto">
+            <p>Olá!</p>
+            <p>Sou o Fabio</p>
+            <p>Desenvolvedor Front end</p>
+        </div>
+        <img class="bloco-1-eu" src="./img/model.png" alt="Foto do dev">
+    </section>
+    <!-- Sobre mim -->
+    <div id="sobre" class="sobre">
+        <img src="./img/eu_completo.png" alt="">
+        <div class="sobre-texto">
+            <span>Sobre mim</span>
+            <p>Sou formado em engenharia e apaixonado por tecnologia. Gosto de trabalhar em novas ideais e torná-las reais através do meu trabalho. Conheça meus projetos e descubra como aplico minhas habilidades!</p>
+        </div>
+    </div>
+    <!-- Formação -->
+    <section id="formacao" class="formacao">
+        <div class="tit">
+            <span>Formação acadêmica</span>
+        </div>
+        <div class="forma-container">
+            <div class="forma forma-1"></div>
+            <div class="forma forma-2"></div>
+        </div>
+    </section>
+    <!-- Projetos -->
+    <section id="projetos" class="projetos">
+        <div class="tit">
+            <span>Projetos</span>
+        </div>
+        <div class="projetos-container">
+            <div class="proj proj-1">
+                <a href="./proj-1.html"><img src="./img/proj-1.jpg" alt="imagem do projeto 1"></a>
             </div>
-            <!-- minha foto -->
-            <img src="./img/model.png" height=700 class="model" alt="">
-        </section>
-        <!-- About -->
-        <div class="about-container">
-            <img src="./img/eu_completo.png" alt="">
-            <div class="texto-about">
-                <p>Sobre mim</p>
-                <p>Desenvolvedor Front end</p>
-                <p>Olá, sou Fabio dos Santos. Desenvolvedor front end. Se você tem uma grande ideia e deseja mostrá-la através de um belo website, contate-me! Você irá adorar meu trabalho e, caso não aconteça, mudaremos o projeto até que esteja satisfeitx!</p>
-                <button >Contratar</button>
-                <button >Download CV</button>
+            <div class="proj proj-2">
+                <a href="./proj-2.html"><img src="./img/proj-2.jpg" alt="imagem do projeto 2"></a>
             </div>
         </div>
-        <div class="habilidades">
-                <h2>Habilidades</h2>
-            <!-- Caixas -->
-            <div class="box-container">
-                <!-- 1 -->
-                <div class="box-1"></div>
-                <!-- 2 -->
-                <div class="box-2"></div>
+    </section>
+    <!-- Habilidades -->
+    <sectiion id="habilidades" class="habilidades">
+        <div class="tit">
+            <span>Maiores habilidades</span>
+        </div>
+        <div class="hab-container">
+            <div class="hab hab-1">
+                <span>1</span>
+                <h2>Raciocínio lógico</h2>
+                <p>Capacidade de entender facilmente a lógica das estruturas de código.</p>
+            </div>
+            <div class="hab hab-2">
+                <span>2</span>
+                <h2>Criatividade</h2>
+                <p>Capacidade de encontrar diferentes soluções para os problemas.</p>
+            </div>
+            <div class="hab hab-3">
+                <span>3</span>
+                <h2>Quick learning</h2>
+                <p>Grande rapidez para aprender e assimilar novos conceitos.</p>
+            </div>
+            <div class="hab hab-4">
+                <span>4</span>
+                <h2>Comunicador</h2>
+                <p>Facilidade em articular ideias e ser compreendido.</p>
             </div>
         </div>
-        <div class="projetos">
-            <h2>Projetos</h2>
-            <div class="proj-box">
-                <div class="proj proj-1">
-                    <a href="https://projeto-seletivo-labenu.fabioluizluiz1.repl.co/"><img src="./img/proj-1.jpg" alt=""></a>
-                </div>
-                <div class="proj proj-2">
-                    <a href="#"><img src="./img/proj-2.jpg" alt=""></a>
-                </div>
-            </div>
+    </sectiion>
+    <!-- Contato -->
+    <section id="contato" class="contato">
+        <div class="tit">
+            <span>Entre em contato!</span>
         </div>
-        <!-- Contatos -->
-        <div class="contatos">
-            <p>Se você tem qualquer projeto em mente, não hesite em me contatar!</p>
-            <button>Contato</button>
+        <form class="forml" action="#">
+            <label class="label-form" for="nome">Nome</label>
+            <input type="text" name="nome" id="nome"></br></br>
+            <label class="label-form" for="email">E-mail</label>
+            <input type="text" name="email" id="email"></form></br>
+            <label class="label-form" for="comentarios">Comentários</label>
+            <input type="text" name="comentarios" id="comentarios">
+            <button class="btn-submit" type="submit">Enviar</button>
+        </form>
+    </section>
+    <footer>
+        <div id="social-media" class="social-media">
+            <a href="mailto:22fsantos@gmail.com" target="_blank"><img src="./img/email.svg" alt="link para e-mail"></a>
+            <a href="https://github.com/future4code/Fabio-Luiz" target="_blank"><img src="./img/github.svg" alt="link para github"></a>
+            <a href="https://www.linkedin.com/in/22fsantos/" target="_blank"><img src="./img/linkedin.svg" alt="link para linkedin"></a>
+            <a href="https://www.instagram.com/flsantos22/" target="_blank"><img src="./img/instagram.svg" alt="link para instagram"></a>
         </div>
-        <footer>
-            <!-- Social media -->
-            <div class="social-icons">
-                <a href="#"><img src="./img/github.svg" alt=""></a>
-                <a href="#"><img src="./img/linkedin.svg" alt=""></a>
-                <a href="#"><img src="./img/instagram.svg" alt=""></a>
-            </div>
-            <p class="copyright">Copyright by Fabio Dev 2020</p>
-        </footer>
+        <p>Copyright by Fabio Dev 2020</p>
+    </footer>
 </body>
 </html>
