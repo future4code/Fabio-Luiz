@@ -154,3 +154,8 @@ td > button:hover {
 td > button:active, #back-button:active {
     color: #FFF;
 }
+
+.container-do-search input {
+    border: none;
+    border-bottom: 1px solid #000;
+}
