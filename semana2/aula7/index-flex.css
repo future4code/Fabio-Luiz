@@ -1,0 +1,68 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+[class*=-block] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 150px;
+    margin: 20px;
+    width: 25%;
+}
+
+#first-block {
+    background-color: red;
+    width: 100%;
+    height: 100px;
+}
+
+.blue-block {
+    background-color: blue;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    height: 450px;
+    width: 40%;
+}
+
+.white-block {
+    background-color: white;
+    width: 30%;
+}
+
+#main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-device-width : 421px) and (max-device-width : 800px) {
+    .green-block, .w11 {
+        width: 90%;
+    }
+}
+
+@media screen and (max-device-width : 420px) {
+    [class*=-block] {
+        width: 90%;
+    }
+}

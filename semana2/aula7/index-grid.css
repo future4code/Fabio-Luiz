@@ -1,0 +1,86 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+[class*=-block] {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 2;
+    margin: 0 10px;
+}
+
+#first-block {
+    background-color: red;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+}
+
+.blue-block {
+    background-color: blue;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    grid-row: span 3;
+    grid-column: span 3;
+}
+
+.white-block {
+    background-color: white;
+}
+
+#main-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 150px);
+}
+
+@media screen and (min-device-width : 421px) and (max-device-width : 800px) {
+    #main-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(10, 150px);
+    }
+
+    [class*=-block] {
+        grid-column: span 1;
+    }
+
+    .green-block {
+        grid-column: span 2;
+    }
+
+    .w11 {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (max-device-width : 420px) {
+    #main-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(16, 150px);
+    }
+
+    [class*=-block] {
+        grid-column: span 1;
+    }
+}
