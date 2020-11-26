@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif
+}
+
+header {
+    background-color: #2f3642;
+    display: flex;
+    justify-content: space-between;
+    height: 71px;
+    align-items: center;
+    padding: 2%;
+}
+
+#searchbar {
+    height: 30px;
+    margin-right: 5%;
+    padding: 5px 20px 5px 5px;
+    background-image: url('./img/search_icon.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+header img {
+    height: 50px;
+}
+
+body {
+    background-color: #d4cbc5;
+}
+
+.video-container {
+    display: block;
+    margin: 0 30px;
+    /* position: absolute;
+    top: 80px; */
+}
+
+main {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+
+}
+
+main h1 {
+    padding: 10px 0;
+}
+
+main video {
+    width: 900px;
+    max-width: 100%;
+}
+
+footer {
+    background-color: #2f3642;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0 2%;
+}
+
+footer span {
+    color: red;
+    letter-spacing: 5px;
+}
