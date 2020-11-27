@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    background-color: #2f3642;
+    display: flex;
+    justify-content: space-between;
+    height: 71px;
+    align-items: center;
+    padding: 2%;
+}
+
+#searchbar {
+    height: 30px;
+    margin-right: 5%;
+    padding: 5px 20px 5px 5px;
+    background-image: url('./img/search_icon.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+header img {
+    height: 50px;
+}
+
+main {
+    background-color: #d4cbc5;
+}
+
+.video-box img {
+    width: 100%;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    justify-content: space-evenly;
+}
+
+.video-container>section {
+    border: 1px solid #000;
+    box-shadow: 3px 3px rgba(0,0,0,0.3);
+    margin: 20px 20px;
+}
+
+.video-container section:hover {
+    background-color: #f50900;
+    transform: scale(1.1);
+    transition: all ease 0.5s;
+}
+
+.video-box {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+.video-box p {
+    padding: 10px;
+    font-size: 1.5em;
+    color: #FFF;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #2f3642;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0 2%;
+}
+
+footer span {
+    color: red;
+    letter-spacing: 5px;
+}
