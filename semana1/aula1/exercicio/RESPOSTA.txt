@@ -1,0 +1,33 @@
+1	cd misterio/
+2	ls
+3	grep PISTA cena-do-crime
+4	grep Annabel pessoas
+5	cd ruas/
+6	sed -n 40p Vila_Hart
+7	sed -n 179p Vila_Buckingham
+8	cd ..
+9	cd entrevistas/
+10	cat entrevista-47246024
+11	cat entrevista-699607
+12	cd ..
+13	ls
+14	grep -A 5 L337 automoveis
+15	grep "Joe Germuska" pessoas
+16	grep "Jeremy Bowers" pessoas
+17	grep "Jacqui Maher" pessoas
+18	cd associacoes/
+19	grep "Joe Germuska" ./*
+20	grep "Jeremy Bowers" ./*
+21	cd ..
+22	cd ruas/
+23	sed -n 275p Rua_Plainfield
+24	sed -n 284p Travessa_Dunstable
+25	cd ..
+26	cd entrevistas/
+27	cat entrevista-9620713
+
+O crime foi cometido por Jeremy Bowers pois é o único que se encaixa em todas as pistas encontradas.
+- Possui mais de 1,83m
+- carro Honda Azul com placa iniciada em L337 e terminada em 9
+- Possui carteiras dos grupos AAA, Delta SkyMiles, biblioteca e Museu de Historia do Bash
+- Não encontra-se em casa e supostamente viajou
