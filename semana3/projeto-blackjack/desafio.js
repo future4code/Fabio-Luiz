@@ -25,7 +25,7 @@ if (confirm("Quer iniciar uma nova rodada?")) {
    }
 
    // Checando se alguém tem 2 ases
-   while (cartasUsuario[0] && cartasUsuario[1] === "A" || cartasComputador[0] && cartasComputador[1] === "A") {
+   if (cartasUsuario[0].valor && cartasUsuario[1].valor === 11 || cartasComputador[0].valor && cartasComputador[1].valor === 11) {
       pontosUsuario = 0
       pontosComputador = 0
       for (let i=0; i<2; i++) {
@@ -61,25 +61,32 @@ if (confirm("Quer iniciar uma nova rodada?")) {
    }
 
    // Rodada do computador
-   while (pontosUsuario > pontosComputador && pontosComputador <= 21) {
-      cartasComputador.push(comprarCarta())
-      ind = cartasComputador.length -1
-      pontosComputador += cartasComputador[ind].valor
-      result2 += ` ${cartasComputador[ind].texto}`
-
-      if (pontosComputador > 21) {
-         console.log(result1 + ` - pontuação ${pontosUsuario}`)
-         console.log(result2 + ` - pontuação ${pontosComputador}`)
-         console.log("O usuário ganhou!")
-         break
+   if (pontosUsuario <= 21 && pontosUsuario > pontosComputador) {
+      while (pontosComputador <= 21) {
+         cartasComputador.push(comprarCarta())
+         ind = cartasComputador.length -1
+         pontosComputador += cartasComputador[ind].valor
+         result2 += ` ${cartasComputador[ind].texto}`
+   
+         if (pontosComputador > 21) {
+            console.log(result1 + ` - pontuação ${pontosUsuario}`)
+            console.log(result2 + ` - pontuação ${pontosComputador}`)
+            console.log("O usuário ganhou!")
+            break
+         }
+   
+         else if (pontosUsuario < pontosComputador) {
+            console.log(result1 + ` - pontuação ${pontosUsuario}`)
+            console.log(result2 + ` - pontuação ${pontosComputador}`)
+            console.log("O computador ganhou!")
+            break
+         }
       }
-
-      else if (pontosUsuario < pontosComputador) {
-         console.log(result1 + ` - pontuação ${pontosUsuario}`)
-         console.log(result2 + ` - pontuação ${pontosComputador}`)
-         console.log("O computador ganhou!")
-         break
-      }
+   }
+   else {
+      console.log(result1 + ` - pontuação ${pontosUsuario}`)
+      console.log(result2 + ` - pontuação ${pontosComputador}`)
+      console.log("O computador ganhou!")
    }
 }
 else {
