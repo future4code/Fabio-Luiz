@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+.semana {
+    border: 1px dotted rgb(53, 53, 53);
+    padding: 5px;
+}
+
+#main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.riscado {
+    text-decoration: line-through;
+}
+
+@media only screen and (max-width: 630px) {
+    header {
+        flex-direction: column;
+    }
+    #selectors {
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="index.js" defer></script>
+    <title>Planner</title>
+</head>
+<body onclick="func()">
+    <header>
+        <form action="">
+            <label for="tarefa">Nova tarefa:</label>
+            <input type="text" id="tarefa">
+            <select name="dias-semana" id="dias-semana">
+                <option value="domingo">Domingo</option>
+                <option value="segunda">Segunda-feira</option>
+                <option value="terca">Terça-feira</option>
+                <option value="quarta">Quarta-feira</option>
+                <option value="quinta">Quinta-feira</option>
+                <option value="sexta">Sexta-feira</option>
+                <option value="sabado">Sábado</option>
+            </select>
+            <select name="horario" id="horario">
+                <option>00:00</option>
+                <option>01:00</option>
+                <option>02:00</option>
+                <option>03:00</option>
+                <option>04:00</option>
+                <option>05:00</option>
+                <option>06:00</option>
+                <option>07:00</option>
+                <option>08:00</option>
+                <option>09:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+            </select>
+        </form>
+        <div id="buttons">
+            <button id="btn-criar">Criar tarefa</button>
+            <button id="btn-limpar">Limpar tarefas</button>
+        </div>
+        
+    </header>
+    <section id="main-container">
+        <div class="semana">
+            <h3>Domingo</h3>
+            <div class="dias-planner" id="domingo"></div>
+        </div>
+
+        <div class="semana">
+            <h3>Segunda-feira</h3>
+            <div class="dias-planner" id="segunda"></div>
+        </div>
+
+        <div class="semana">
+            <h3>Terça-feira</h3>
+            <div class="dias-planner" id="terca"></div>
+        </div>
+    
+        <div class="semana">
+            <h3>Quarta-feira</h3>
+            <div class="dias-planner" id="quarta"></div>
+        </div>
+    
+        <div class="semana">
+            <h3>Quinta-feira</h3>
+            <div class="dias-planner" id="quinta"></div>
+        </div>
+
+        <div class="semana">                    
+            <h3>Sexta-feira</h3>               
+            <div class="dias-planner" id="sexta"></div>
+        </div>
+
+        <div class="semana">
+            <h3>Sábado</h3>
+            <div class="dias-planner" id="sabado"></div>
+        </div>
+    </section>
+    
+</body>
+</html>
