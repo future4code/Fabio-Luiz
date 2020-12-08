@@ -15,16 +15,18 @@ btnCriar.addEventListener('click', criarTarefas)
 
 
 function limparLista() {
-    const diaPlanner = document.getElementsByClassName("dias-planner")
-    for (let i=0; i < diaPlanner.length; i++) {
+    if (confirm("Tem certeza que deseja excluir todas as atividades?")) {
+        const diaPlanner = document.getElementsByClassName("dias-planner")
+        for (let i=0; i < diaPlanner.length; i++) {
         diaPlanner[i].innerHTML = ''
+    }
     }
 }
 const btnLimpar = document.getElementById("btn-limpar")
 btnLimpar.addEventListener('click', limparLista)
 
 function func(e) {
-    let x = event.target
+    let x = event.target    
     if (x.tagName === "P") {
         x.classList.toggle("riscado")
     }

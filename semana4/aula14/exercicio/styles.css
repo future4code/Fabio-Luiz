@@ -2,23 +2,49 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu Mono', monospace; 
+}
+
+body {
+    background-image: url(./img/background.png);
 }
 
 header {
-    height: 10vh;
+    min-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.3);
 }
 
 section {
     display: flex;
     justify-content: space-evenly;
-    height: 90vh;
+    height: 85vh;
+    width: 95%;
+    margin: 2vh auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+section h3 {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.3rem;
+    background-color: #ffb6b6;
+    padding: 5px 0;
 }
 
 .semana {
-    border: 1px dotted rgb(53, 53, 53);
+    margin: 5px;
+    background-image: url(./img/paper.jpg);
+    background-size: cover;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.semana div {
     padding: 5px;
 }
 
@@ -27,16 +53,62 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 }
 
+form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+}
+
 .riscado {
     text-decoration: line-through;
 }
 
-@media only screen and (max-width: 630px) {
+.item-lista {
+    word-wrap: break-word;
+}
+
+input, select {
+    height: 30px;
+    margin: 5px;
+}
+
+label {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button {
+    height: 30px;
+    width: 110px;
+    padding: 5px;
+    background-color: #FFF;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+#tarefa {
+    min-width: 30vw;
+}
+
+#buttons {
+    margin-left: 30px;
+}
+
+@media only screen and (max-width: 650px) {
     header {
         flex-direction: column;
     }
-    #selectors {
-        display: flex;
-        justify-content: center;
+    form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    #buttons {
+        margin-left: 0;
+    }
+    #tarefa {
+        min-width: 60vw;
     }
 }
