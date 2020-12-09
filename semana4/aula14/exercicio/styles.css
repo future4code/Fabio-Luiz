@@ -7,12 +7,14 @@
 
 body {
     background-image: url(./img/background.png);
+    min-width: 300px;
 }
 
 header {
     min-height: 10vh;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    justify-content: space-around;
     align-items: center;
     padding: 0 20px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -50,13 +52,13 @@ section h3 {
 
 #main-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 form {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .riscado {
@@ -77,6 +79,7 @@ label {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 120px;
 }
 
 button {
@@ -88,27 +91,12 @@ button {
     margin: 5px;
 }
 
-#tarefa {
-    min-width: 30vw;
-}
-
 #buttons {
-    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-@media only screen and (max-width: 650px) {
-    header {
-        flex-direction: column;
-    }
-    form {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-
-    #buttons {
-        margin-left: 0;
-    }
-    #tarefa {
-        min-width: 60vw;
-    }
+#tarefa {
+    width: 50vw;
 }
