@@ -39,9 +39,10 @@ function imprimirExtrato(){
                 gastoViagem += despesa.valor
                 break;
         }
-        gastoTotal = gastoAlimentacao + gastoUtilidades + gastoViagem
     })
-
+    gastoTotal = arrDespesas.reduce((total, despesa) => {
+        return total += despesa.valor
+    },0)
     divExtrato.innerHTML = `<p>Extrato: Gasto Total: R$${gastoTotal} | Alimentação: R$${gastoAlimentacao} | 
                                         Utilidades: R$${gastoUtilidades} | Viagem: R$${gastoViagem}</p>`
 }
@@ -53,8 +54,6 @@ function limparFiltros() {
     document.getElementById('valorFiltroMax').value = ""
     imprimirDespesas(arrDespesas)
 }
-
-
 
 function adicionarDespesa(){
     let valorCdt = document.getElementById('valorCadastro')
@@ -69,7 +68,8 @@ function adicionarDespesa(){
         }
 
         arrDespesas.push(novaDespesa)
-        
+        arrDespesas.sort((a,b) => (a.valor > b.valor) ? 1 : ((a.valor < b.valor) ? -1 : 0))
+
         valorCdt.value = ""
         tipoCtd.value = ""
         descricaoCtd.value = ""
@@ -82,8 +82,6 @@ function adicionarDespesa(){
         alert("`Faltou algum valor ou algum valor é um número negativo`")
     }
 }
-
-
 
 // TERCEIRO
 function filtrarDespesas(){
