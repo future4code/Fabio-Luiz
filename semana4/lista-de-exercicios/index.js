@@ -122,13 +122,13 @@ function loopWhile(array) {
         }
         let diferenca = maior - menor
         console.log(`O maior é: ${maior}`)
-        if (num1%num2 === num1) {
+        if (num1%num2 !== 0) {
             console.log(`${num1} não é divisível por ${num2}`)
         }
         else {
             console.log(`${num1} é divisível por ${num2}`)
         }
-        if (num2%num1 === num2) {
+        if (num2%num1 !== 0) {
             console.log(`${num2} não é divisível por ${num1}`)
         }
         else {
@@ -166,7 +166,7 @@ function loopWhile(array) {
                 segundoMaior = num
             }
         }
-        console.log(`Maior: ${maior} | Menor: ${menor}`)
+        // console.log(`Maior: ${maior} | Menor: ${menor}`)
         console.log(`Segundo maior: ${segundoMaior} | Segundo menor: ${segundoMenor}`)
     }
     // segundoMaiorMenor(arrayTeste)
@@ -185,14 +185,12 @@ function loopWhile(array) {
 
 // 2.
     function criaRetangulo(lado1, lado2) {
-        const retangulo = {
+        return {
             largura: lado1,
             altura: lado2,
             perimetro: 2*(lado1 + lado2),
             area: lado1*lado2
         }
-        console.log(retangulo)
-        return retangulo
     }
     // criaRetangulo(10, 20)
 
@@ -204,13 +202,13 @@ function loopWhile(array) {
         elenco: ["Sylvester Stallone", "Burgess Meredith", "Talia Shire", "Burt Young", "Carl Weathers"]
     }
     let frase = `Venha assistir ao filme ${filmeFavorito.titulo}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por`
-    const ultimoNomeId = filmeFavorito.elenco.length-1
-    for (nome of filmeFavorito.elenco) {
-        if(nome === filmeFavorito.elenco[ultimoNomeId]) {
-            frase += ` e ${nome}.`    
+    // const lastName = filmeFavorito.elenco.length-1
+    for (let i=0; i<filmeFavorito.elenco.length; i++) {
+        if(i !== filmeFavorito.elenco.length-1) {
+            frase += ` e ${filmeFavorito.elenco[i]},`    
         }
         else {
-            frase += ` ${nome},`
+            frase += ` ${filmeFavorito.elenco[i]}.`
         }
     }
     // console.log(frase)
@@ -224,9 +222,9 @@ function loopWhile(array) {
     }
     function anonimizarPessoa() {
         const novosDados = {
-            ...dadosUsuario
+            ...dadosUsuario,
+            nome: "ANÔNIMO"
         }
-        novosDados.nome = "ANÔNIMO"
         return novosDados
     }
 
@@ -307,27 +305,33 @@ const consultas = [
 	{ nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
 ]
 
-const mensagemClientes = consultas.map((cliente) => {
-    if(cliente.cancelada === false) {
-        if(cliente.genero === "masculino") {
-            cliente = `Olá, Sr. ${cliente.nome}. Estamos enviando esta mensagem para lembrá-lo da sua consulta no dia ${cliente.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-            return cliente
-        }
-        else {
-            cliente = `Olá, Sra. ${cliente.nome}. Estamos enviando esta mensagem para lembrá-la da sua consulta no dia ${cliente.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-            return cliente
-        }
+const mensagemClientes = consultas.map((paciente) => {
+    let emailFinal = `Olá, `
+    
+    if(paciente.genero === "masculino") {
+        emailFinal += `Sr. ${paciente.nome}. `
     }
     else {
-        if(cliente.genero === "masculino") {
-            cliente = `Olá, Sr. ${cliente.nome}. Infelizmente, sua consulta marcada para o dia ${cliente.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
-            return cliente
+        emailFinal += `Sra. ${paciente.nome}. `
+    }
+
+    if(paciente.cancelada) { 
+        emailFinal += `Infelizmente, sua consulta marcada para o dia `
+        emailFinal += `${paciente.dataDaConsulta} foi cancelada. `
+        emailFinal += `Se quiser, pode entrar em contato conosco para remarcá-la`
+    }
+    else {
+        emailFinal += `Estamos enviando esta mensagem para `
+        if(paciente.genero === "masculino") {
+            emailFinal += `lembrá-lo  `
         }
         else {
-            cliente = `Olá, Sra. ${cliente.nome}. Infelizmente, sua consulta marcada para o dia ${cliente.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
-            return cliente
+            emailFinal += `lembrá-la  `
         }
+        emailFinal += `da sua consulta no dia ${paciente.dataDaConsulta}. `
+        emailFinal += `Por favor, acuse o recebimento deste e-mail.`
     }
+    return emailFinal
 })
 
 // 5.
@@ -341,6 +345,9 @@ const contas = [
 ]
 
 contas.forEach((cliente) => {
-    cliente.saldoTotal = Math.floor(((Math.random() - 0.5) * 2) * 10000)
+    const despesas = cliente.compras.reduce((total, item) => {
+        return total += item
+    },0)
+    cliente.saldoTotal -= despesas
     return cliente
 })
