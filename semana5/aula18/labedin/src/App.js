@@ -28,9 +28,9 @@ function App() {
               icone="https://www.flaticon.com/svg/static/icons/svg/2910/2910791.svg" 
               item="Experiências"
             /></a>
-            <a href="#redes-sociais"><NavItem 
+            <a href="#soft-skills"><NavItem 
               icone="https://www.flaticon.com/premium-icon/icons/svg/3252/3252623.svg" 
-              item="Mídias"
+              item="Sof Skills"
             /></a>
           </ul>
         </nav>
@@ -107,7 +107,7 @@ function App() {
         </div>
         
         <div className="page-section-container">
-          <h2 id="redes-sociais">Minhas redes sociais</h2>
+          <h2>Minhas redes sociais</h2>
           <div className="footer">
             <a href="http://www.facebook.com" target="_blank"><ImagemButton 
               imagem="https://d2v9ipibika81v.cloudfront.net/uploads/sites/261/2017/01/facebook-logo-3.png" 
