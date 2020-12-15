@@ -1,0 +1,143 @@
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.tela-inteira {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 50px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+input {
+  width: 50vw;
+  height: 25px;
+  border: 1px solid #e5e5e5;
+}
+
+.search-box img {
+  height: 20px;
+  padding-left: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+}
+
+.menu-vertical {
+  min-width: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.botoes-meunu-vertical {
+  list-style-type: none;
+}
+
+.painel-de-videos {
+  padding-left: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  background-color: #f8f9fa;
+  justify-content: center;
+}
+
+.box-pagina-principal {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr;
+  width: 310px;
+  align-items: start;
+  justify-items: stretch;
+  margin: 0 10px 10px 0;
+}
+
+.box-pagina-principal > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.videoUser > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.box-pagina-principal > img {
+  width: 100%;
+  height: 200px;
+}
+
+.box-pagina-principal > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: justify;
+  word-break: break-all;
+}
+
+h4 {
+  margin-left: 20px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+li img {
+  margin-right: 10px;
+}
+
+.botao-inicio {
+  background-color: #e5e5e5;
+}
+
+.botoes-meunu-vertical:hover {
+  background-color: #e5e5e5;
+}
+
+/* BARRA DE ROLAGEM */
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@media only screen and (max-width: 860px) {
+  .menu-vertical {
+    display: none;
+  }
+}
