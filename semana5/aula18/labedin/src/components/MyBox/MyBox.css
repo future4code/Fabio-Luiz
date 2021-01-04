@@ -1,0 +1,24 @@
+.box-container {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 3px 4px #000000;
+    min-width: 200px;
+    background-color: rgb(161, 161, 161);
+}
+
+.box-container > p {
+    margin-left: 10px;
+    text-align: justify;
+}
+
+.box-container img {
+    width: 50%;
+    margin: 10px auto;
+    border-radius: 10px;
+}

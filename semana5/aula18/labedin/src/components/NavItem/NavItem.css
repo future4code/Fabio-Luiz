@@ -1,0 +1,17 @@
+li img {
+    height: 30px;
+    margin: 0 5px;
+}
+
+li {
+    list-style: none;
+    margin-right: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+li:hover {
+    color: red;
+}
