@@ -1,27 +1,10 @@
 import React from 'react';
-import styled from "styled-components";
 
-const FormContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 40px;
-
-  ul {
-    list-style: none;
-  }
-`;
-
-const Form = styled.form`
-  text-align: center;
-`;
-
-const Etapa3 = () => {
+export function Etapa3() {
     return (
       <>
-        <FormContainer>
           <h3>ETAPA 3 - INFORMAÇÕES GERAIS DE ENSINO</h3>
-          <Form action="#">
+          <form action="#">
             <ul>
               <li>
                 <label>
@@ -31,9 +14,7 @@ const Etapa3 = () => {
                 <input />
               </li>
               <li>
-                <label>
-                  6. Você fez algum curso complementar?
-                </label>
+                <label>6. Você fez algum curso complementar?</label>
                 <br />
                 <select name="cursoComplementar">
                   <option value="nenhum">Nenhum</option>
@@ -42,11 +23,7 @@ const Etapa3 = () => {
                 </select>
               </li>
             </ul>
-            <button onClick={this.submitFinal}>Próxima etapa</button>
-          </Form>
-        </FormContainer>
+          </form>
       </>
     );
 }
-
-export default Etapa3
