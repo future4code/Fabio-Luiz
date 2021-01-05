@@ -28,6 +28,8 @@ export default class App extends React.Component {
   state = {
     telaAtual: "Etapa 1",
     value: "",
+    input: "",
+    seguir: 0,
   };
 
   handleChange = (event) => {
@@ -37,12 +39,14 @@ export default class App extends React.Component {
   nextBtn = () => {
     switch (this.state.telaAtual) {
       case "Etapa 1":
-        return this.state.value.startsWith("es") ? this.setState({telaAtual: 'Etapa 2'}) : this.setState({telaAtual: 'Etapa 3'});
+        return this.state.value.startsWith("es")
+          ? this.setState({ telaAtual: "Etapa 2" })
+          : this.setState({ telaAtual: "Etapa 3" });
       case "Etapa 2":
       case "Etapa 3":
-        return this.setState({telaAtual: 'Etapa Final'});
+        return this.setState({ telaAtual: "Etapa Final" });
     }
-  }
+  };
 
   render() {
     const TelaAtual = () => {
@@ -52,20 +56,14 @@ export default class App extends React.Component {
             <Etapa1 value={this.state.value} handleChange={this.handleChange} />
           );
         case "Etapa 2":
-          return (
-            <Etapa2 />
-          );
+          return <Etapa2 />;
         case "Etapa 3":
-          return (
-            <Etapa3 />
-          );
+          return <Etapa3 />;
         case "Etapa Final":
           Btn = styled.button`
-          display: none;
-          `
-          return (
-            <EtapaFinal />
-          );
+            display: none;
+          `;
+          return <EtapaFinal />;
       }
     };
     return (

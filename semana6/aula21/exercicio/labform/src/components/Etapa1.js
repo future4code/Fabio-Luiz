@@ -1,4 +1,5 @@
 import React from "react";
+import { PerguntaAberta } from "./PerguntaAberta";
 
 export function Etapa1(props) {
   return (
@@ -6,21 +7,9 @@ export function Etapa1(props) {
       <h3>ETAPA 1 - DADOS GERAIS</h3>
       <form action="#">
         <ul>
-          <li>
-            <label>1. Qual o seu nome?</label>
-            <br />
-            <input />
-          </li>
-          <li>
-            <label>2. Qual a sua idade?</label>
-            <br />
-            <input />
-          </li>
-          <li>
-            <label>3. Qual o seu e-mail?</label>
-            <br />
-            <input />
-          </li>
+          <PerguntaAberta pergunta={"1. Qual o seu nome?"} />
+          <PerguntaAberta pergunta={"2. Qual a sua idade?"} />
+          <PerguntaAberta pergunta={"3. Qual o seu e-mail?"} />
           <li>
             <label>4. Qual a sua escolaridade?</label>
             <br />
