@@ -1,12 +1,15 @@
-import React from 'react'
-import './styles.css'
-import { TarefaList, TaskBox, DeleteBtn, Tarefa, InputsContainer } from './components/styled';
+import React from "react";
+import "./styles.css";
+import { TarefaList, TaskBox, DeleteBtn } from "./components/styled";
+import { Task } from "./components/Task";
+import { InputArea } from "./components/InputArea";
 
 class App extends React.Component {
   state = {
     tarefas: [],
     inputValue: "",
-    filtro: "",
+    inputID: "",
+    editando: false,
   };
 
   componentDidUpdate() {
@@ -23,16 +26,38 @@ class App extends React.Component {
   };
 
   criaTarefa = () => {
-    if(this.state.inputValue) {
-      const novaTarefa = {
-        id: Date.now(),
-        texto: this.state.inputValue,
-        completa: false,
-      };
+    if (this.state.editando === false) {
+      if (this.state.inputValue) {
+        const novaTarefa = {
+          id: Date.now(),
+          texto: this.state.inputValue,
+          completa: false,
+        };
 
-      const copiaTarefas = [...this.state.tarefas, novaTarefa];
+        const copiaTarefas = [...this.state.tarefas, novaTarefa];
 
-      this.setState({ tarefas: copiaTarefas, inputValue: "" });
+        this.setState({ tarefas: copiaTarefas, inputValue: "" });
+      }
+    } else {
+      if (this.state.inputValue) {
+        const copiaTarefas = this.state.tarefas.map((tarefa) => {
+          if (tarefa.id === this.state.inputID) {
+            const novaTarefa = {
+              ...tarefa,
+              texto: this.state.inputValue,
+              completa: false,
+            };
+            return novaTarefa;
+          } else {
+            return tarefa;
+          }
+        });
+        this.setState({
+          tarefas: copiaTarefas,
+          editando: false,
+          inputValue: "",
+        });
+      }
     }
   };
 
@@ -58,76 +83,99 @@ class App extends React.Component {
     this.setState({ tarefas: novoTarefas });
   };
 
-  // editarTarefa = (id) => {
-  //   const novoTarefas = this.state.tarefas.filter((tarefa) => {
-  //     if(id === tarefa.id) {
-  //       // this.setState({inputValue: tarefa.texto})
-  //     }
-  //   });
-  // };
-
-  limparTarefas = (id) => {
-    const novoTarefas = this.state.tarefas.filter((tarefa) => {
-      return id === "000";
+  editarTarefa = (id) => {
+    const EditarTarefa = this.state.tarefas.filter((tarefa) => {
+      if (id === tarefa.id) {
+        this.setState({
+          inputValue: tarefa.texto,
+          inputID: tarefa.id,
+          editando: true,
+        });
+      }
     });
-    this.setState({ tarefas: novoTarefas, inputValue: "" });
   };
 
-  onChangeFilter = (event) => {
-    this.setState({ filtro: event.target.value });
+  limparTarefas = (id) => {
+    this.setState({ tarefas: [], inputValue: "" });
   };
 
   render() {
-    const listaFiltrada = this.state.tarefas.filter((tarefa) => {
-      switch (this.state.filtro) {
-        case "pendentes":
-          return !tarefa.completa;
-        case "completas":
-          return tarefa.completa;
-        default:
-          return true;
-      }
+    let inputBtnTxt;
+    if (this.state.editando) {
+      inputBtnTxt = "Salvar edição";
+    } else {
+      inputBtnTxt = "Adicionar";
+    }
+
+    const tarefasAbertas = this.state.tarefas.filter((tarefa) => {
+      return !tarefa.completa;
+    });
+
+    const tarefasFinalizadas = this.state.tarefas.filter((tarefa) => {
+      return tarefa.completa;
     });
 
     return (
       <div className="App">
         <h1>Lista de tarefas</h1>
-        <InputsContainer>
-          <input value={this.state.inputValue} onChange={this.onChangeInput} />
-          <button onClick={this.criaTarefa}>Adicionar</button>
-          <button onClick={this.limparTarefas}>Limpar tarefas</button>
-        </InputsContainer>
+        <InputArea
+          inputValue={this.state.inputValue}
+          onChangeInput={this.onChangeInput}
+          criaTarefa={this.criaTarefa}
+          limparTarefas={this.limparTarefas}
+          inputBtnTxt={inputBtnTxt}
+          ordernar={this.ordemCrescente}
+        />
         <br />
 
-        <InputsContainer>
-          <label>Filtro</label>
-          <select value={this.state.filter} onChange={this.onChangeFilter}>
-            <option value="">Nenhum</option>
-            <option value="pendentes">Pendentes</option>
-            <option value="completas">Completas</option>
-          </select>
-        </InputsContainer>
         <TarefaList>
-          {listaFiltrada.map((tarefa) => {
-            return (
-              <TaskBox>
-                <Tarefa
-                  completa={tarefa.completa}
-                  onClick={() => this.selectTarefa(tarefa.id)}
-                >
-                  {tarefa.texto}
-                </Tarefa>
-                <DeleteBtn onClick={() => this.deleteTarefa(tarefa.id)}>
-                  X
-                </DeleteBtn>
-                {/* <button onClick={() => this.editarTarefa(tarefa.id)}>Editar</button> */}
-              </TaskBox>
-            );
-          })}
+          <div>
+            <h2>Tarefas em aberto</h2>
+            {tarefasAbertas.map((tarefa) => {
+              return (
+                <TaskBox>
+                  <Task
+                    completa={tarefa.completa}
+                    selectTarefa={() => this.selectTarefa(tarefa.id)}
+                    texto={tarefa.texto}
+                    key={tarefa.id}
+                  />
+
+                  <DeleteBtn onClick={() => this.deleteTarefa(tarefa.id)}>
+                    X
+                  </DeleteBtn>
+
+                  <button onClick={() => this.editarTarefa(tarefa.id)}>
+                    Editar
+                  </button>
+                </TaskBox>
+              );
+            })}
+          </div>
+
+          <div>
+            <h2>Tarefas finalizadas</h2>
+            {tarefasFinalizadas.map((tarefa) => {
+              return (
+                <TaskBox>
+                  <Task
+                    completa={tarefa.completa}
+                    selectTarefa={() => this.selectTarefa(tarefa.id)}
+                    texto={tarefa.texto}
+                  />
+
+                  <DeleteBtn onClick={() => this.deleteTarefa(tarefa.id)}>
+                    X
+                  </DeleteBtn>
+                </TaskBox>
+              );
+            })}
+          </div>
         </TarefaList>
+        <hr />
       </div>
     );
   }
 }
 
-export default App
+export default App;

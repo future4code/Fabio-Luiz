@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 export const TarefaList = styled.ul`
   padding: 0;
-  width: 200px;
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    max-width: 350px;
+  }
 `;
 
 export const TaskBox = styled.div`
@@ -11,7 +17,7 @@ export const TaskBox = styled.div`
 `;
 
 export const DeleteBtn = styled.button`
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   border: none;
   font-weight: bold;
 `;
