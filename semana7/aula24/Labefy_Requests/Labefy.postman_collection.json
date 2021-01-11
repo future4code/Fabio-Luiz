@@ -1,0 +1,1883 @@
+{
+	"info": {
+		"_postman_id": "44dfc958-2238-4e53-a1d8-bb7ebe714051",
+		"name": "Labefy",
+		"description": "## Descrição\n</br>Esta API gerencia playlists e músicas.\n```\n\tFeito pela Labenu. Todos os direitos reservados\n```\n\n## Instruções gerais.\n\n**Autenticação**\n\nToda requisição deve ter uma identificação de quem está fazendo a requisição. Ela deve ser enviada por meio do header `Authorization`, da seguinte forma:\n\n`Authorization: \"nome-sobrenome-turma\"`\n\nPor exemplo, se meu nome é Bob Marley e eu sou da turma Newton, o header deve ser:\n\n`Authorization: \"bob-marley-newton\"`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Rap BR",
+			"item": [
+				{
+					"name": "Criar Palylist Rap BR",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Rap BR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						},
+						"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+					},
+					"response": [
+						{
+							"name": "createPlaylist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth",
+										"value": "authentication-token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/playlists/createPlaylist",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"playlists",
+										"createPlaylist"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Add Olho de Tigre",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Olho de Tigre\",\n\t\"artist\": \"Djonga\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf20.x2convert.com/xcfiles//files/2020/9/10/perfil_22_djonga_olho_de_tigre_prod_malive_slim_4983727615485269168.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Romeu tem que morrer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Romeu tem que morrer\",\n\t\"artist\": \"Tulio Dek e Xamã\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/11/2/romeu_tem_que_morrer_tulio_dek_e_xama_guerreiros_da_luz_ep_1_4135524918659868241.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Canção Infantil",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Canção Infantil\",\n\t\"artist\": \"Cesar MC\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/10/16/cesar_mc_can_ao_infantil_letra_part_cristal_5114265931724749847.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Favela Vive 4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Olho de Tigre\",\n\t\"artist\": \"Djonga\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf20.x2convert.com/xcfiles//files/2020/9/10/perfil_22_djonga_olho_de_tigre_prod_malive_slim_4983727615485269168.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Playlist Rap BR",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Informações da playlist de Rap BR"
+		},
+		{
+			"name": "Pagode 90",
+			"item": [
+				{
+					"name": "Criar Palylist Pagode 90",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Pagode 90\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						},
+						"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+					},
+					"response": [
+						{
+							"name": "createPlaylist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth",
+										"value": "authentication-token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/playlists/createPlaylist",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"playlists",
+										"createPlaylist"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Add Temporal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Frenesi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Frenesi\",\n\t\"artist\": \"Pixote\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf30.x2convert.com/xcfiles//files/2020/10/21/pixote_frenesi_3716986273922134976.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Tanajura (não gosto)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Olho de Tigre\",\n\t\"artist\": \"Djonga\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf20.x2convert.com/xcfiles//files/2020/9/10/perfil_22_djonga_olho_de_tigre_prod_malive_slim_4983727615485269168.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta antes de deletar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Tanajura",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks",
+								":trackId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": ""
+								},
+								{
+									"key": "trackId",
+									"value": ""
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição serve para deletar alguma música de alguma playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Params**\n<br/>`playlistId`: id da playlist (obrigatório)\n<br/>`trackId`: id da música (obrigatório)\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar depois de deletar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Cigana",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Cigana\",\n\t\"artist\": \"Raça Negra\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf40.x2convert.com/xcfiles//files/2020/12/8/cigana_ra_a_negra_-5894705776778655937.mp3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0b554389-a537-4e46-93c1-f75c1fb781b6"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Derê",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Derê\",\n\t\"artist\": \"Soweto\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf40.x2convert.com/xcfiles//files/2021/1/12/belo_dere_letra_tipografia_status_7109028082643713085.mp3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0b554389-a537-4e46-93c1-f75c1fb781b6"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar depois de adicionar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Informações da playlist de Pagode 90"
+		},
+		{
+			"name": "Rock Internacional",
+			"item": [
+				{
+					"name": "Criar Palylist Rock Internacional",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "fabio-santos-epps",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Rock Internacional\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						},
+						"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+					},
+					"response": [
+						{
+							"name": "createPlaylist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth",
+										"value": "authentication-token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/playlists/createPlaylist",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"playlists",
+										"createPlaylist"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Add Toxicity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Toxicity\",\n\t\"artist\": \"System of a Down\",\n\t\"url\": \"https://c1.x2convert.com/xbase/eusf20.x2convert.com/xcfiles//files/2020/7/5/system_of_a_down_toxicity_lyrics_-4516766560405886879.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Couting Stars",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "fabio-santos-epps"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Counting Stars\",\n\t\"artist\": \"OneRepublic\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/6/25/onerepublic_counting_stars_lyrics_AhDc63IByoK-gucZ-H4P.mp3\"\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+								}
+							]
+						},
+						"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Playlist Rock Internacional",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+								}
+							]
+						},
+						"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Informações da playlist de Rock Internacional"
+		},
+		{
+			"name": "Consultar todas as Playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deletar Playlist Rap BR",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "247e3159-ac9f-491e-8eac-3ee4027681d8"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deletar Playlist Pagode 90",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "247e3159-ac9f-491e-8eac-3ee4027681d8"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deletar Playlist Rock Internacional",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "247e3159-ac9f-491e-8eac-3ee4027681d8"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Palylist Rock Nacional",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Rock Nacional\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+			},
+			"response": [
+				{
+					"name": "createPlaylist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth",
+								"value": "authentication-token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/playlists/createPlaylist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"playlists",
+								"createPlaylist"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Consultar todas as Playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Odio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Vencedor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Piano Bar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas as Playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Playlist Rock Nacional",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Odio",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks",
+						":trackId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": ""
+						},
+						{
+							"key": "trackId",
+							"value": ""
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma música de alguma playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Params**\n<br/>`playlistId`: id da playlist (obrigatório)\n<br/>`trackId`: id da música (obrigatório)\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Playlist Rock Nacional após deletar Odio",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Playlist Sertanejo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+			},
+			"response": [
+				{
+					"name": "createPlaylist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth",
+								"value": "authentication-token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/playlists/createPlaylist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"playlists",
+								"createPlaylist"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Criar Playlist Pop",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+			},
+			"response": [
+				{
+					"name": "createPlaylist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth",
+								"value": "authentication-token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"playlist-name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/playlists/createPlaylist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"playlists",
+								"createPlaylist"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Consultar todas as Playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar música na Playlist Sertanejo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar música na Playlist Pop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "fabio-santos-epps"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Temporal\",\n\t\"artist\": \"Art Popular\",\n\t\"url\": \"https://c3.x2convert.com/xbase/eusf20.x2convert.com/xcfiles/files/2020/8/28/art_popular_temporal_-4410618879446411400.mp3\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3e9c7925-5851-47be-aae1-d232cb8107b0"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas as Playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Playlist Sertanejo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Playlist Pop",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar música de uma Playlist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
