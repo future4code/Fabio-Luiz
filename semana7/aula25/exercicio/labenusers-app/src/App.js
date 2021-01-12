@@ -87,10 +87,12 @@ export default class App extends React.Component {
         { headers: { Authorization: "fabio-santos-epps" } }
       )
       .then(() => {
-        alert("Usuário deletado");
+        if (window.confirm(`Tem certeza que quer deletar o usuário ${userData.name}?`)) {
+          this.getUsers();
+          alert("Usuário deletado com sucesso!");
+        }
       })
       .catch((error) => alert(error.message));
-    this.getUsers();
   };
 
   render() {
