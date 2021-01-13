@@ -24,6 +24,8 @@ export class UserDetails extends React.Component {
     return (
       <>
         <InfoBox>
+          <h1>Detalhes d@ usuári@</h1>
+          <hr />
           {this.state.editMode ? (
             <UserEdition
               details={this.props.details}

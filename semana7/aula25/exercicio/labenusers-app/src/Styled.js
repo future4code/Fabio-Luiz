@@ -188,6 +188,10 @@ export const InfoBox = styled.section`
   box-shadow: 5px 5px 5px -2px #000000;
   background-color: #ffffff;
 
+  h1 {
+    text-align: center;
+  }
+
   input {
     margin-top: 5px;
     margin-bottom: 1rem;
