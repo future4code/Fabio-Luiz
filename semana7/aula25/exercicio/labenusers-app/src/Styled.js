@@ -16,7 +16,7 @@ export const AppContainer = styled.main`
   }
 `;
 
-export const Wrapper = styled.div`
+export const WhiteBg = styled.section`
 width: 100vw;
 height: 100vh;
 position: absolute;
@@ -24,7 +24,7 @@ z-index: 1;
   background-color: rgba(255, 255, 255, 0.7);
 `;
 
-export const Form = styled.div`
+export const Form = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -65,7 +65,7 @@ export const Form = styled.div`
     cursor: pointer;
   }
 
-  .boxIcon {
+  .editIcon {
     height: 25px;
     margin: 0 20px;
     cursor: pointer;
@@ -88,19 +88,19 @@ export const Form = styled.div`
   }
 `;
 
-export const IconsContainer = styled.div`
+export const IconsContainer = styled.section`
   display: flex;
   align-items: center;
 `;
 
-export const UserLine = styled.section`
+export const User = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   padding: 5px 0;
 
-  > div {
+  > section {
     display: flex;
     gap: 20px;
   }
@@ -124,7 +124,7 @@ export const DeleteUserBtn = styled.button`
   cursor: pointer;
 `;
 
-export const DetailsInfo = styled.div`
+export const DetailsInfo = styled.section`
   display: flex;
   flex-direction: column;
 
@@ -134,10 +134,12 @@ export const DetailsInfo = styled.div`
   }
 `;
 
-export const DetailsBox = styled.div`
+export const DetailsBox = styled.section`
   display: flex;
+  justify-content: space-between;
 `;
-export const SearchBox = styled.div`
+
+export const SearchBox = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -147,7 +149,7 @@ export const SearchBox = styled.div`
   margin: 1rem auto;
   min-width: 300px;
 
-  div {
+  section {
     display: flex;
     margin: auto;
     gap: 10px;
@@ -172,7 +174,7 @@ export const SearchBox = styled.div`
   }
 `;
 
-export const InfoBox = styled.div`
+export const InfoBox = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -180,7 +182,7 @@ export const InfoBox = styled.div`
 
   width: 25vw;
   min-width: 300px;
-  margin: -300px auto;
+  margin: -200px auto;
   border: 2px solid #000000;
   border-radius: 10px;
   box-shadow: 5px 5px 5px -2px #000000;
@@ -195,18 +197,19 @@ export const InfoBox = styled.div`
     padding: 10px;
   }
 
-  .boxIcon {
+  #editIcon {
     height: 25px;
     margin: 0 20px;
     cursor: pointer;
   }
 
-  .iconsBox {
-    display: flex;
-    align-items: center;
+  #saveIcon {
+    height: 50px;
+    margin: 0 20px;
+    cursor: pointer;
   }
 
-  .backBtn {
+  #backBtn {
     width: 100%;
     margin-top: 1rem;
     padding: 5px;
