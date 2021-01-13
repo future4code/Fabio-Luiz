@@ -6,6 +6,7 @@ export const AppContainer = styled.main`
 
   .modeBtn {
     height: 2.5rem;
+    min-width: 300px;
     background-color: #000000;
     color: #ffffff;
     font-weight: bold;
@@ -18,6 +19,7 @@ export const AppContainer = styled.main`
 export const Wrapper = styled.div`
 width: 100vw;
 height: 100vh;
+position: absolute;
 z-index: 1;
   background-color: rgba(255, 255, 255, 0.7);
 `;
@@ -26,11 +28,10 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  width: 25vw;
+  min-width: 300px;
+  margin: 1rem auto;
   border: 2px solid #000000;
   border-radius: 10px;
   box-shadow: 5px 5px 5px -2px #000000;
@@ -62,15 +63,6 @@ export const Form = styled.div`
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-  }
-
-  .createUserBtn:hover {
-    background-color: #22f22f;
-    transition: ease-in 0.2s;
-  }
-
-  .createUserBtn:active {
-    outline: none;
   }
 
   .boxIcon {
@@ -150,12 +142,10 @@ export const SearchBox = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin: 0;
-  position: absolute;
-  top: 13%;
-  left: 50%;
-  transform: translate(-50%, -13%);
+  justify-content: center;
   gap: 20px;
+  margin: 1rem auto;
+  min-width: 300px;
 
   div {
     display: flex;
@@ -166,7 +156,7 @@ export const SearchBox = styled.div`
   input {
     border: 1px solid #000000;
     height: 1.5rem;
-    width: 100%;
+    width: 90%;
     border-radius: 15px;
     padding: 10px;
   }
@@ -178,6 +168,52 @@ export const SearchBox = styled.div`
     color: #ffffff;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+  }
+`;
+
+export const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 1;
+
+  width: 25vw;
+  min-width: 300px;
+  margin: -300px auto;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px -2px #000000;
+  background-color: #ffffff;
+
+  input {
+    margin-top: 5px;
+    margin-bottom: 1rem;
+    height: 2rem;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .boxIcon {
+    height: 25px;
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .iconsBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .backBtn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
   }
 `;

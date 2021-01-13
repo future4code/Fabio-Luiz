@@ -1,22 +1,22 @@
 import React from "react";
 import {
-  Form,
+  InfoBox,
   DeleteUserBtn,
   DetailsBox,
   DetailsInfo,
-  Wrapper,
   IconsContainer,
-} from "../Styles/styled";
+} from "../Others/styled";
 import { UserEdition } from './UserEdition';
 
 export class UserDetails extends React.Component {
   render() {
     return (
-      <Wrapper>
-        <Form>
+      <>
+        <InfoBox>
           {this.props.editMode ? (
             <UserEdition
-              saveEdition={this.props.saveEdition}
+            details = {this.props.details}
+              editUser={this.props.editUser}
               onChangeName={this.props.onChangeName}
               onChangeEmail={this.props.onChangeEmail}
               inputName={this.props.inputName}
@@ -45,8 +45,8 @@ export class UserDetails extends React.Component {
           <button className="backBtn" onClick={this.props.backButton}>
             Voltar
           </button>
-        </Form>
-      </Wrapper>
+        </InfoBox>
+      </>
     );
   }
 }

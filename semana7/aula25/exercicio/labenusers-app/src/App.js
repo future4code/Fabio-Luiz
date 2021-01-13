@@ -1,19 +1,20 @@
 import React from "react";
 import axios from "axios";
-import { AppContainer } from "./components/Styles/styled";
+import { AppContainer } from "./components/Others/styled";
 import { SignUp } from "./components/Screens/SignUp";
 import { UserList } from "./components/Screens/UserList";
+import { baseUrl, axiosHeader } from "./components/Others/ApiParameters";
 
 export default class App extends React.Component {
   state = {
     users: [],
     details: [],
-    openDetails: false,
     inputName: "",
     inputEmail: "",
-    userEmail: "",
+    openDetails: false,
     signUpMode: true,
     editMode: false,
+    inputSearchName: "",
   };
 
   componentDidMount = () => {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
 
   closeDetails = () => {
     this.setState({
-      openDetails: !this.state.openDetails,
+      openDetails: false,
       editMode: false,
       inputName: "",
       inputEmail: "",
@@ -39,30 +40,30 @@ export default class App extends React.Component {
   };
 
   onChangeEditMode = () => {
+    const { editMode, details } = this.state;
     this.setState({
-      editMode: !this.state.editMode,
-      inputName: this.state.details.name,
-      inputEmail: this.state.details.email,
+      editMode: !editMode,
+      inputName: details.name,
+      inputEmail: details.email,
     });
   };
 
   getUsers = () => {
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-        {
-          headers: {
-            Authorization: "fabio-santos-epps",
-          },
-        }
-      )
-      .then((response) => {
-        this.setState({ users: response.data });
-      });
+    axios.get(baseUrl, axiosHeader).then((res) => {
+      this.setState({ users: res.data });
+    });
   };
 
   onChangeName = (e) => {
-    this.setState({ inputName: e.target.value });
+    this.setState({
+      inputName: e.target.value,
+    });
+  };
+
+  onChangeSearchName = (e) => {
+    this.setState({
+      inputSearchName: e.target.value,
+    });
   };
 
   onChangeEmail = (e) => {
@@ -70,75 +71,51 @@ export default class App extends React.Component {
   };
 
   createUser = () => {
+    const { inputName, inputEmail } = this.state;
     const body = {
-      name: this.state.inputName,
-      email: this.state.inputEmail,
+      name: inputName,
+      email: inputEmail,
     };
 
     axios
-      .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-        body,
-        {
-          headers: {
-            Authorization: "fabio-santos-epps",
-          },
-        }
-      )
+      .post(baseUrl, body, axiosHeader)
       .then(() => {
         alert("Usuário cadastrado");
         this.setState({ inputName: "", inputEmail: "" });
         this.getUsers();
       })
-      .catch((error) => {
-        alert(error.message);
+      .catch((err) => {
+        alert(err.message);
       });
   };
 
-  deleteUser = (userData) => {
-    const userIndex = this.state.users.findIndex(
-      (user) => userData.id === user.id
-    );
-    const userId = this.state.users[userIndex].id;
-
-    window.confirm(
-      `Tem certeza que quer deletar o usuário ${userData.name}?`
-    ) &&
+  deleteUser = (usr) => {
+    window.confirm(`Tem certeza que quer deletar o usuário ${usr.name}?`) &&
       axios
-        .delete(
-          `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
-          { headers: { Authorization: "fabio-santos-epps" } }
-        )
+        .delete(`${baseUrl}/${usr.id}`, axiosHeader)
         .then(() => {
           this.getUsers();
           this.setState({ openDetails: false });
           alert("Usuário deletado com sucesso!");
         })
-        .catch((error) => alert(error.message));
+        .catch((err) => alert(err.message));
   };
 
-  editUser = (userData) => {
-    const userId = this.state.details.id;
-
+  editUser = (details) => {
+    const { inputName, inputEmail } = this.state;
     const body = {
-      name: this.state.inputName,
-      email: this.state.inputEmail,
+      name: inputName,
+      email: inputEmail,
     };
-
     axios
-      .put(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
-        body,
-        { headers: { Authorization: "fabio-santos-epps" } }
-      )
+      .put(`${baseUrl}/${details.id}`, body, axiosHeader)
       .then(() => {
         if (
           window.confirm(
-            `Tem certeza que quer editar o usuário ${userData.name}?`
+            `Tem certeza que quer editar o usuário ${details.name}?`
           )
         ) {
           this.getUsers();
-          this.onChangeEditMode();
           this.setState({
             inputName: "",
             inputEmail: "",
@@ -148,37 +125,29 @@ export default class App extends React.Component {
           alert("Usuário editado com sucesso!");
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((err) => alert(err.message));
   };
 
-  userDetails = (userData) => {
-    this.setState({ openDetails: !this.state.openDetails });
-    const userIndex = this.state.users.findIndex(
-      (user) => userData.id === user.id
-    );
-    const userId = this.state.users[userIndex].id;
+  userDetails = (usr) => {
+    this.setState({ openDetails: true });
     axios
-      .get(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
-        { headers: { Authorization: "fabio-santos-epps" } }
-      )
-      .then((response) => {
-        this.setState({ details: response.data });
+      .get(`${baseUrl}/${usr.id}`, axiosHeader)
+      .then((res) => {
+        this.setState({
+          details: res.data,
+        });
       })
-      .catch((error) => alert(error.message));
+      .catch((err) => alert(err.message));
   };
 
   searchName = () => {
-    const { inputName } = this.state;
+    const { inputSearchName } = this.state;
     axios
-      .get(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${inputName}`,
-        { headers: { Authorization: "fabio-santos-epps" } }
-      )
-      .then((response) => {
-        this.setState({ users: response.data, inputName: "" });
+      .get(`${baseUrl}/search?name=${inputSearchName}`, axiosHeader)
+      .then((res) => {
+        this.setState({ users: res.data, inputSearchName: "" });
       })
-      .catch((error) => alert(error.message));
+      .catch((err) => alert(err.message));
   };
 
   resetSearch = () => {
@@ -217,11 +186,13 @@ export default class App extends React.Component {
             backButton={this.closeDetails}
             editMode={this.state.editMode}
             onChangeEditMode={this.onChangeEditMode}
+            onChangeSearchName={this.onChangeSearchName}
             onChangeName={this.onChangeName}
             onChangeEmail={this.onChangeEmail}
+            inputSearchName={this.state.inputSearchName}
             inputName={this.state.inputName}
             inputEmail={this.state.inputEmail}
-            saveEdition={this.editUser}
+            editUser={this.editUser}
             searchName={this.searchName}
             resetSearch={this.resetSearch}
           />

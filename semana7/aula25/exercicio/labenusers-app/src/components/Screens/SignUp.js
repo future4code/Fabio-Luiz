@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form} from '../Styles/styled'
+import {Form} from '../Others/styled'
 
 export const SignUp = (props) => {
     return (
