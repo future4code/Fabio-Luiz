@@ -12,7 +12,7 @@ export default class App extends React.Component {
     inputName: "",
     inputEmail: "",
     userEmail: "",
-    signUpMode: false,
+    signUpMode: true,
     editMode: false,
   };
 
@@ -101,23 +101,20 @@ export default class App extends React.Component {
     );
     const userId = this.state.users[userIndex].id;
 
-    axios
-      .delete(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
-        { headers: { Authorization: "fabio-santos-epps" } }
-      )
-      .then(() => {
-        if (
-          window.confirm(
-            `Tem certeza que quer deletar o usuário ${userData.name}?`
-          )
-        ) {
+    window.confirm(
+      `Tem certeza que quer deletar o usuário ${userData.name}?`
+    ) &&
+      axios
+        .delete(
+          `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
+          { headers: { Authorization: "fabio-santos-epps" } }
+        )
+        .then(() => {
           this.getUsers();
           this.setState({ openDetails: false });
           alert("Usuário deletado com sucesso!");
-        }
-      })
-      .catch((error) => alert(error.message));
+        })
+        .catch((error) => alert(error.message));
   };
 
   editUser = (userData) => {
@@ -179,7 +176,7 @@ export default class App extends React.Component {
         { headers: { Authorization: "fabio-santos-epps" } }
       )
       .then((response) => {
-        this.setState({ users: response.data, inputName:"" });
+        this.setState({ users: response.data, inputName: "" });
       })
       .catch((error) => alert(error.message));
   };
