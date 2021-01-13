@@ -212,8 +212,8 @@ export const InfoBox = styled.section`
   }
 
   #saveIcon {
-    height: 50px;
-    margin: 0 20px;
+    height: 40px;
+    margin: 0 10px;
     cursor: pointer;
   }
 
