@@ -9,12 +9,14 @@ export const SignUp = (props) => {
         <label>Nome</label>
         <input
           type="text"
+          placeholder="Digite seu nome"
           value={props.inputName}
           onChange={props.onChangeName}
         />
         <label>E-mail</label>
         <input
-          type="text"
+          type="email"
+          placeholder="Digite seu e-mail"
           value={props.inputEmail}
           onChange={props.onChangeEmail}
         />
