@@ -11,6 +11,7 @@ export const AppContainer = styled.main`
     font-weight: bold;
     font-size: 1.5rem;
     border: 1px solid grey;
+    cursor: pointer;
   }
 `;
 
@@ -35,6 +36,10 @@ export const Form = styled.div`
   box-shadow: 5px 5px 5px -2px #000000;
   background-color: #ffffff;
 
+  h1 {
+    text-align: center;
+  }
+
   hr {
     margin: 10px 0;
   }
@@ -56,6 +61,7 @@ export const Form = styled.div`
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 10px;
+    cursor: pointer;
   }
 
   .createUserBtn:hover {
@@ -70,6 +76,7 @@ export const Form = styled.div`
   .boxIcon {
     height: 25px;
     margin: 0 20px;
+    cursor: pointer;
   }
 
   .iconsBox {
@@ -85,6 +92,7 @@ export const Form = styled.div`
     color: #ffffff;
     font-weight: bold;
     border: none;
+    cursor: pointer;
   }
 `;
 
@@ -140,27 +148,36 @@ export const DetailsBox = styled.div`
 export const SearchBox = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 0;
   position: absolute;
   top: 13%;
   left: 50%;
-  transform: translate(-50%, -10%);
+  transform: translate(-50%, -13%);
   gap: 20px;
+
+  div {
+    display: flex;
+    margin: auto;
+    gap: 10px;
+  }
 
   input {
     border: 1px solid #000000;
     height: 1.5rem;
-    min-width: 300px;
-    width: 30vw;
+    width: 100%;
     border-radius: 15px;
     padding: 10px;
   }
 
   button {
     padding: 5px;
+    width: 100px;
     background-color: #000000;
     color: #ffffff;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 `;

@@ -7,8 +7,10 @@ export const UserList = (props) => {
     <>
       <SearchBox>
         <input type="text" value={props.inputName} placeholder="Digite o nome que quer buscar" onChange={props.onChangeName} />
+        <div>
         <button onClick={props.searchName}>Buscar</button>
         <button onClick={props.resetSearch}>Limpar busca</button>
+        </div>
       </SearchBox>
       <Form>
         <h1>Lista de usuários</h1>
