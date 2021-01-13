@@ -192,6 +192,10 @@ export const InfoBox = styled.section`
     text-align: center;
   }
 
+  hr {
+    margin: 10px 0;
+  }
+
   input {
     margin-top: 5px;
     margin-bottom: 1rem;
