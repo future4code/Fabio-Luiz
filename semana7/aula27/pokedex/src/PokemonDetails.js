@@ -6,11 +6,12 @@ import { ProgressBar } from "./components/ProgressBar";
 const Container = styled.div`
   border: 1px solid black;
   border-radius: 10px;
+  max-width: 300px;
   width: fit-content;
   padding: 10px;
   margin: 0;
   position: absolute;
-  top: 10%;
+  top: 13%;
   left: 50%;
   transform: translate(-50%);
   background-color: #ffffff;
@@ -18,10 +19,12 @@ const Container = styled.div`
   .stats-container {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
   .pokemon-image {
-    height: 100%;
+    width: 50%;
+    justify-self: center;
   }
   .delete-btn {
     float: right;

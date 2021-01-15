@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { PokemonCard } from "./PokemonCard";
+import { PokemonCard } from "./components/PokemonCard";
 import { PokemonDetails } from "./PokemonDetails";
+import PokeDex1 from "./imgs/pokedex-cima.jpg";
+import PokeDex2 from "./imgs/pokedex-baixo.jpg";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -11,6 +13,29 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 310px;
+    border: 2px solid black;
+    background-color: #c81f32;
+  }
+
+  .poke {
+    position: absolute;
+    height: 50vh;
+    width: 320px;
+  }
+  #cima {
+    top: 0;
+  }
+  #baixo {
+    bottom: 0;
+  }
 
   .titulo {
     padding: 10px;
@@ -22,7 +47,8 @@ const Wrapper = styled.div`
 
   input {
     height: 2rem;
-    width: 50%;
+    width: 90%;
+    min-width: 250px;
     padding: 10px;
     margin: 20px;
     border-radius: 15px;
@@ -35,8 +61,8 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 90%;
-  border: 2px solid black;
+  width: 300px;
+  /* border: 2px solid black; */
   height: 90%;
   overflow-y: auto;
 `;
@@ -46,6 +72,7 @@ export class Pokemons extends React.Component {
     baseUrl: "https://pokeapi.co/api/v2/",
     pokemons: [],
     openDetails: false,
+    openPokeDex: true,
     targetId: 0,
     searchName: "",
   };
@@ -106,41 +133,80 @@ export class Pokemons extends React.Component {
     this.setState({ searchName: e.target.value });
   };
 
+  openPokeDex = () => {
+    this.setState({ openPokeDex: !this.state.openPokeDex });
+    let cima = "";
+    let baixo = "";
+
+    cima = document.getElementById("cima");
+    cima.style.top = "0";
+    if (this.state.openPokeDex) {
+      cima.style.top = parseInt(cima.style.top) + -40 + "vh";
+    } else {
+      cima.style.top = parseInt(cima.style.top) + 0 + "px";
+    }
+    cima.style.transition = "2s";
+
+    baixo = document.getElementById("baixo");
+    baixo.style.bottom = "0";
+    if (this.state.openPokeDex) {
+      baixo.style.bottom = parseInt(baixo.style.bottom) + -40 + "vh";
+    } else {
+      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "px";
+    }
+    baixo.style.transition = "2s";
+  };
+
   render() {
     const { baseUrl, pokemons, openDetails, targetId, targetName } = this.state;
-    console.log(this.state.searchName);
     let filtered = this.filtered();
     return (
       <Wrapper>
-        <div className="titulo">
-          <h1>Enciclopédia Pokémon</h1>
-        </div>
-        <input
-          placeholder="Digite o nome do Pokémon que deseja buscar..."
-          value={this.state.searchName}
-          onChange={this.onChangeSearchName}
+        <img
+          id="cima"
+          onClick={this.openPokeDex}
+          className="poke"
+          src={PokeDex1}
+          alt=""
         />
-        <Container>
-          {filtered.map((pokemon) => {
-            return (
-              <PokemonCard
-                key={pokemon.id}
-                id={pokemon.id}
-                name={pokemon.name}
-                imgUrl={pokemon.imgUrl}
-                openDetails={() => this.openDetails(pokemon)}
+        <img
+          id="baixo"
+          onClick={this.openPokeDex}
+          className="poke"
+          src={PokeDex2}
+          alt=""
+        />
+        {/* <div className="titulo">
+          <h1>Enciclopédia Pokémon</h1>
+        </div> */}
+        <div className="content-box">
+          <input
+            placeholder="Digite o nome do Pokémon..."
+            value={this.state.searchName}
+            onChange={this.onChangeSearchName}
+          />
+          <Container>
+            {filtered.map((pokemon) => {
+              return (
+                <PokemonCard
+                  key={pokemon.id}
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  imgUrl={pokemon.imgUrl}
+                  openDetails={() => this.openDetails(pokemon)}
+                />
+              );
+            })}
+            {openDetails && (
+              <PokemonDetails
+                baseUrl={baseUrl}
+                id={targetId}
+                name={targetName}
+                openDetails={this.openDetails}
               />
-            );
-          })}
-          {openDetails && (
-            <PokemonDetails
-              baseUrl={baseUrl}
-              id={targetId}
-              name={targetName}
-              openDetails={this.openDetails}
-            />
-          )}
-        </Container>
+            )}
+          </Container>
+        </div>
       </Wrapper>
     );
   }
