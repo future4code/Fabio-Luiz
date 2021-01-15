@@ -7,8 +7,6 @@ import PokeDex1 from "./imgs/pokedex-cima.jpg";
 import PokeDex2 from "./imgs/pokedex-baixo.jpg";
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,17 +16,21 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 8vh;
+    margin-bottom:8vh;
     justify-content: center;
-    height: 80%;
-    width: 310px;
+    height: 84vh;
+    width: 70vw;
+    min-width: 300px;
     border: 2px solid black;
     background-color: #c81f32;
   }
 
   .poke {
     position: absolute;
-    height: 50vh;
-    width: 320px;
+    height: 48vh;
+    width: 72vw;
+    min-width: 320px;
   }
   #cima {
     top: 0;
@@ -56,13 +58,10 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 300px;
-  /* border: 2px solid black; */
+  width: 100%;
   height: 90%;
   overflow-y: auto;
 `;
@@ -143,7 +142,7 @@ export class Pokemons extends React.Component {
     if (this.state.openPokeDex) {
       cima.style.top = parseInt(cima.style.top) + -40 + "vh";
     } else {
-      cima.style.top = parseInt(cima.style.top) + 0 + "px";
+      cima.style.top = parseInt(cima.style.top) + 0 + "vh";
     }
     cima.style.transition = "2s";
 
@@ -152,7 +151,7 @@ export class Pokemons extends React.Component {
     if (this.state.openPokeDex) {
       baixo.style.bottom = parseInt(baixo.style.bottom) + -40 + "vh";
     } else {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "px";
+      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "vh";
     }
     baixo.style.transition = "2s";
   };

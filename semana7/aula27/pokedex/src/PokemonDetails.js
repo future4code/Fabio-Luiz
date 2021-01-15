@@ -11,10 +11,11 @@ const Container = styled.div`
   padding: 10px;
   margin: 0;
   position: absolute;
-  top: 13%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   background-color: #ffffff;
+  max-height: 98%;
   z-index: 1;
   .stats-container {
     display: grid;

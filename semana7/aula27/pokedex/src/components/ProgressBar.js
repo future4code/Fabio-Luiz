@@ -7,15 +7,11 @@ const Bar = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  /* div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  } */
-
   progress {
-    height: 2rem;
-    margin: 0 10px;
+    height: 1.8rem;
+    margin: 0 5px;
+    width: 75%;
+    margin-left: 20%;
   }
 
   span, p {
@@ -28,7 +24,7 @@ export const ProgressBar = (props) => {
   return (
     <Bar>
       <p>{label}</p>
-      <progress value={value} data-label={value} max="200" />
+      <progress value={value} data-label={value} max="100" />
       <span>{value}</span>
     </Bar>
   );
