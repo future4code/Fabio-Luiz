@@ -4,11 +4,12 @@ import { baseUrl, axiosConfig, deleteIcon } from "../../Parameters";
 import {
   MainContainer,
   PlaylistsContainer,
-  PlaylistBox,
+  PlaylistBoxContainer,
   PlayListTracksBox,
   SessionTitle,
 } from "../../Styled";
 import { PlaylistTracks } from "./PlaylistTracks";
+import { PlaylistBox } from "../../components/PlaylistBox";
 
 export class Playlists extends React.Component {
   state = {
@@ -99,28 +100,14 @@ export class Playlists extends React.Component {
             {this.state.playlists.map((playlist) => {
               let url = `https://source.unsplash.com/278x200/?${playlist.name}`;
               return (
-                <PlaylistBox key={playlist.id}>
-                  <div className="header">
-                    <h3>{playlist.name}</h3>
-                    <img
-                      className="delete-btn"
-                      src={deleteIcon}
-                      onClick={() => this.deletePlaylist(playlist)}
-                      alt=""
-                    />
-                  </div>
-
-                  <img src={url} alt="" />
-
-                  <button
-                    className="btn add-button"
-                    onClick={() =>
-                      this.openPlaylist(playlist.id, playlist.name)
-                    }
-                  >
-                    Abrir
-                  </button>
-                </PlaylistBox>
+                <PlaylistBox
+                  id={playlist.id}
+                  playlist={playlist}
+                  name={playlist.name}
+                  url={url}
+                  deletePlaylist={this.deletePlaylist}
+                  openPlaylist={this.openPlaylist}
+                />
               );
             })}
           </PlaylistsContainer>

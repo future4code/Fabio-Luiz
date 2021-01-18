@@ -110,7 +110,7 @@ export class AddTrack extends React.Component {
             <select onChange={this.selectedPlaylist}>
               <option></option>
               {this.state.playlists.map((playlist) => {
-                return <option value={playlist.id}>{playlist.name}</option>;
+                return <option key={playlist.id} value={playlist.id}>{playlist.name}</option>;
               })}
             </select>
           </div>

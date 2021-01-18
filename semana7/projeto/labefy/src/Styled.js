@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import bg from "./imgs/bg2.jpg";
 
-export const PlaylistBox = styled.div`
+export const PlaylistBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: 280px;
   border: 2px solid black;
   margin: 5px;
   align-items: center;
@@ -31,10 +31,13 @@ export const PlaylistBox = styled.div`
 `;
 
 export const PlaylistsContainer = styled.div`
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
   overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
 `;
 
 export const PlayListTracksBox = styled.div`
