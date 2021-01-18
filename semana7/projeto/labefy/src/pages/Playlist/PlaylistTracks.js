@@ -1,6 +1,6 @@
 import React from "react";
 import { TrackList } from "../../Styled";
-import { deleteIcon, closeIcon } from '../../ApiParameters';
+import { deleteIcon, closeIcon } from '../../Parameters';
 
 export class PlaylistTracks extends React.Component {
   render() {

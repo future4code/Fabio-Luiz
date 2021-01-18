@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { baseUrl, axiosConfig } from "../ApiParameters";
+import { baseUrl, axiosConfig } from "../Parameters";
 import { Boxes, SessionTitle } from "../Styled";
 
 export class AddTrack extends React.Component {
@@ -52,23 +52,27 @@ export class AddTrack extends React.Component {
       artist: newTrackArtist,
       url: newTrackUrl,
     };
-    axios
-      .post(
-        `${baseUrl}/${this.state.selectedPlaylistId}/tracks`,
-        body,
-        axiosConfig
-      )
-      .then((res) => {
-        this.setState({
-          newTrackName: "",
-          newTrackArtist: "",
-          newTrackUrl: "",
+    if(newTrackUrl.includes(".mp3") === true) {
+      axios
+        .post(
+          `${baseUrl}/${this.state.selectedPlaylistId}/tracks`,
+          body,
+          axiosConfig
+        )
+        .then((res) => {
+          this.setState({
+            newTrackName: "",
+            newTrackArtist: "",
+            newTrackUrl: "",
+          });
+          alert("Música adicionada com sucesso!");
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        alert("Música adicionada com sucesso!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    } else {
+      alert("Por favor, insira um link válido!")
+    }
   };
 
   render() {
@@ -104,6 +108,7 @@ export class AddTrack extends React.Component {
           <div>
             <label>Playlist:</label>
             <select onChange={this.selectedPlaylist}>
+              <option></option>
               {this.state.playlists.map((playlist) => {
                 return <option value={playlist.id}>{playlist.name}</option>;
               })}

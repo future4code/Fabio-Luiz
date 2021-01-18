@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 import { CreatePlaylist } from "./pages/CreatePlaylist";
 import { Playlists } from "./pages/Playlist/Playlists";
 import { AddTrack } from "./pages/AddTrack";
-import { logoIcon } from './ApiParameters';
+import { logoIcon } from './Parameters';
 
 export default class App extends React.Component {
   state = {

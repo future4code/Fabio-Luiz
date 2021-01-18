@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { baseUrl, axiosConfig, closeIcon } from "../../ApiParameters";
+import { baseUrl, axiosConfig, deleteIcon } from "../../Parameters";
 import {
   MainContainer,
   PlaylistsContainer,
@@ -72,6 +72,24 @@ export class Playlists extends React.Component {
     }
   };
 
+  deletePlaylist = (playlist) => {
+    if (
+      window.confirm(
+        `Tem certeza que deseja excluir a playlist ${playlist.name}?`
+      )
+    ) {
+      axios
+        .delete(`${baseUrl}/${playlist.id}`, axiosConfig)
+        .then(() => {
+          alert(`A playlist ${playlist.name} foi excluída com sucesso!`)
+          this.getAllPlaylists();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   render() {
     return (
       <>
@@ -85,8 +103,8 @@ export class Playlists extends React.Component {
                   <div className="header">
                     <h3>{playlist.name}</h3>
                     <img
-                      className="close-btn"
-                      src={closeIcon}
+                      className="delete-btn"
+                      src={deleteIcon}
                       onClick={() => this.deletePlaylist(playlist)}
                       alt=""
                     />
