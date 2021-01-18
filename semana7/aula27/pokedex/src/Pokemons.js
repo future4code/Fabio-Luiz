@@ -21,6 +21,7 @@ const Wrapper = styled.div`
     justify-content: center;
     height: 84vh;
     width: 70vw;
+    max-width:436px;
     min-width: 300px;
     border: 2px solid black;
     background-color: #c81f32;
@@ -28,8 +29,9 @@ const Wrapper = styled.div`
 
   .poke {
     position: absolute;
-    height: 48vh;
+    height: 50vh;
     width: 72vw;
+    max-width: 450px;
     min-width: 320px;
   }
   #cima {
@@ -64,6 +66,30 @@ const Container = styled.div`
   width: 100%;
   height: 90%;
   overflow-y: auto;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c81f32;
+    border: 2px solid rgb(50,50,50);
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+  }
 `;
 
 export class Pokemons extends React.Component {
