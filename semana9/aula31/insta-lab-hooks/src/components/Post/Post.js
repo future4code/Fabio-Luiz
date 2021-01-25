@@ -50,10 +50,28 @@ const Post = (props) => {
 
   let caixaDeComentario;
   if (comentando) {
-    caixaDeComentario = (
-      <SecaoComentario enviarComentario={enviarComentario} />
-    );
+    caixaDeComentario = <SecaoComentario enviarComentario={enviarComentario} />;
+  } else {
+    caixaDeComentario = comentarios.map((comentario) => {
+      return (
+        <CommentContainer key={Date.now()}>
+          <p>{comentario}</p>
+        </CommentContainer>
+      );
+    });
   }
+
+  caixaDeComentario = comentando ? (
+    <SecaoComentario enviarComentario={enviarComentario} />
+  ) : (
+    comentarios.map((comentario) => {
+      return (
+        <CommentContainer key={Date.now()}>
+          <p>{comentario}</p>
+        </CommentContainer>
+      );
+    })
+  );
 
   return (
     <PostContainer>

@@ -29,7 +29,7 @@ const SecaoComentario = (props) => {
       />
       <button
         onClick={() => {
-          props.enviarComentario();
+          props.enviarComentario(inputComentario);
         }}
       >
         Enviar
