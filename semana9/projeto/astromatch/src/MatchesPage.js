@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, user } from "./components/Parameters";
-import loading from "./imgs/Infinity-1s-200px.svg";
+import loadingIcon from "./imgs/Infinity-1s-200px.svg";
 
 const MatchesContainer = styled.div`
   display: flex;
@@ -37,10 +37,12 @@ const MatchesContainer = styled.div`
 
 export default function MatchesPage() {
   const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
   const loadMatches = async () => {
     try {
       const res = await axios.get(`${baseUrl}/${user}/matches`);
       setMatches(res.data.matches);
+      setLoading(false)
     } catch (err) {
       console.log(err);
     }
@@ -48,17 +50,21 @@ export default function MatchesPage() {
   useEffect(() => {
     loadMatches();
   }, [matches]);
-  
+
   return (
     <MatchesContainer>
-      {matches.map((match) => {
-        return (
-          <div>
-            <img src={match.photo} alt="" />
-            <p>{match.name}</p>
-          </div>
-        );
-      })}
+      {loading ? (
+        <img className="loading" src={loadingIcon} alt="" />
+      ) : (
+        matches.map((match) => {
+          return (
+            <div>
+              <img src={match.photo} alt="" />
+              <p>{match.name}</p>
+            </div>
+          );
+        })
+      )}
     </MatchesContainer>
   );
 }
