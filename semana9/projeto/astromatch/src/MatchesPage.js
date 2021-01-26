@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { baseUrl, user } from "./components/Parameters";
+import { baseUrl } from "./components/Parameters";
 import loadingIcon from "./imgs/Infinity-1s-200px.svg";
 
 const MatchesContainer = styled.div`
@@ -35,12 +35,12 @@ const MatchesContainer = styled.div`
   }
 `;
 
-export default function MatchesPage() {
+export default function MatchesPage(props) {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const loadMatches = async () => {
     try {
-      const res = await axios.get(`${baseUrl}/${user}/matches`);
+      const res = await axios.get(`${baseUrl}/${props.user}/matches`);
       setMatches(res.data.matches);
       setLoading(false)
     } catch (err) {

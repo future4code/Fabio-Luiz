@@ -44,7 +44,7 @@ export default function App() {
     <>
       <Button onClick={clearMacthes}>Limpar matches</Button>
       <Wrapper>
-        <Home />
+        <Home user={user} />
       </Wrapper>
     </>
   );

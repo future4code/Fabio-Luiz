@@ -7,7 +7,6 @@ const ResultContainer = styled.div`
 position: absolute;
 height: 100%;
 width: 100%;
-/* background-color: red; */
 z-index: 3;
 
 .result{

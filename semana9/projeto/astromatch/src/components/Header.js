@@ -38,6 +38,7 @@ const LogoName = styled.h3`
   transform: translate(-50%);
   font-size: 1.5rem;
   color: blueviolet;
+  cursor: default;
 
   span {
     color: purple;
@@ -65,11 +66,11 @@ export default function Header(props) {
   return (
     <HeaderContainer>
       <div>
-        <LeftIcon src={BackMatchListImg} onClick={props.changePage} alt="" />
+        <LeftIcon src={BackMatchListImg} onClick={props.changePage} alt="Back to Swipe Page Icon" />
         <LogoName>
           astro<span>match</span>
         </LogoName>
-        <RightIcon src={MatchListImg} onClick={props.changePage} alt="" />
+        <RightIcon src={MatchListImg} onClick={props.changePage} alt="Go to Match Page Icon" />
       </div>
       <hr />
     </HeaderContainer>
