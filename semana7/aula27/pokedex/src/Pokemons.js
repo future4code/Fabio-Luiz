@@ -16,11 +16,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8vh;
-    margin-bottom:8vh;
+    margin-top: 5vh;
+    margin-bottom:0vh;
     justify-content: center;
-    height: 84vh;
-    width: 70vw;
+    height: 90vh;
+    width: 48vh;
     max-width:436px;
     min-width: 300px;
     border: 2px solid black;
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   .poke {
     position: absolute;
     height: 50vh;
-    width: 72vw;
+    width: calc(0.5625*50vh);
     max-width: 450px;
     min-width: 320px;
   }
@@ -166,7 +166,7 @@ export class Pokemons extends React.Component {
     cima = document.getElementById("cima");
     cima.style.top = "0";
     if (this.state.openPokeDex) {
-      cima.style.top = parseInt(cima.style.top) + -40 + "vh";
+      cima.style.top = parseInt(cima.style.top) + -45 + "vh";
     } else {
       cima.style.top = parseInt(cima.style.top) + 0 + "vh";
     }
@@ -175,7 +175,7 @@ export class Pokemons extends React.Component {
     baixo = document.getElementById("baixo");
     baixo.style.bottom = "0";
     if (this.state.openPokeDex) {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + -40 + "vh";
+      baixo.style.bottom = parseInt(baixo.style.bottom) + -45 + "vh";
     } else {
       baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "vh";
     }
