@@ -5,6 +5,7 @@ import { PokemonCard } from "./components/PokemonCard";
 import { PokemonDetails } from "./PokemonDetails";
 import PokeDex1 from "./imgs/pokedex-cima.jpg";
 import PokeDex2 from "./imgs/pokedex-baixo.jpg";
+import loadingGif from "../src/imgs/loading.gif";
 
 const Case = styled.div`
   position: absolute;
@@ -13,14 +14,18 @@ const Case = styled.div`
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: 999;
 
-  background-color: #c81f32;
+  background-image: url(${loadingGif});
+  background-size: 97% auto;
+  background-repeat: no-repeat;
+  background-position: center;
 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 
   #cima {
     position: relative;
@@ -56,7 +61,7 @@ const Wrapper = styled.div`
     height: 100%;
     width: 100%;
     border: 2px solid black;
-    background-color: #c81f32;
+    background-color: #181b1d;
   }
 
   .titulo {
@@ -71,8 +76,25 @@ const Wrapper = styled.div`
     height: 2rem;
     width: 90%;
     padding: 10px;
-    margin: 20px;
     border-radius: 15px;
+  }
+
+  #powerOffBtn {
+    width: 30px;
+    margin: 5px;
+    color: white;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+    /* z-index: 2; */
+    cursor: pointer;
+    img {
+      width: 100%;
+      color: white;
+    }
   }
 `;
 
@@ -179,37 +201,46 @@ export class Pokemons extends React.Component {
     this.setState({ searchName: e.target.value });
   };
 
-  openPokeDex = () => {
-    this.setState({ openPokeDex: !this.state.openPokeDex });
+  onPokedex = () => {
+    this.setState({ openPokeDex: true });
     let cima = "";
     let baixo = "";
     let dex = "";
 
     cima = document.getElementById("cima");
     cima.style.top = "0";
-    if (this.state.openPokeDex) {
-      cima.style.top = parseInt(cima.style.top) + -30 + "vh";
-    } else {
-      cima.style.top = parseInt(cima.style.top) + 0 + "px";
-    }
+    cima.style.top = parseInt(cima.style.top) + -30 + "vh";
     cima.style.transition = "2s";
 
     baixo = document.getElementById("baixo");
     baixo.style.bottom = "0";
+    baixo.style.bottom = parseInt(baixo.style.bottom) + -30 + "vh";
+    baixo.style.transition = "2s";
 
     dex = document.getElementById("poke");
-    if (this.state.openPokeDex) {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + -30 + "vh";
-      setTimeout(function() {
-        dex.style.zIndex = "1";
-      }, 2000);
-    } else {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "px";
-      setTimeout(function() {
-        dex.style.zIndex = "2";
-      }, 2000);
-    }
+    setTimeout(function () {
+      dex.style.zIndex = "1";
+    }, 3000);
+  };
+
+  offPokedex = () => {
+    this.setState({ openPokeDex: false });
+    let cima = "";
+    let baixo = "";
+    let dex = "";
+
+    cima = document.getElementById("cima");
+    cima.style.top = "0";
+    cima.style.top = parseInt(cima.style.top) + 0 + "px";
+    cima.style.transition = "2s";
+
+    baixo = document.getElementById("baixo");
+    baixo.style.bottom = "0";
+    baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "px";
     baixo.style.transition = "2s";
+
+    dex = document.getElementById("poke");
+    dex.style.zIndex = "999";
   };
 
   render() {
@@ -218,11 +249,14 @@ export class Pokemons extends React.Component {
     return (
       <>
         <Case id="poke">
-          <img id="cima" onClick={this.openPokeDex} src={PokeDex1} alt="" />
-          <img id="baixo" onClick={this.openPokeDex} src={PokeDex2} alt="" />
+          <img id="cima" onClick={this.onPokedex} src={PokeDex1} alt="" />
+          <img id="baixo" onClick={this.onPokedex} src={PokeDex2} alt="" />
         </Case>
         <Wrapper>
-          <div className="content-box">
+          <div className="content-box" onClick={this.offPokedex}>
+            <div id="powerOffBtn">
+              <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZD0ibTI1NiAwYy0xNDEuMTYgMC0yNTYgMTE0Ljg0LTI1NiAyNTZzMTE0Ljg0IDI1NiAyNTYgMjU2IDI1Ni0xMTQuODQgMjU2LTI1Ni0xMTQuODQtMjU2LTI1Ni0yNTZ6bTAgNDc4LjAyYy0xMjIuNDIgMC0yMjIuMDItOTkuNi0yMjIuMDItMjIyLjAyczk5LjYtMjIyLjAyIDIyMi4wMi0yMjIuMDIgMjIyLjAyIDk5LjYgMjIyLjAyIDIyMi4wMi05OS42IDIyMi4wMi0yMjIuMDIgMjIyLjAyeiIvPjxwYXRoIGQ9Im0yNTYgNjcuOTZjLTEwMy42OCAwLTE4OC4wNCA4NC4zNi0xODguMDQgMTg4LjA0czg0LjM2IDE4OC4wNCAxODguMDQgMTg4LjA0IDE4OC4wNC04NC4zNiAxODguMDQtMTg4LjA0LTg0LjM2LTE4OC4wNC0xODguMDQtMTg4LjA0em0tMTUgNzcuNzFjMC04LjI5IDYuNzItMTUgMTUtMTVzMTUgNi43MSAxNSAxNXYxMjJjMCA4LjI4LTYuNzIgMTUtMTUgMTVzLTE1LTYuNzItMTUtMTV6bTE1IDIxNC42MWMtODIuNjc1IDAtMTMyLjA5Ny05MS45NDgtODcuNjgtMTYwLjc0IDQuNDktNi45NiAxMy43Ny04Ljk2IDIwLjczLTQuNDdzOC45NyAxMy43NyA0LjQ3IDIwLjczYy0zMS41NjUgNDguOTQyIDMuNTM2IDExNC40OCA2Mi40OCAxMTQuNDggNTguOTYgMCA5NC4wMzktNjUuNTQ4IDYyLjQ4LTExNC40OC00LjUtNi45Ni0yLjQ5LTE2LjI0IDQuNDctMjAuNzMgNi45Ni00LjUgMTYuMjQtMi40OSAyMC43MyA0LjQ3IDQ0LjQ4MSA2OC44OTItNS4xIDE2MC43NC04Ny42OCAxNjAuNzR6Ii8+PC9nPjwvc3ZnPg==" />
+            </div>
             <input
               placeholder="Digite o nome do Pokémon..."
               value={this.state.searchName}

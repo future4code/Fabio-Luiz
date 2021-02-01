@@ -16,7 +16,6 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   max-height: 98%;
-  z-index: 1;
   .stats-container {
     display: grid;
     align-items: center;

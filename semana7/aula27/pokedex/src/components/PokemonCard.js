@@ -6,11 +6,13 @@ const Card = styled.div`
   margin: 10px;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 250px;
   height: fit-content;
   align-items: center;
   background-color: white;
   box-shadow: 2px 2px 5px -2px black;
+  position: relative;
+  cursor: pointer;
 
   :hover {
     transform: scale(1.1);
