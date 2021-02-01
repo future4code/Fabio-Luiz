@@ -49,11 +49,18 @@ const Post = (props) => {
   };
 
   let caixaDeComentario;
-  if (comentando) {
-    caixaDeComentario = (
-      <SecaoComentario enviarComentario={enviarComentario} />
-    );
-  }
+
+  caixaDeComentario = comentando ? (
+    <SecaoComentario enviarComentario={enviarComentario} />
+  ) : (
+    comentarios.map((comentario) => {
+      return (
+        <CommentContainer key={Date.now()}>
+          <p>{comentario}</p>
+        </CommentContainer>
+      );
+    })
+  );
 
   return (
     <PostContainer>
