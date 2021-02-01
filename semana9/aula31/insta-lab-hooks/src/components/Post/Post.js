@@ -49,6 +49,7 @@ const Post = (props) => {
   };
 
   let caixaDeComentario;
+
   caixaDeComentario = comentando ? (
     <SecaoComentario enviarComentario={enviarComentario} />
   ) : (
