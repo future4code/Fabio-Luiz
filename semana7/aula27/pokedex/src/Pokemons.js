@@ -6,39 +6,57 @@ import { PokemonDetails } from "./PokemonDetails";
 import PokeDex1 from "./imgs/pokedex-cima.jpg";
 import PokeDex2 from "./imgs/pokedex-baixo.jpg";
 
+const Case = styled.div`
+  position: absolute;
+  height: 100vh;
+  width: 56.25vh;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  background-color: #c81f32;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  #cima {
+    position: relative;
+    top: 0;
+  }
+  #baixo {
+    position: relative;
+    bottom: 0;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 55vh;
+  max-width: 750px;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20vh 0;
+
+  z-index: 1;
 
   .content-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5vh;
-    margin-bottom:0vh;
     justify-content: center;
-    height: 90vh;
-    width: 48vh;
-    max-width:436px;
-    min-width: 300px;
+    height: 100%;
+    width: 100%;
     border: 2px solid black;
     background-color: #c81f32;
-  }
-
-  .poke {
-    position: absolute;
-    height: 50vh;
-    width: calc(0.5625*50vh);
-    max-width: 450px;
-    min-width: 320px;
-  }
-  #cima {
-    top: 0;
-  }
-  #baixo {
-    bottom: 0;
   }
 
   .titulo {
@@ -52,7 +70,6 @@ const Wrapper = styled.div`
   input {
     height: 2rem;
     width: 90%;
-    min-width: 250px;
     padding: 10px;
     margin: 20px;
     border-radius: 15px;
@@ -82,7 +99,7 @@ const Container = styled.div`
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #c81f32;
-    border: 2px solid rgb(50,50,50);
+    border: 2px solid rgb(50, 50, 50);
     border-radius: 10px;
   }
 
@@ -97,7 +114,7 @@ export class Pokemons extends React.Component {
     baseUrl: "https://pokeapi.co/api/v2/",
     pokemons: [],
     openDetails: false,
-    openPokeDex: true,
+    openPokeDex: false,
     targetId: 0,
     searchName: "",
   };
@@ -105,6 +122,10 @@ export class Pokemons extends React.Component {
   componentDidMount() {
     this.getAllPokemons();
   }
+
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
   sortAZ = (a, b) => {
     if (a.id < b.id) {
@@ -162,22 +183,31 @@ export class Pokemons extends React.Component {
     this.setState({ openPokeDex: !this.state.openPokeDex });
     let cima = "";
     let baixo = "";
+    let dex = "";
 
     cima = document.getElementById("cima");
     cima.style.top = "0";
     if (this.state.openPokeDex) {
-      cima.style.top = parseInt(cima.style.top) + -45 + "vh";
+      cima.style.top = parseInt(cima.style.top) + -30 + "vh";
     } else {
-      cima.style.top = parseInt(cima.style.top) + 0 + "vh";
+      cima.style.top = parseInt(cima.style.top) + 0 + "px";
     }
     cima.style.transition = "2s";
 
     baixo = document.getElementById("baixo");
     baixo.style.bottom = "0";
+
+    dex = document.getElementById("poke");
     if (this.state.openPokeDex) {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + -45 + "vh";
+      baixo.style.bottom = parseInt(baixo.style.bottom) + -30 + "vh";
+      setTimeout(function() {
+        dex.style.zIndex = "1";
+      }, 2000);
     } else {
-      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "vh";
+      baixo.style.bottom = parseInt(baixo.style.bottom) + 0 + "px";
+      setTimeout(function() {
+        dex.style.zIndex = "2";
+      }, 2000);
     }
     baixo.style.transition = "2s";
   };
@@ -186,53 +216,42 @@ export class Pokemons extends React.Component {
     const { baseUrl, pokemons, openDetails, targetId, targetName } = this.state;
     let filtered = this.filtered();
     return (
-      <Wrapper>
-        <img
-          id="cima"
-          onClick={this.openPokeDex}
-          className="poke"
-          src={PokeDex1}
-          alt=""
-        />
-        <img
-          id="baixo"
-          onClick={this.openPokeDex}
-          className="poke"
-          src={PokeDex2}
-          alt=""
-        />
-        {/* <div className="titulo">
-          <h1>Enciclopédia Pokémon</h1>
-        </div> */}
-        <div className="content-box">
-          <input
-            placeholder="Digite o nome do Pokémon..."
-            value={this.state.searchName}
-            onChange={this.onChangeSearchName}
-          />
-          <Container>
-            {filtered.map((pokemon) => {
-              return (
-                <PokemonCard
-                  key={pokemon.id}
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  imgUrl={pokemon.imgUrl}
-                  openDetails={() => this.openDetails(pokemon)}
+      <>
+        <Case id="poke">
+          <img id="cima" onClick={this.openPokeDex} src={PokeDex1} alt="" />
+          <img id="baixo" onClick={this.openPokeDex} src={PokeDex2} alt="" />
+        </Case>
+        <Wrapper>
+          <div className="content-box">
+            <input
+              placeholder="Digite o nome do Pokémon..."
+              value={this.state.searchName}
+              onChange={this.onChangeSearchName}
+            />
+            <Container>
+              {filtered.map((pokemon) => {
+                return (
+                  <PokemonCard
+                    key={pokemon.id}
+                    id={pokemon.id}
+                    name={pokemon.name}
+                    imgUrl={pokemon.imgUrl}
+                    openDetails={() => this.openDetails(pokemon)}
+                  />
+                );
+              })}
+              {openDetails && (
+                <PokemonDetails
+                  baseUrl={baseUrl}
+                  id={targetId}
+                  name={targetName}
+                  openDetails={this.openDetails}
                 />
-              );
-            })}
-            {openDetails && (
-              <PokemonDetails
-                baseUrl={baseUrl}
-                id={targetId}
-                name={targetName}
-                openDetails={this.openDetails}
-              />
-            )}
-          </Container>
-        </div>
-      </Wrapper>
+              )}
+            </Container>
+          </div>
+        </Wrapper>
+      </>
     );
   }
 }
