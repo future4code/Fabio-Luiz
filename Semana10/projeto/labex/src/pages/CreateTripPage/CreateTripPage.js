@@ -4,12 +4,11 @@ import { useHistory } from "react-router-dom";
 import space from "../../videos/space.mp4";
 import { goToCreateTripsPage, goToListTripsPage } from "../Router/Coordinator";
 
-const HomePage = () => {
+export default function CreateTripPage() {
   const history = useHistory();
 
   return (
     <>
-      <Video autoPlay muted loop src={space} type="video/mp4" />
       <TextContainer>
         <TextBox>
           <h3>Conheça a LabeX</h3>
@@ -23,10 +22,8 @@ const HomePage = () => {
         <Button onClick={() => goToListTripsPage(history)}>
           VIAGENS DISPONÍVEIS
         </Button>
-        <button onClick={()=>goToCreateTripsPage(history)}>teste</button>
+        <button onClick={() => goToCreateTripsPage(history)}>teste</button>
       </TextContainer>
     </>
   );
 };
-
-export default HomePage;

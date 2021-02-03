@@ -25,7 +25,3 @@ export const goToManageTripsPage = (history) => {
 export const goToTripDetailsPage = (history) => {
   history.push("/trips/details");
 };
-
-export const goToApplicationFormPage = (history) => {
-  history.push("/application-form");
-};

@@ -7,7 +7,6 @@ export const Content = styled(Toolbar)`
   flex-direction: column;
 
   height: 100px;
-  
 
   /* background-color: rgba(0, 0, 0, 0.5); */
   background: transparent;
@@ -25,10 +24,11 @@ export const Content = styled(Toolbar)`
 `;
 
 export const Title = styled.h1`
-    font-family: "Trispace", sans-serif;
-    font-size: 2rem;
-    letter-spacing: 10px;
-    margin-top: 25px;
+  font-family: "Trispace", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin-top: 25px;
+  cursor:pointer;
 `;
 
 export const Button = styled.button`

@@ -4,10 +4,10 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
 
   position: relative;
-  z-index:1;
+  z-index: 1;
   top: 160px;
   left: 50%;
   transform: translate(-50%);
@@ -24,7 +24,7 @@ export const TextContainer = styled.div`
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 
   text-shadow: 1px 1px #000;
   letter-spacing: 1px;
@@ -40,7 +40,7 @@ export const TextBox = styled.div`
     text-align: center;
     letter-spacing: 5px;
   }
-  
+
   p {
     font-size: 1rem;
     text-align: justify;
