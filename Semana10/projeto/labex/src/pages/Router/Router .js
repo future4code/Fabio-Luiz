@@ -4,11 +4,9 @@ import HomePage from "../HomePage/HomePage";
 import LoginPage from "../LoginPage/LoginPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Admin from "./../AdminPage/Admin";
-
-import ListTripsPage from "./../ListTripsPage/ListTripsPage";
-import TripDetailsPage from "./../TripDetailsPage/TripDetailsPage";
-import ManageTripsPage from "./../ManageTripsPage/ManageTripsPage";
+import ListTripsPage from './../ListTripsPage/ListTripsPage';
 import CreateTripPage from './../CreateTripPage/CreateTripPage';
+import CandidatesPage from './../CandidatesPage/CandidatesPage';
 
 const Router = () => {
   return (
@@ -24,17 +22,14 @@ const Router = () => {
         <Route exact path="/admin">
           <Admin />
         </Route>
-        <Route exact path="/trips/create ">
-          <CreateTripPage/>
-        </Route>
-        <Route exact path="/trips/manage ">
-          <ManageTripsPage />
-        </Route>
-        <Route exact path="/trips/list">
+        <Route exact path="/trips/application">
           <ListTripsPage />
         </Route>
-        <Route exact path="/trips/details">
-          <TripDetailsPage />
+        <Route exact path="/trips/create">
+          <CreateTripPage />
+        </Route>
+        <Route exact path="/trips/candidates">
+          <CandidatesPage />
         </Route>
       </Switch>
     </BrowserRouter>

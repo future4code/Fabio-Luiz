@@ -2,7 +2,7 @@ import React from "react";
 import { TextContainer, TextBox, Video, Button } from "./styled";
 import { useHistory } from "react-router-dom";
 import space from "../../videos/space.mp4";
-import { goToCreateTripsPage, goToListTripsPage } from "../Router/Coordinator";
+import { goToListTripsPage } from "../Router/Coordinator";
 
 const HomePage = () => {
   const history = useHistory();
@@ -23,7 +23,6 @@ const HomePage = () => {
         <Button onClick={() => goToListTripsPage(history)}>
           VIAGENS DISPONÍVEIS
         </Button>
-        <button onClick={()=>goToCreateTripsPage(history)}>teste</button>
       </TextContainer>
     </>
   );

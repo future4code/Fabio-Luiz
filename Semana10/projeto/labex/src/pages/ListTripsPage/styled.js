@@ -1,11 +1,4 @@
-import  styled  from 'styled-components';
-
-export const BG = styled.img`
-position: fixed;
-min-width: 100%;
-min-height: 100%;
-z-index: 1;
-`
+import styled from "styled-components";
 
 export const Video = styled.video`
   position: fixed;
@@ -23,16 +16,18 @@ export const Wrapper = styled.div`
   transform: translate(-50%);
 
   display: grid;
-  grid-template-rows: 150px 350px;
+  grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr;
 
   max-width: 1200px;
   min-width: 310px;
-  height: 600px;
+  /* min-height: 600px; */
   justify-content: center;
 
   > div:nth-child(1) {
     padding: 0 5vw;
+    height: 250px;
+    min-height: 300px;
   }
   > div:nth-child(2) {
     display: flex;
@@ -40,7 +35,8 @@ export const Wrapper = styled.div`
     align-items: flex-end;
     padding: 0 5vw;
     img {
-      height: 300px;
+      display: block;
+      height: 250px;
     }
   }
   > div:nth-child(3) {
@@ -54,19 +50,8 @@ export const Wrapper = styled.div`
     padding: 0 5vw;
   }
 
-  h1 {
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    letter-spacing: 5px;
-    text-align: center;
-    line-height: 60px;
-  }
-  
   @media screen and (max-width: 799px) {
-    grid-template-rows: 1fr 1fr 500px;
+    grid-template-rows: auto auto auto;
     grid-template-columns: 1fr;
 
     > div:nth-child(1) {
@@ -81,6 +66,19 @@ export const Wrapper = styled.div`
       grid-column: 1 / 2;
       grid-row: 3 / -1;
     }
+  }
+`;
+
+export const OpenBox = styled.div`
+  h1 {
+    color: #fff;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translate(-50%);
+    letter-spacing: 5px;
+    text-align: center;
+    line-height: 60px;
   }
 `;
 
@@ -108,12 +106,18 @@ export const TextBox = styled.div`
     font-size: 1rem;
     text-align: justify;
     word-break: break-word;
+    align-self: flex-start;
   }
 
-  div{
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
+  span {
+    font-weight: bold;
+    color: #6ccefc;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
   }
 `;
 
@@ -122,38 +126,40 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-
-  height: 100%;
+  height: 500px;
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
   color: #fff;
   text-shadow: 1px 1px #000;
-
   padding: 10px;
-
-  label {
-    width: 120px;
-    margin-right: 10px;
-  }
-
-  input {
-    width: 100%;
-    height: 2rem;
-  }
 `;
 
 export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
   h3 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 2rem;
   }
-  div {
-    display: flex;
-    justify-content: space-between;
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
     margin-bottom: 15px;
+  }
+
+  input,
+  select {
+    height: 2rem;
   }
 `;
 
@@ -183,31 +189,46 @@ export const Icon = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: column;
+  /* flex-direction: column; */
 
-  position: absolute;
+  position: fixed;
   top: 20px;
-  left: 20px;
+  left: -80px;
   z-index: 99999;
-  width: 150px;
+  /* width: 250px; */
 
   border: none;
   outline: none;
   cursor: pointer;
 
   color: white;
-  width: 30px;
+  /* width: 30px; */
   height: 30px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px #000;
+  transition: 0.5s;
 
-  &:hover {
-    transform: rotate(360deg);
+  > div {
+    height: 100%;
+  }
+  > div:nth-child(1) {
+    width: 100px;
+  }
+
+  &:hover,
+  &:active {
+    /* transform: rotate(360deg); */
     transition: 0.5s;
+    left: 20px;
+  }
+
+  img {
+    height: 100%;
   }
 `;
 
 export const SideMenu = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0px;
   padding-top: 80px;
   left: ${(props) => (props.openMenu ? "0" : "-100%")};
@@ -217,7 +238,7 @@ export const SideMenu = styled.div`
   height: 100%;
   color: #fff;
   font-size: 1.5rem;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   transition: all 0.5s ease-in-out;
   cursor: pointer;
 
@@ -226,13 +247,16 @@ export const SideMenu = styled.div`
   }
 
   li {
-    margin-bottom: 15px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px #000;
+    padding: 10px;
     text-align: center;
-  }
 
-  li:hover {
-    background-color: purple;
-    transition: 0.3s ease-in-out;
+    &:hover {
+      background-color: #6ccefc;
+      transition: 0.3s ease-in-out;
+    }
   }
 
   @media screen and (max-width: 548px) {

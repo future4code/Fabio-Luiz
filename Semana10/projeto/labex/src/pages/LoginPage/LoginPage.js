@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { LoginContainer, FormBox, Video, Button } from "./styled";
 import { useHistory } from "react-router-dom";
 import space from "../../videos/space.mp4";
 import { goToAdmin } from "./../Router/Coordinator";
 import axios from "axios";
 import { baseUrl } from "./../../components/ApiParameters";
+import useForm from './../../Hooks/useForm';
 
 export default function LoginPage() {
   const history = useHistory();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   useEffect(() => {
     const token=localStorage.getItem("token")
@@ -20,46 +18,53 @@ export default function LoginPage() {
     }
   }, [history])
 
-  const login = () => {
-    const body = {
-      email: email,
-      password: password,
-    };
-    axios
-      .post(`${baseUrl}/login`, body)
-      .then((res) => {
-        window.localStorage.setItem("token", res.data.token)
-        goToAdmin(history);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const [form, onChange, clearFields] = useForm({
+    email: "",
+    password: "",
+  });
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const login = (event) => {
+    event.preventDefault();
+     axios
+       .post(`${baseUrl}/login`, form)
+       .then((res) => {
+         window.localStorage.setItem("token", res.data.token);
+         goToAdmin(history);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+    clearFields();
   };
 
   return (
     <>
       <Video autoPlay muted loop src={space} type="video/mp4" />
       <LoginContainer>
-        <FormBox>
+        <FormBox onSubmit={login}>
           <h3>Autenticação</h3>
           <div>
-            <label>E-mail:</label>
-            <input onChange={handleEmail} />
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={onChange}
+              placeholder={"Digite seu E-mail"}
+              required
+            />
           </div>
           <div>
-            <label>Senha:</label>
-            <input type="password" onChange={handlePassword} />
+            <input
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={onChange}
+              placeholder={"Digite sua senha"}
+              required
+            />
           </div>
+          <Button>LOGIN</Button>
         </FormBox>
-        <Button onClick={login}>LOGIN</Button>
       </LoginContainer>
     </>
   );

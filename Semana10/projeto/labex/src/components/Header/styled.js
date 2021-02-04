@@ -31,12 +31,28 @@ export const Title = styled.h1`
   cursor:pointer;
 `;
 
-export const Button = styled.button`
+export const Button1 = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  height: 30px;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px #000;
+  transition: 0.5s;
+
+  > div {
+    height: 100%;
+  }
+  > div:nth-child(2) {
+    width: 100px;
+  }
+
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: -80px;
   height: 30px;
-  width: 30px;
   background: transparent;
   border: none;
   outline: none;
@@ -44,11 +60,50 @@ export const Button = styled.button`
   transition: 0.5s;
 
   img {
-    width: 100%;
+    height: 100%;
   }
 
-  &:hover {
-    transform: rotate(360deg);
+  &:hover,
+  &:active {
+    right: 20px;
+    transition: 0.5s;
+  }
+`;
+
+export const Button2 = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  height: 30px;
+  font-size: 1.2rem;
+  text-shadow:1px 1px #000;
+  transition: 0.5s;
+
+  > div {
+    height: 100%;
+  }
+  > div:nth-child(2) {
+    width: 100px;
+  }
+
+  position: fixed;
+  top: 60px;
+  right: -80px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+
+  img {
+    height: 100%;
+  }
+
+  &:hover, &:active {
+    right: 20px;
     transition: 0.5s;
   }
 `;

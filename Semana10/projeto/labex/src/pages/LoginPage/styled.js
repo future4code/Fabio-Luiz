@@ -18,6 +18,12 @@ export const LoginContainer = styled.div`
   background-color: rgba(0,0,0,0.7);
   border: 1px solid #fff;
   border-radius: 5px;
+
+  white-space:nowrap;
+
+  .testeBox {
+    background-color: white;
+  }
 `;
 
 export const FormBox = styled.form`
@@ -38,10 +44,11 @@ export const FormBox = styled.form`
     justify-content: space-between;
 
     input {
-      margin-left: 10px;
       outline: none;
       border-radius: 5px;
-      border: 1px solid #000;
+      border: none;
+      padding: 10px;
+      width: 100%;
     }
   }
 
@@ -63,7 +70,7 @@ export const FormBox = styled.form`
 export const Button = styled.button`
   position: relative;
   z-index: 1;
-  width: 80%;
+  width: 100%;
   font-size: 0.8rem;
   padding: 15px;
   margin-top: 30px;

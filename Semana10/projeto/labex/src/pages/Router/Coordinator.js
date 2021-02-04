@@ -11,17 +11,13 @@ export const goToAdmin = (history) => {
 };
 
 export const goToListTripsPage = (history) => {
-  history.push("/trips/list");
-};
+  history.push("/trips/application")
+}
 
-export const goToCreateTripsPage = (history) => {
+export const goToCreateTripPage = (history) => {
   history.push("/trips/create");
 };
 
-export const goToManageTripsPage = (history) => {
-  history.push("/trips/manage");
-};
-
-export const goToTripDetailsPage = (history) => {
-  history.push("/trips/details");
+export const goToCandidatesPage = (history) => {
+  history.push("/trips/candidates");
 };

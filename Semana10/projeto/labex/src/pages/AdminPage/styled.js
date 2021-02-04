@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import bgUniverse from "../../images/bg-universe.jpg"
 
 export const Video = styled.video`
   position: fixed;
@@ -13,8 +12,6 @@ export const Video = styled.video`
 export const Wrapper=styled.div`
  width: 100vw;
  height: 100vh;
- background-image: url(${bgUniverse});
- background-size: cover;
 `
 
 export const ButtonContainer = styled.div`
