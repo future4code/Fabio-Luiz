@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
   top: 140px;
   left: 50%;
   transform: translate(-50%);
-  z-index: 99999;
 
   @media screen and (max-width: 1024px) {
     .tripList {
@@ -46,7 +45,6 @@ export const ListIcon = styled.div`
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 99999;
     width: 150px;
 
     border: none;
@@ -157,7 +155,6 @@ export const Icons = styled.div`
 
 export const Button = styled.button`
   position: relative;
-  z-index: 1;
   width: 300px;
   font-size: 0.8rem;
   padding: 15px;

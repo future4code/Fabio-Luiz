@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import { FaBars } from "react-icons/fa";
 import videoBG from "../../videos/blackSpace.mp4";
 import { useHistory } from "react-router-dom";
@@ -64,48 +65,46 @@ const CandidatesPage = () => {
   };
 
   const approve = (id) => {
-    const body = {
-      approve: true,
-    };
-    axios
-      .put(
-        `${baseUrl}/trips/${targetTripID}/candidates/${id}/decide`,
-        body,
-        auth
-      )
-      .then((res) => {
-        getTripDetails(targetTripID);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      const body = {
+        approve: true,
+      };
+      axios
+        .put(
+          `${baseUrl}/trips/${targetTripID}/candidates/${id}/decide`,
+          body,
+          auth
+        )
+        .then((res) => {
+          getTripDetails(targetTripID);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 
   const refuse = (id) => {
-    const body = {
-      approve: false,
-    };
-    axios
-      .put(
-        `${baseUrl}/trips/${targetTripID}/candidates/${id}/decide`,
-        body,
-        auth
-      )
-      .then((res) => {
-        getTripDetails(targetTripID);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      const body = {
+        approve: false,
+      };
+      axios
+        .put(
+          `${baseUrl}/trips/${targetTripID}/candidates/${id}/decide`,
+          body,
+          auth
+        )
+        .then((res) => {
+          getTripDetails(targetTripID);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 
   const deleteTrip = (targetTripID) => {
     axios
       .delete(`${baseUrl}/trips/${targetTripID}`)
       .then((res) => {
-        console.log(res);
+        setTargetTripID("");
         getAllTrips();
       })
       .catch((err) => {
@@ -156,9 +155,11 @@ const CandidatesPage = () => {
                   <span>Duração: </span>
                   <p>{tripDetails.durationInDays} dias</p>
                 </div>
+
                 <Button onClick={() => deleteTrip(targetTripID)}>
                   CANCELAR VIAGEM
                 </Button>
+
                 <hr />
               </>
             )}

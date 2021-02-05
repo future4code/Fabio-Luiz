@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import axios from "axios";
@@ -14,6 +14,7 @@ import { FaEraser } from "react-icons/fa";
 import { useProtectedPage } from "./../../Hooks/useProtectedPage";
 import useForm from "./../../Hooks/useForm";
 
+import Alert from "./../../components/Alert/Alert";
 
 export default function CreateTripPage() {
   useProtectedPage();
@@ -32,16 +33,24 @@ export default function CreateTripPage() {
     axios
       .post(`${baseUrl}/trips`, form, auth)
       .then((res) => {
-        console.log(res);
+        setOpenAlert(true);
+        clearFields();
       })
       .catch((err) => {
         console.log(err);
       });
-    clearFields();
   };
+
+  const [openAlert, setOpenAlert] = useState(false);
 
   return (
     <>
+      <Alert
+        openAlert={openAlert}
+        setOpenAlert={setOpenAlert}
+        title="Adicionar viagem ao catálogo"
+        msg="A viagem foi criada com sucesso"
+      />
       <Video autoPlay muted loop src={videoBG} type="video/mp4" />
       <AdminMenu />
       <FormContainer>
@@ -61,16 +70,12 @@ export default function CreateTripPage() {
             required
           />
 
-          <select value={form.planet} onChange={onChange} required>
+          <select name="planet" onChange={onChange} required>
             <option value="" disabled selected>
               Selecione um planeta de destino
             </option>
-            {planets.map((planet) => {
-              return (
-                <option key={planet} name={planet}>
-                  {planet}
-                </option>
-              );
+            {planets.map((planetName) => {
+              return <option key={planetName}>{planetName}</option>;
             })}
           </select>
 
@@ -78,7 +83,6 @@ export default function CreateTripPage() {
             type="date"
             name="date"
             value={form.date}
-            min="04/02/2021"
             onChange={onChange}
             required
           />

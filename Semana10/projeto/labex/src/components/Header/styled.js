@@ -8,8 +8,8 @@ export const Content = styled(Toolbar)`
 
   height: 100px;
 
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  background: transparent;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* background: transparent; */
   color: #fff;
   /* box-shadow: 0px 4px 6px -4px #000; */
 
