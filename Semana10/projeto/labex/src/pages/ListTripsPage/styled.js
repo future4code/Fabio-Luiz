@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-export const Video = styled.video`
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 0;
-`;
-
 export const Wrapper = styled.div`
   position: relative;
   top: 120px;
@@ -21,13 +12,11 @@ export const Wrapper = styled.div`
 
   max-width: 1200px;
   min-width: 310px;
-  /* min-height: 600px; */
   justify-content: center;
 
   > div:nth-child(1) {
     padding: 0 5vw;
     height: 250px;
-    min-height: 300px;
   }
   > div:nth-child(2) {
     display: flex;
@@ -70,12 +59,19 @@ export const Wrapper = styled.div`
 `;
 
 export const OpenBox = styled.div`
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   h1 {
     color: #fff;
-    position: absolute;
-    top: 140px;
-    left: 50%;
-    transform: translate(-50%);
     letter-spacing: 5px;
     text-align: center;
     line-height: 60px;
@@ -135,74 +131,21 @@ export const FormContainer = styled.div`
   padding: 10px;
 `;
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-
-  h3 {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 2rem;
-  }
-
-  input,
-  select,
-  textarea {
-    width: 100%;
-    padding: 0 10px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-
-  input,
-  select {
-    height: 2rem;
-  }
-`;
-
-export const Button = styled.button`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  font-size: 0.8rem;
-  padding: 15px;
-  margin-top: 50px;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px #000;
-  cursor: pointer;
-  transition: 0.3s linear;
-
-  &:hover {
-    background: #fff;
-    color: #000;
-    text-shadow: 1px 1px #fff;
-  }
-`;
-
 export const Icon = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* flex-direction: column; */
 
   position: fixed;
   top: 20px;
-  left: -80px;
+  left: 20px;
   z-index: 99999;
-  /* width: 250px; */
 
   border: none;
   outline: none;
   cursor: pointer;
 
   color: white;
-  /* width: 30px; */
   height: 30px;
   font-size: 1.2rem;
   text-shadow: 1px 1px #000;
@@ -213,13 +156,6 @@ export const Icon = styled.div`
   }
   > div:nth-child(1) {
     width: 100px;
-  }
-
-  &:hover,
-  &:active {
-    /* transform: rotate(360deg); */
-    transition: 0.5s;
-    left: 20px;
   }
 
   img {

@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { LoginContainer, FormBox, Video, Button } from "./styled";
+import { LoginContainer, FormBox } from "./styled";
 import { useHistory } from "react-router-dom";
 import space from "../../videos/space.mp4";
 import { goToAdmin } from "./../Router/Coordinator";
 import axios from "axios";
 import { baseUrl } from "./../../components/ApiParameters";
 import useForm from './../../Hooks/useForm';
+
+import { VideoBG, Form, Button } from "./../../components/globalStyled";
 
 export default function LoginPage() {
   const history = useHistory();
@@ -39,9 +41,9 @@ export default function LoginPage() {
 
   return (
     <>
-      <Video autoPlay muted loop src={space} type="video/mp4" />
+      <VideoBG autoPlay muted loop src={space} type="video/mp4" />
       <LoginContainer>
-        <FormBox onSubmit={login}>
+        <Form onSubmit={login}>
           <h3>Autenticação</h3>
           <div>
             <input
@@ -64,7 +66,7 @@ export default function LoginPage() {
             />
           </div>
           <Button>LOGIN</Button>
-        </FormBox>
+        </Form>
       </LoginContainer>
     </>
   );

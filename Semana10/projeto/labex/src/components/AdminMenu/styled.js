@@ -15,7 +15,7 @@ export const Menu = styled.div`
   button {
     width: 100%;
     height: 2rem;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     padding: 5px;
     border: none;
     outline: none;
@@ -33,12 +33,7 @@ export const Menu = styled.div`
     }
   }
 
-  button:nth-child(1) {
-    border-left: 2px solid #fff;
-  }
-
   button:nth-child(2) {
     border-left: 2px solid #fff;
-    border-right: 2px solid #fff;
   }
 `;

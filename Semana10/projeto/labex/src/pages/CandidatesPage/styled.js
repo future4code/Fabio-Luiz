@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-export const Video = styled.video`
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 0;
-`;
-
 export const Wrapper = styled.div`
   max-width: 1200px;
   width: 70vw;
@@ -56,6 +47,8 @@ export const ListIcon = styled.div`
     height: 30px;
     font-size: 1.6rem;
 
+    z-index: 11;
+
     &:hover {
       transform: rotate(360deg);
       transition: 0.5s;
@@ -82,6 +75,7 @@ export const ListMenu = styled.div`
     align-items: center;
     padding-top: 50px;
     text-align: center;
+    z-index: 10;
   }
 `;
 
@@ -134,7 +128,7 @@ export const CandidateBox = styled.div`
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
-  background-color: #6ccefc;
+  background-color: rgba(108,206,252,0.75);
   text-shadow: 1px 1px #000;
   padding: 10px;
   border-radius: 10px;
@@ -150,25 +144,5 @@ export const Icons = styled.div`
   height: 100%;
   img {
     height: 30px;
-  }
-`;
-
-export const Button = styled.button`
-  position: relative;
-  width: 300px;
-  font-size: 0.8rem;
-  padding: 15px;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px #000;
-  cursor: pointer;
-  transition: 0.3s linear;
-
-  &:hover {
-    background: #fff;
-    color: #000;
-    text-shadow: 1px 1px #fff;
   }
 `;

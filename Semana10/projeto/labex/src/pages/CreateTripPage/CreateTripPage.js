@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 import { baseUrl, auth } from "./../../components/ApiParameters";
 import { planets } from "./../../components/Infos";
 
-import { FormContainer, Form, Video, Button, Icon } from "./styled";
+import { FormContainer, Icon } from "./styled";
+import { VideoBG, Form, Button } from "../../components/globalStyled";
 
 import videoBG from "../../videos/blackSpace.mp4";
 import AdminMenu from "../../components/AdminMenu/AdminMenu";
@@ -18,20 +18,55 @@ import Alert from "./../../components/Alert/Alert";
 
 export default function CreateTripPage() {
   useProtectedPage();
-  const history = useHistory();
 
   const [form, onChange, clearFields] = useForm({
     name: "",
     planet: "",
-    date: "",
     description: "",
     durationInDays: "",
   });
 
+  const [date, setDate] = useState(new Date());
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
+
+  // Setar data mínima para o dia atual (by Shrinivas Pai - https://stackoverflow.com/users/3243201/shrinivas-pai)
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = yyyy + "-" + mm + "-" + dd;
+  // -----------------------------------------------
+
   const createTrip = (event) => {
     event.preventDefault();
+    const newDate = new Date(date);
+    let formattedDate =
+      newDate.getDate() +
+      "/" +
+      (newDate.getMonth() + 1) +
+      "/" +
+      newDate.getFullYear();
+
+    const body = {
+      name: form.name,
+      planet: form.planet,
+      date: formattedDate,
+      description: form.description,
+      durationInDays: form.durationInDays,
+    };
+
+    console.log(body);
+
     axios
-      .post(`${baseUrl}/trips`, form, auth)
+      .post(`${baseUrl}/trips`, body, auth)
       .then((res) => {
         setOpenAlert(true);
         clearFields();
@@ -51,7 +86,7 @@ export default function CreateTripPage() {
         title="Adicionar viagem ao catálogo"
         msg="A viagem foi criada com sucesso"
       />
-      <Video autoPlay muted loop src={videoBG} type="video/mp4" />
+      <VideoBG autoPlay muted loop src={videoBG} type="video/mp4" />
       <AdminMenu />
       <FormContainer>
         <Icon onClick={() => clearFields()}>
@@ -70,8 +105,13 @@ export default function CreateTripPage() {
             required
           />
 
-          <select name="planet" onChange={onChange} required>
-            <option value="" disabled selected>
+          <select
+            name="planet"
+            value={form.planet}
+            onChange={onChange}
+            required
+          >
+            <option value="" disabled selected="selected">
               Selecione um planeta de destino
             </option>
             {planets.map((planetName) => {
@@ -82,8 +122,9 @@ export default function CreateTripPage() {
           <input
             type="date"
             name="date"
-            value={form.date}
-            onChange={onChange}
+            value={date}
+            min={today}
+            onChange={handleDate}
             required
           />
 
@@ -108,7 +149,9 @@ export default function CreateTripPage() {
             required
           />
 
-          <Button>CRIAR VIAGEM</Button>
+          <Button width="100%" marginTop="30px" marginBottom="30px">
+            CRIAR VIAGEM
+          </Button>
         </Form>
       </FormContainer>
     </>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Toolbar from "@material-ui/core/Toolbar";
+import "../../fonts.css";
 
 export const Content = styled(Toolbar)`
   display: flex;
@@ -8,10 +9,8 @@ export const Content = styled(Toolbar)`
 
   height: 100px;
 
-  background-color: rgba(0, 0, 0, 0.9);
-  /* background: transparent; */
+  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  /* box-shadow: 0px 4px 6px -4px #000; */
 
   hr {
     background-color: #fff;
@@ -24,14 +23,50 @@ export const Content = styled(Toolbar)`
 `;
 
 export const Title = styled.h1`
-  font-family: "Trispace", sans-serif;
-  font-size: 2rem;
+  font-family: "LogoFont";
+  font-size: 2.2rem;
   letter-spacing: 10px;
   margin-top: 25px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
-export const Button1 = styled.button`
+export const MenuContainer = styled.div`
+  position: fixed;
+  top: 10px;
+  right: -38px;
+  width: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    right: 5px;
+    transition: 0.5s ease-in-out;
+  }
+
+  div:nth-child(1) {
+    font-size: 10px;
+    text-shadow: 1px 1px #000;
+    background-color: #6ccefc;
+    width: 1em;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 12px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #fff;
+  }
+
+  #id:hover{
+    background-color:#fff;
+  }
+`;
+
+export const Icon = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,16 +77,6 @@ export const Button1 = styled.button`
   text-shadow: 1px 1px #000;
   transition: 0.5s;
 
-  > div {
-    height: 100%;
-  }
-  > div:nth-child(2) {
-    width: 100px;
-  }
-
-  position: fixed;
-  top: 20px;
-  right: -80px;
   height: 30px;
   background: transparent;
   border: none;
@@ -61,49 +86,5 @@ export const Button1 = styled.button`
 
   img {
     height: 100%;
-  }
-
-  &:hover,
-  &:active {
-    right: 20px;
-    transition: 0.5s;
-  }
-`;
-
-export const Button2 = styled.button`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  color: white;
-  height: 30px;
-  font-size: 1.2rem;
-  text-shadow:1px 1px #000;
-  transition: 0.5s;
-
-  > div {
-    height: 100%;
-  }
-  > div:nth-child(2) {
-    width: 100px;
-  }
-
-  position: fixed;
-  top: 60px;
-  right: -80px;
-  height: 30px;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.5s;
-
-  img {
-    height: 100%;
-  }
-
-  &:hover, &:active {
-    right: 20px;
-    transition: 0.5s;
   }
 `;

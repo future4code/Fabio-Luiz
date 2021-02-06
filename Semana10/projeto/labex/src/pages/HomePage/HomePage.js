@@ -1,5 +1,6 @@
 import React from "react";
-import { TextContainer, TextBox, Video, Button } from "./styled";
+import { TextContainer, TextBox } from "./styled";
+import { VideoBG, Button } from "../../components/globalStyled";
 import { useHistory } from "react-router-dom";
 import space from "../../videos/space.mp4";
 import { goToListTripsPage } from "../Router/Coordinator";
@@ -9,7 +10,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Video autoPlay muted loop src={space} type="video/mp4" />
+      <VideoBG autoPlay muted loop src={space} type="video/mp4" />
       <TextContainer>
         <TextBox>
           <h3>Conheça a LabeX</h3>
@@ -20,7 +21,11 @@ const HomePage = () => {
             um novo planeta e descubra as belezas do Universo.
           </p>
         </TextBox>
-        <Button onClick={() => goToListTripsPage(history)}>
+        <Button
+          width="80%"
+          marginTop="40px"
+          onClick={() => goToListTripsPage(history)}
+        >
           VIAGENS DISPONÍVEIS
         </Button>
       </TextContainer>

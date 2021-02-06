@@ -5,6 +5,7 @@ export const FormContainer = styled.div`
   top: 160px;
   left: 50%;
   transform: translate(-50%);
+  cursor: default;
 
   display: flex;
   flex-direction: column;
@@ -32,18 +33,6 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const Form = styled.form`
-  width: 90%;
-
-  h3 {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 2rem;
-    cursor: default;
-  }
-`;
-
 export const Icon = styled.div`
   display: flex;
   justify-content: space-between;
@@ -53,7 +42,7 @@ export const Icon = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 99999;
+  z-index: 10;
   width: 150px;
 
   border: none;
@@ -71,36 +60,4 @@ export const Icon = styled.div`
     transform: rotate(360deg);
     transition: 0.5s;
   }
-`;
-
-export const Button = styled.button`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  font-size: 0.8rem;
-  padding: 15px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px #000;
-  cursor: pointer;
-  transition: 0.3s linear;
-
-  &:hover {
-    background: #fff;
-    color: #000;
-    text-shadow: 1px 1px #fff;
-  }
-`;
-
-export const Video = styled.video`
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 0;
 `;

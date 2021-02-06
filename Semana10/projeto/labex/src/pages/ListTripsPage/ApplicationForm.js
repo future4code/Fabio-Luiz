@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 
-import { FormContainer, Form, Button } from "./styled";
+import { FormContainer } from "./styled";
 import { baseUrl } from "./../../components/ApiParameters";
 import useForm from "./../../Hooks/useForm";
 import { countries } from "./../../components/Infos";
+import { Form, Button } from './../../components/globalStyled';
 
 const ApplicationForm = (props) => {
   const [form, onChange, clearFields] = useForm({
@@ -79,7 +80,7 @@ const ApplicationForm = (props) => {
             required
           />
 
-          <select name="country" onChange={onChange}>
+          <select name="country" value={form.country} onChange={onChange}>
             <option value="" disabled selected>
               Selecione seu país de origem
             </option>
@@ -88,7 +89,7 @@ const ApplicationForm = (props) => {
             })}
           </select>
 
-          <Button>CONCLUIR INSCRIÇÃO</Button>
+          <Button marginTop="30px">CONCLUIR INSCRIÇÃO</Button>
         </Form>
       </FormContainer>
     </>
