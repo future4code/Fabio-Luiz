@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper=styled.div`
- width: 100vw;
- height: 100vh;
-`
-
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,8 +7,8 @@ export const ButtonContainer = styled.div`
   align-items: center;
   min-height: 300px;
 
-  position: relative;
-  top: 100px;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -35%);
 `;

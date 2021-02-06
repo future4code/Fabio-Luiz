@@ -60,7 +60,7 @@ export const Wrapper = styled.div`
 
 export const OpenBox = styled.div`
   position: absolute;
-  top: 50px;
+  /* top: 0vh; */
   left: 50%;
   transform: translate(-50%);
   width: 100vw;
@@ -122,13 +122,12 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 500px;
+  padding: 20px 0;
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
   color: #fff;
   text-shadow: 1px 1px #000;
-  padding: 10px;
 `;
 
 export const Icon = styled.div`
@@ -138,7 +137,7 @@ export const Icon = styled.div`
 
   position: fixed;
   top: 20px;
-  left: 20px;
+  left: ${(props) => (props.openMenu ? "10px" : "-60px")};
   z-index: 99999;
 
   border: none;
@@ -155,7 +154,7 @@ export const Icon = styled.div`
     height: 100%;
   }
   > div:nth-child(1) {
-    width: 100px;
+    width: 70px;
   }
 
   img {
@@ -169,7 +168,7 @@ export const SideMenu = styled.div`
   padding-top: 80px;
   left: ${(props) => (props.openMenu ? "0" : "-100%")};
   opacity: ${(props) => (props.openMenu ? "1" : "0")};
-  z-index: 99998;
+  z-index: 1100;
   width: 400px;
   height: 100%;
   color: #fff;

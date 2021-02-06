@@ -89,7 +89,7 @@ const ApplicationForm = (props) => {
             })}
           </select>
 
-          <Button marginTop="30px">CONCLUIR INSCRIÇÃO</Button>
+          <Button marginTop="20px">CONCLUIR INSCRIÇÃO</Button>
         </Form>
       </FormContainer>
     </>

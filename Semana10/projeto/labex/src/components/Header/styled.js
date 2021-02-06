@@ -32,52 +32,43 @@ export const Title = styled.h1`
 
 export const MenuContainer = styled.div`
   position: fixed;
-  top: 10px;
-  right: -38px;
+  top: 20px;
+  right: ${(props) => (props.openLabel ? "40px" : "-20px")};
   width: 60px;
+  height: 50px;
 
   display: flex;
   justify-content: space-between;
   transition: 0.5s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    right: 5px;
+  
+  &:active {
+    right: 40px;
     transition: 0.5s ease-in-out;
   }
-
-  div:nth-child(1) {
-    font-size: 10px;
-    text-shadow: 1px 1px #000;
-    background-color: #6ccefc;
-    width: 1em;
-    word-break: break-all;
+  .labels{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 12px;
-    border-radius: 8px 0 0 8px;
-    border: 1px solid #fff;
-  }
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
-  #id:hover{
-    background-color:#fff;
+    padding-left: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 `;
 
 export const Icon = styled.button`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   color: white;
-  height: 30px;
   font-size: 1.2rem;
   text-shadow: 1px 1px #000;
-  transition: 0.5s;
+  opacity: ${(props) => (props.openLabel ? "0" : "1")};
 
-  height: 30px;
   background: transparent;
   border: none;
   outline: none;
@@ -85,6 +76,6 @@ export const Icon = styled.button`
   transition: 0.5s;
 
   img {
-    height: 100%;
+    height: 30px;
   }
 `;

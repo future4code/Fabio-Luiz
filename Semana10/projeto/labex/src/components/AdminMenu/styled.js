@@ -10,7 +10,7 @@ export const Menu = styled.div`
   position: absolute;
   top: 100px;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%); 
 
   button {
     width: 100%;

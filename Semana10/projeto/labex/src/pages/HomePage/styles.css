@@ -1,0 +1,21 @@
+.transition-enter,
+.transition-appear {
+  transform: scale(0);
+}
+
+.transition-enter-active,
+.transition-appear-active {
+  transform: scale(1);
+  transition-delay: 500ms;
+  transition: all 500ms;
+}
+
+.transition-exit {
+  transform: scale(1);
+
+}
+
+.transition-exit-active {
+  transform: scale(0);
+  transition: all 500ms;
+}

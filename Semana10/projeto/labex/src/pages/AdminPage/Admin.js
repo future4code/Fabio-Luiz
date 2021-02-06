@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
 
-import { Wrapper, ButtonContainer} from "./styled";
+import { ButtonContainer} from "./styled";
 import { VideoBG, Button } from "../../components/globalStyled";
 import videoBG from "../../videos/galaxy.mp4"
 import {
@@ -17,7 +17,6 @@ const Admin = () => {
   return (
     <>
       <VideoBG autoPlay muted loop src={videoBG} type="video/mp4" />
-      <Wrapper>
         <ButtonContainer>
           <Button width="250px" onClick={() => goToCreateTripPage(history)}>
             CADASTRAR NOVA VIAGEM
@@ -26,7 +25,6 @@ const Admin = () => {
             GERENCIAR PEDIDOS
           </Button>
         </ButtonContainer>
-      </Wrapper>
     </>
   );
 };

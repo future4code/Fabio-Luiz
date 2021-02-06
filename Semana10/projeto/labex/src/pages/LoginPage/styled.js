@@ -9,18 +9,17 @@ export const LoginContainer = styled.div`
   position: relative;
   z-index: 1;
   top: 150px;
-  left: 50%;
-  transform: translate(-50%);
 
   min-width: 300px;
-  max-width: 500px;
+  width: 40vw;
   height: 300px;
 
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid #fff;
   border-radius: 5px;
+  margin: 0 5px;
 
-  white-space:nowrap;
+  white-space: nowrap;
 
   .testeBox {
     background-color: white;

@@ -1,17 +1,18 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../../components/Header";
 import HomePage from "../HomePage/HomePage";
 import LoginPage from "../LoginPage/LoginPage";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Admin from "./../AdminPage/Admin";
-import ListTripsPage from './../ListTripsPage/ListTripsPage';
-import CreateTripPage from './../CreateTripPage/CreateTripPage';
-import CandidatesPage from './../CandidatesPage/CandidatesPage';
+import ListTripsPage from "./../ListTripsPage/ListTripsPage";
+import CreateTripPage from "./../CreateTripPage/CreateTripPage";
+import CandidatesPage from "./../CandidatesPage/CandidatesPage";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Header />
+      <Switch />
       <Switch>
         <Route exact path="/">
           <HomePage />

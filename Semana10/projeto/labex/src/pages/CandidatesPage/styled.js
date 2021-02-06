@@ -4,11 +4,13 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   width: 70vw;
   color: #fff;
+  max-height: 75vh;
+  min-height: 10vh;
 
   display: grid;
   grid-template-columns: auto auto;
 
-  position: absolute;
+  position: relative;
   top: 140px;
   left: 50%;
   transform: translate(-50%);
@@ -34,9 +36,8 @@ export const ListIcon = styled.div`
     flex-direction: column;
 
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 150px;
+    top: 0px;
+    right: 0px;
 
     border: none;
     outline: none;
@@ -60,13 +61,13 @@ export const ListMenu = styled.div`
   display: none;
 
   @media screen and (max-width: 1024px) {
-    position: absolute;
+    position: fixed;
     top: 0;
     opacity: ${(props) => (props.openMenu ? "1" : "0")};
     right: 0;
     background-color: rgba(0, 0, 0, 0.9);
     width: ${(props) => (props.openMenu ? "100%" : "1px")};
-    height: ${(props) => (props.openMenu ? "100%" : "1px")};
+    height: ${(props) => (props.openMenu ? "100vh" : "1px")};
     overflow: ${(props) => (props.openMenu ? "visible" : "auto")};
     transition: 0.5s ease-in-out;
 
@@ -80,7 +81,7 @@ export const ListMenu = styled.div`
 `;
 
 export const MainBox = styled.div`
-  max-width: 700px;
+  position: relative;
   padding: 15px;
   cursor: pointer;
 
@@ -128,11 +129,13 @@ export const CandidateBox = styled.div`
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(108,206,252,0.75);
+  background-color: rgba(108, 206, 252, 0.75);
   text-shadow: 1px 1px #000;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px;
+
+  overflow-y: auto;
 `;
 
 export const Icons = styled.div`
@@ -144,5 +147,11 @@ export const Icons = styled.div`
   height: 100%;
   img {
     height: 30px;
+    transition: 0.25s ease-in-out;
+
+    &:hover {
+      transform: scale(1.25);
+      transition: 0.25s ease-in-out;
+    }
   }
 `;

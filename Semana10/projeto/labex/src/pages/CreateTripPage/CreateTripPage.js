@@ -4,12 +4,11 @@ import axios from "axios";
 import { baseUrl, auth } from "./../../components/ApiParameters";
 import { planets } from "./../../components/Infos";
 
-import { FormContainer, Icon } from "./styled";
+import { FormContainer } from "./styled";
 import { VideoBG, Form, Button } from "../../components/globalStyled";
 
 import videoBG from "../../videos/blackSpace.mp4";
 import AdminMenu from "../../components/AdminMenu/AdminMenu";
-import { FaEraser } from "react-icons/fa";
 
 import { useProtectedPage } from "./../../Hooks/useProtectedPage";
 import useForm from "./../../Hooks/useForm";
@@ -63,16 +62,15 @@ export default function CreateTripPage() {
       durationInDays: form.durationInDays,
     };
 
-    console.log(body);
-
     axios
       .post(`${baseUrl}/trips`, body, auth)
       .then((res) => {
         setOpenAlert(true);
         clearFields();
+        setDate("");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -89,9 +87,6 @@ export default function CreateTripPage() {
       <VideoBG autoPlay muted loop src={videoBG} type="video/mp4" />
       <AdminMenu />
       <FormContainer>
-        <Icon onClick={() => clearFields()}>
-          <FaEraser />
-        </Icon>
         <Form onSubmit={createTrip}>
           <h3>Nova viagem</h3>
 
@@ -111,7 +106,7 @@ export default function CreateTripPage() {
             onChange={onChange}
             required
           >
-            <option value="" disabled selected="selected">
+            <option value="" disabled defaultValue>
               Selecione um planeta de destino
             </option>
             {planets.map((planetName) => {
@@ -149,7 +144,7 @@ export default function CreateTripPage() {
             required
           />
 
-          <Button width="100%" marginTop="30px" marginBottom="30px">
+          <Button width="100%" marginTop="20px" marginBottom="10px">
             CRIAR VIAGEM
           </Button>
         </Form>

@@ -8,6 +8,7 @@ const Alert = (props) => {
       props.setOpenAlert(false);
     }
   };
+  
   return (
     <>
       {props.openAlert && (
@@ -15,9 +16,7 @@ const Alert = (props) => {
           <AlertBox>
             <h3>{props.title}</h3>
             <p>{props.msg}</p>
-              <Button onClick={() => props.setOpenAlert(false)}>
-                OK
-              </Button>
+            <Button onClick={() => props.setOpenAlert(false)}>OK</Button>
           </AlertBox>
         </Background>
       )}

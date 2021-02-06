@@ -1,6 +1,21 @@
 import styled from 'styled-components'
 
+export const Container=styled.div`
+position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  overflow-y: auto;
+`;
+
 export const Form = styled.form`
+position: relative;
   display: flex;
   flex-direction: column;
   width: 90%;
