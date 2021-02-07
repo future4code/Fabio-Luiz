@@ -40,8 +40,10 @@ const ApplicationForm = (props) => {
             name="name"
             value={form.name}
             placeholder={"Digite seu nome completo"}
-            minLength="3"
-            maxLength="50"
+            pattern={"^[a-zA-Z]{3,50}"}
+            title={
+              "O texto deve contar entre 3 e 50 caracteres (apenas letras)"
+            }
             onChange={onChange}
             required
           />
@@ -63,8 +65,8 @@ const ApplicationForm = (props) => {
             value={form.applicationText}
             placeholder={"Por que quer viajar?"}
             rows="4"
-            minLength="30"
-            maxLength="140"
+            pattern={"^[0-9a-zA-Z.()]{30,140}"}
+            title={"O texto deve contar entre 30 e 140 caracteres"}
             onChange={onChange}
             required
           />
@@ -74,8 +76,8 @@ const ApplicationForm = (props) => {
             name="profession"
             value={form.profession}
             placeholder={"Escreva sua profissão"}
-            minLength="10"
-            maxLength="30"
+            pattern={"^[a-zA-Z]{10,30}"}
+            title={"O texto deve contar entre 10 e 30 caracteres (apenas letras)"}
             onChange={onChange}
             required
           />

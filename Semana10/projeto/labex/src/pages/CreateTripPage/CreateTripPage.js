@@ -82,7 +82,7 @@ export default function CreateTripPage() {
         openAlert={openAlert}
         setOpenAlert={setOpenAlert}
         title="Adicionar viagem ao catálogo"
-        msg="A viagem foi criada com sucesso"
+        msg="A viagem foi criada com sucesso!"
       />
       <VideoBG autoPlay muted loop src={videoBG} type="video/mp4" />
       <AdminMenu />
@@ -95,7 +95,11 @@ export default function CreateTripPage() {
             name="name"
             value={form.name}
             placeholder="Digite o título da viagem"
-            min="5"
+            // min="5"
+            pattern={"[a-zA-Z]{5,50}"}
+            title={
+              "O título precisa ter entre 5 e 50 caracteres (apenas letras)"
+            }
             onChange={onChange}
             required
           />
@@ -128,6 +132,8 @@ export default function CreateTripPage() {
             name="description"
             placeholder="Escreva a descrição da viagem"
             value={form.description}
+            pattern={"^[0-9a-zA-Z.()]{30,110}"}
+            title={"O texto deve contar entre 30 e 110 caracteres"}
             minLength="30"
             maxLength="110"
             onChange={onChange}

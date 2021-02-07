@@ -26,6 +26,12 @@ export const AlertBox = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
 `;
 
 export const Button = styled.button`
