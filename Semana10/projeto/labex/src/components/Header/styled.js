@@ -11,6 +11,7 @@ export const HeaderContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: default;
 
   height: 60px;
   width: 100vw;
