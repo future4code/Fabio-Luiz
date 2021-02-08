@@ -1,26 +1,19 @@
-import React, { useRef } from "react";
-import { Background, AlertBox, Button } from "./styled";
+import React from "react";
+import "./styles.css";
+import { Button } from './../globalStyles';
 
 const Alert = (props) => {
-  const backAlert = useRef();
-  const closeAlert = (e) => {
-    if (backAlert.current === e.target) {
-      props.setOpenAlert(false);
-    }
-  };
-  
   return (
-    <>
-      {props.openAlert && (
-        <Background ref={backAlert} onClick={closeAlert}>
-          <AlertBox>
-            <h3>{props.title}</h3>
-            <p>{props.msg}</p>
-            <Button onClick={() => props.setOpenAlert(false)}>OK</Button>
-          </AlertBox>
-        </Background>
-      )}
-    </>
+    <div className="background">
+      <div className="confirm-box">
+        <h1>{props.title}</h1>
+        <hr />
+        <p>{props.description}</p>
+        <Button width="100%" onClick={()=>props.setOpenAlert(false)} >
+          OK
+        </Button>
+      </div>
+    </div>
   );
 };
 

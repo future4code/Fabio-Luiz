@@ -4,16 +4,11 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <title>LabeX</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Trispace&display=swap"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
     />
     <style>
       * {
@@ -23,9 +18,10 @@
         font-family: "Roboto", sans-serif;
       }
       body {
-        background-color: #000;
+        background-color: grey;
+        overflow-x: hidden;
       }
-      
+
       /* Adapted from https://css-tricks.com/examples/WebKitScrollbars/ */
       /* Let's get this party started */
       ::-webkit-scrollbar {
@@ -50,8 +46,8 @@
         background: rgba(108, 206, 252, 0.4);
       }
     </style>
-    <link rel="stylesheet" href="index.css" />
   </head>
+  <!-- <body style="background-image: url('./bg.jpg')"> -->
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
