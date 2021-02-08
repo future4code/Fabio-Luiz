@@ -211,7 +211,7 @@ export const DropMenu = styled.div`
 
     z-index: 10;
     position: absolute;
-    top: 60px;
+    top: ${(props) => (props.openMenu ? "60px" : "-100%")};
     right: 0;
     z-index: 10;
 
