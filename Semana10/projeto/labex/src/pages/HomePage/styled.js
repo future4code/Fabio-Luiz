@@ -9,6 +9,7 @@ export const TextBox = styled.div`
   width: 800px;
   max-width: 90vw;
   padding: 20px;
+  cursor: default;
 
   position: absolute;
   top: calc(50% + 40px);

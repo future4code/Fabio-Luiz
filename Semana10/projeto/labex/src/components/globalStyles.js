@@ -27,6 +27,7 @@ export const InputsBox = styled.div`
   height: ${(props) => props.height};
   width: 500px;
   max-width: 90vw;
+  cursor: default;
 
   color: #fff;
   text-shadow: 1px 1px #000;
@@ -193,6 +194,7 @@ export const Icon = styled.div`
 
     color: #fff;
     font-size: 5rem;
+    cursor: pointer;
 
     position: absolute;
     top: 70px;
@@ -211,7 +213,7 @@ export const DropMenu = styled.div`
 
     z-index: 10;
     position: absolute;
-    top: 60px;
+    top: ${(props) => (props.openMenu ? "60px" : "-100%")};
     right: 0;
     z-index: 10;
 
@@ -223,6 +225,7 @@ export const DropMenu = styled.div`
     height: ${(props) => (props.openMenu ? "100%" : "0")};
     opacity: ${(props) => (props.openMenu ? "1" : "0")};
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
 
     h1 {
       font-size: 24px;
@@ -250,10 +253,11 @@ export const DropMenu = styled.div`
       text-align: center;
       padding: 5px 0;
       margin-bottom: 10px;
-    }
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-      color: #fff;
+      width: 300vw;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #fff;
+      }
     }
   }
 `;
@@ -267,6 +271,7 @@ export const DetailsContainer = styled.div`
   border-radius: 5px;
   padding: 10px;
   color: #fff;
+  cursor: default;
 
   opacity: ${(props) => (props.id === ":id" ? "0" : "1")};
 
