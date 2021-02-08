@@ -104,7 +104,7 @@ const CreateTripPage = () => {
                 name="name"
                 value={form.name}
                 placeholder="Digite o título da viagem"
-                pattern={"[a-zA-Z]{5,50}"}
+                pattern={"[a-zA-Z]{5,50}$"}
                 title={
                   "O título precisa ter entre 5 e 50 caracteres (apenas letras)"
                 }
@@ -132,15 +132,16 @@ const CreateTripPage = () => {
                 onChange={handleDate}
                 required
               />
-              <textarea
-                rows="3"
+              <input
                 type="text"
                 name="description"
                 placeholder="Escreva a descrição da viagem"
                 value={form.description}
-                // pattern={"[a-zA-Z]{5,50}"}
-                // title={"O texto deve contar entre 30 e 110 caracteres"}
-                minLength="30"
+                pattern={"[0-9a-zA-Z.()!?-]{30,110}$"}
+                title={
+                  "O texto deve contar entre 30 e 110 caracteres  e apenas os símbolos . () ! ? -"
+                }
+                // minLength="30"
                 onChange={onChange}
                 required
               />
