@@ -5,6 +5,7 @@ import { baseEndpoint, auth } from "./../../components/GlobalInformations";
 import { useProtectedPage } from "./../../components/hooks/useProtectedPage";
 import { DetailsContainer, Button } from "./../../components/globalStyles";
 import { ButtonBox } from "./styled";
+import loadingGif from "../../images/loading.svg"
 
 import Confirm from "../../components/Alert/Confirm";
 
@@ -17,11 +18,14 @@ export default function Details(props) {
   });
 
   const [candidates, setCandidates] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   const getTripDetails = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${baseEndpoint}/trip/${id}`, auth);
       setCandidates(res.data.trip.candidates);
+      setLoading(false)
     } catch (err) {
       alert(err);
     }
@@ -120,61 +124,69 @@ export default function Details(props) {
                 <hr />
               </>
             )}
-            {candidates.length > 0 && (
+            {loading ? (
+              <h1>
+                <img src={loadingGif} />
+              </h1>
+            ) : (
               <>
                 <h1>Candidatos</h1>
-                {candidates.map((candidate) => {
-                  return (
-                    <div key={candidate.id}>
-                      <div className="container">
-                        <div className="label">
-                          <span>Nome: </span>
-                        </div>
-                        <div>{candidate.name}</div>
-                      </div>
-                      <div className="container">
-                        <div className="label">
-                          <span>Idade: </span>
-                        </div>
-                        <div>{candidate.age}</div>
-                      </div>
-                      <div className="container">
-                        <div className="label">
-                          <span>País: </span>
-                        </div>
-                        <div>{candidate.country}</div>
-                      </div>
-                      <div className="container">
-                        <div className="label">
-                          <span>Profissão: </span>
-                        </div>
-                        <div>{candidate.profession}</div>
-                      </div>
-                      <div className="container">
-                        <div className="label">
-                          <span>Motivação: </span>
-                        </div>
-                        <div>{candidate.applicationText}</div>
-                      </div>
+                {candidates.length > 0 && (
+                  <>
+                    {candidates.map((candidate) => {
+                      return (
+                        <div key={candidate.id}>
+                          <div className="container">
+                            <div className="label">
+                              <span>Nome: </span>
+                            </div>
+                            <div>{candidate.name}</div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              <span>Idade: </span>
+                            </div>
+                            <div>{candidate.age}</div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              <span>País: </span>
+                            </div>
+                            <div>{candidate.country}</div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              <span>Profissão: </span>
+                            </div>
+                            <div>{candidate.profession}</div>
+                          </div>
+                          <div className="container">
+                            <div className="label">
+                              <span>Motivação: </span>
+                            </div>
+                            <div>{candidate.applicationText}</div>
+                          </div>
 
-                      <ButtonBox>
-                        <Button
-                          width="100%"
-                          onClick={() => approveCandidate(candidate.id)}
-                        >
-                          APROVAR
-                        </Button>
-                        <Button
-                          width="100%"
-                          onClick={() => refuseCandidate(candidate.id)}
-                        >
-                          REJEITAR
-                        </Button>
-                      </ButtonBox>
-                      <hr />
-                    </div>
-                  );
-                })}
+                          <ButtonBox>
+                            <Button
+                              width="100%"
+                              onClick={() => approveCandidate(candidate.id)}
+                            >
+                              APROVAR
+                            </Button>
+                            <Button
+                              width="100%"
+                              onClick={() => refuseCandidate(candidate.id)}
+                            >
+                              REJEITAR
+                            </Button>
+                          </ButtonBox>
+                          <hr />
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
               </>
             )}
           </DetailsContainer>

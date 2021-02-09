@@ -67,7 +67,7 @@ const TripDetailsPage = () => {
         <hr />
         {trips.map((trip) => {
           return (
-            <div key={trip.id}>
+            <div className="item" key={trip.id}>
               <ul>
                 <li>
                   <Link to={`/trips/details/${trip.id}`}>{trip.name}</Link>
@@ -84,7 +84,7 @@ const TripDetailsPage = () => {
           <hr />
           {trips.map((trip) => {
             return (
-              <div key={trip.id}>
+              <div className="item" key={trip.id}>
                 <ul>
                   <li>
                     <Link to={`/trips/details/${trip.id}`}>{trip.name}</Link>

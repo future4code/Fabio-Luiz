@@ -86,7 +86,7 @@ export const Button = styled.button`
   border: 1px solid #fff;
   outline: none;
   padding: 10px;
-  margin-top: 10px;
+  margin: 10px 0;
   font-size: 0.8rem;
   font-weight: bold;
   text-shadow: 1px 1px #000;
@@ -128,7 +128,6 @@ export const TripsContainer = styled.div`
 
 export const SideMenu = styled.div`
   padding: 10px;
-  height: 100%;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -140,10 +139,18 @@ export const SideMenu = styled.div`
   padding: 10px;
   color: #fff;
 
+  .item {
+    width: 100%;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #fff;
+    }
+  }
+
   h1 {
     font-size: 24px;
     text-align: center;
-    margin-bottom: 15px;
+    margin: 10px 0;
   }
 
   hr {
@@ -164,10 +171,6 @@ export const SideMenu = styled.div`
     text-align: center;
     padding: 5px 0;
     margin-bottom: 10px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.8);
-      color: #fff;
-    }
   }
 
   @media screen and (max-width: 768px) {
@@ -298,12 +301,14 @@ export const DetailsContainer = styled.div`
 
   h1 {
     font-size: 24px;
+    color: #dedede;
     text-align: center;
     margin-bottom: 15px;
   }
 
   hr {
-    margin: 10px;
+    margin: 10px auto;
+    width: 90%;
     background: #fff;
   }
 `;

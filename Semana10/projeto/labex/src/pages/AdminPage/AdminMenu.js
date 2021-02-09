@@ -17,7 +17,11 @@ const AdminMenu = () => {
       <Button width="100%" onClick={() => goToCreateTripPage(history)}>
         CRIAR VIAGEM
       </Button>
-      <Button width="100%" onClick={() => goToTripDetailsPage(history)}>
+      <Button
+        width="100%"
+        marginTop="10px"
+        onClick={() => goToTripDetailsPage(history)}
+      >
         VER CANDIDATURAS
       </Button>
     </AdminMenuContainer>
