@@ -76,7 +76,7 @@ const Form = (props) => {
                   name="applicationText"
                   value={form.applicationText}
                   placeholder={"Por que quer viajar?"}
-                  pattern={"^[a-zA-Z.()!?- ]{30,140}$"}
+                  pattern={"[0-9a-zA-Z.()!?- ]{30,140}$"}
                   title={
                     "O texto deve contar entre 30 e 140 caracteres e apenas os símbolos . () ! ? -"
                   }
