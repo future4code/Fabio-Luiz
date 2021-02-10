@@ -35,6 +35,13 @@ export const InputsBox = styled.div`
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
 
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   h1 {
     font-size: 24px;
     text-align: center;
@@ -116,6 +123,7 @@ export const TripsContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  gap: 10px;
 
   width: 100%;
   max-width: 98vw;
@@ -128,6 +136,7 @@ export const TripsContainer = styled.div`
 
 export const SideMenu = styled.div`
   padding: 10px;
+  height: calc(100vh - 120px);
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -139,7 +148,19 @@ export const SideMenu = styled.div`
   padding: 10px;
   color: #fff;
 
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
     &:hover {
       background-color: rgba(255, 255, 255, 0.8);
@@ -182,6 +203,9 @@ export const Content = styled.div`
   flex-grow: 1;
   max-width: 98vw;
   padding: 0 5px;
+
+  height: calc(100vh - 120px);
+  overflow-y: auto;
 `;
 
 export const Icon = styled.div`
@@ -230,6 +254,13 @@ export const DropMenu = styled.div`
     transition: all 0.5s ease-in-out;
     cursor: pointer;
 
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
     h1 {
       font-size: 24px;
       text-align: center;
@@ -276,7 +307,7 @@ export const DetailsContainer = styled.div`
   color: #fff;
   cursor: default;
 
-  opacity: ${(props) => (props.id === ":id" ? "0" : "1")};
+  opacity: ${(props) => (props.trips > 0 ? "1" : "0")};
 
   img {
     width: 50%;
@@ -286,6 +317,13 @@ export const DetailsContainer = styled.div`
     @media screen and (max-width: 320px) {
       min-width: 100%;
     }
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .container {

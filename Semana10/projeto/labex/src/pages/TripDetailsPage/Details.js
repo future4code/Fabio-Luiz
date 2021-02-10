@@ -8,6 +8,7 @@ import { ButtonBox } from "./styled";
 import loadingGif from "../../images/loading.svg"
 
 import Confirm from "../../components/Alert/Confirm";
+import Alert from './../../components/Alert/Alert';
 
 export default function Details(props) {
   useProtectedPage();
@@ -20,6 +21,10 @@ export default function Details(props) {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true)
 
+  const [alertDelete, setAlertDelete] = useState(false);
+  const [alertApprove, setAlertApprove] = useState(false)
+  const [alertRefuse, setAlertRefuse] = useState(false);
+
   const getTripDetails = async () => {
     setLoading(true);
     try {
@@ -28,6 +33,7 @@ export default function Details(props) {
       setLoading(false)
     } catch (err) {
       alert(err);
+      setLoading(false);
     }
   };
 
@@ -40,6 +46,7 @@ export default function Details(props) {
       .delete(`${baseEndpoint}/trips/${id}`)
       .then((res) => {
         props.getAllTrips();
+        setAlertDelete(true);
       })
       .catch((err) => {
         alert(err);
@@ -56,6 +63,7 @@ export default function Details(props) {
       )
       .then((res) => {
         getTripDetails();
+        setAlertApprove(true)
       })
       .catch((err) => {
         alert(err);
@@ -72,6 +80,7 @@ export default function Details(props) {
       )
       .then((res) => {
         getTripDetails();
+        setAlertRefuse(true);
       })
       .catch((err) => {
         alert(err);
@@ -79,119 +88,137 @@ export default function Details(props) {
   };
 
   return (
-    <Confirm
-      title="CONFIRMAÇÃO"
-      description="Tem certeza que deseja prosseguir a operação?"
-    >
-      {(confirm) => (
-        <>
-          <DetailsContainer id={id}>
-            {currentTrip.length > 0 && (
-              <>
-                <div className="container">
-                  <div className="label">
-                    <span>Nome: </span>
-                  </div>
-                  <div>{currentTrip[0].name}</div>
-                </div>
-                <div className="container">
-                  <div className="label">
-                    <div>
-                      <span>Planeta: </span>
+    <>
+      <Alert
+        title="EXCLUSÃO DE VIAGEM"
+        description="A viagem foi excluída com sucesso!"
+        alert={alertDelete}
+        setAlert={setAlertDelete}
+      />
+      <Alert
+        title="CANDIDATURA"
+        description={
+          alertApprove
+            ? "A candidatura foi aprovada com sucesso!"
+            : "A candidatura foi rejeitada com sucesso!"
+        }
+        alert={alertApprove ? alertApprove : alertRefuse}
+        setAlert={alertApprove ? setAlertApprove : setAlertRefuse}
+      />
+      <Confirm
+        title="CONFIRMAÇÃO"
+        description="Tem certeza que deseja prosseguir com a operação?"
+      >
+        {(confirm) => (
+          <>
+            <DetailsContainer trips={currentTrip.length}>
+              {currentTrip.length > 0 && (
+                <>
+                  <div className="container">
+                    <div className="label">
+                      <span>Nome: </span>
                     </div>
+                    <div>{currentTrip[0].name}</div>
                   </div>
-                  {currentTrip[0].planet}
-                </div>
-                <div className="container">
-                  <div className="label">
-                    <span>Data: </span>
+                  <div className="container">
+                    <div className="label">
+                      <div>
+                        <span>Planeta: </span>
+                      </div>
+                    </div>
+                    {currentTrip[0].planet}
                   </div>
-                  <div>{currentTrip[0].date}</div>
-                </div>
-                <div className="container">
-                  <div className="label">
-                    <span>Duração: </span>
+                  <div className="container">
+                    <div className="label">
+                      <span>Data: </span>
+                    </div>
+                    <div>{currentTrip[0].date}</div>
                   </div>
-                  {currentTrip[0].durationInDays} dias
-                </div>
-                <div className="container">
-                  <div className="label">
-                    <span>Descrição: </span>
+                  <div className="container">
+                    <div className="label">
+                      <span>Duração: </span>
+                    </div>
+                    {currentTrip[0].durationInDays} dias
                   </div>
-                  <div>{currentTrip[0].description}</div>
+                  <div className="container">
+                    <div className="label">
+                      <span>Descrição: </span>
+                    </div>
+                    <div>{currentTrip[0].description}</div>
+                  </div>
+                  <Button onClick={confirm(deleteTrip)}>EXCLUIR VIAGEM</Button>
+                  <hr />
+                </>
+              )}
+              {loading ? (
+                <div className="loading">
+                  <img src={loadingGif} />
                 </div>
-                <Button onClick={confirm(deleteTrip)}>EXCLUIR VIAGEM</Button>
-                <hr />
-              </>
-            )}
-            {loading ? (
-              <h1>
-                <img src={loadingGif} />
-              </h1>
-            ) : (
-              <>
-                <h1>Candidatos</h1>
-                {candidates.length > 0 && (
-                  <>
-                    {candidates.map((candidate) => {
-                      return (
-                        <div key={candidate.id}>
-                          <div className="container">
-                            <div className="label">
-                              <span>Nome: </span>
+              ) : (
+                <>
+                  <h1>Candidatos</h1>
+                  {candidates.length > 0 && (
+                    <>
+                      {candidates.map((candidate) => {
+                        return (
+                          <div key={candidate.id}>
+                            <div className="container">
+                              <div className="label">
+                                <span>Nome: </span>
+                              </div>
+                              <div>{candidate.name}</div>
                             </div>
-                            <div>{candidate.name}</div>
-                          </div>
-                          <div className="container">
-                            <div className="label">
-                              <span>Idade: </span>
+                            <div className="container">
+                              <div className="label">
+                                <span>Idade: </span>
+                              </div>
+                              <div>{candidate.age}</div>
                             </div>
-                            <div>{candidate.age}</div>
-                          </div>
-                          <div className="container">
-                            <div className="label">
-                              <span>País: </span>
+                            <div className="container">
+                              <div className="label">
+                                <span>País: </span>
+                              </div>
+                              <div>{candidate.country}</div>
                             </div>
-                            <div>{candidate.country}</div>
-                          </div>
-                          <div className="container">
-                            <div className="label">
-                              <span>Profissão: </span>
+                            <div className="container">
+                              <div className="label">
+                                <span>Profissão: </span>
+                              </div>
+                              <div>{candidate.profession}</div>
                             </div>
-                            <div>{candidate.profession}</div>
-                          </div>
-                          <div className="container">
-                            <div className="label">
-                              <span>Motivação: </span>
+                            <div className="container">
+                              <div className="label">
+                                <span>Motivação: </span>
+                              </div>
+                              <div>{candidate.applicationText}</div>
                             </div>
-                            <div>{candidate.applicationText}</div>
-                          </div>
 
-                          <ButtonBox>
-                            <Button
-                              width="100%"
-                              onClick={() => approveCandidate(candidate.id)}
-                            >
-                              APROVAR
-                            </Button>
-                            <Button
-                              width="100%"
-                              onClick={() => refuseCandidate(candidate.id)}
-                            >
-                              REJEITAR
-                            </Button>
-                          </ButtonBox>
-                          <hr />
-                        </div>
-                      );
-                    })}
-                  </>
-                )}
-              </>
-            )}
-          </DetailsContainer>
-        </>
-      )}
-    </Confirm>
+                            <ButtonBox>
+                              <Button
+                                width="100%"
+                                onClick={() => approveCandidate(candidate.id)}
+                              >
+                                APROVAR
+                              </Button>
+                              <Button
+                                width="100%"
+                                onClick={() => refuseCandidate(candidate.id)}
+                              >
+                                REJEITAR
+                              </Button>
+                            </ButtonBox>
+                            <hr />
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
+                </>
+              )}
+            </DetailsContainer>
+          </>
+        )}
+      </Confirm>
+    </>
   );
 }

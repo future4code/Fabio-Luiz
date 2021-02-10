@@ -19,10 +19,13 @@ import { baseEndpoint, auth } from "../../components/GlobalInformations";
 import bg from "../../images/standardBG.jpg";
 
 import Confirm from "../../components/Alert/Confirm";
+import Alert from "./../../components/Alert/Alert";
 
 const CreateTripPage = () => {
   useProtectedPage();
   const history = useHistory();
+
+  const [alertConfirm, setAlertConfirm] = useState(false)
 
   const goBack = () => {
     history.goBack();
@@ -77,6 +80,7 @@ const CreateTripPage = () => {
       .then((res) => {
         clearFields();
         setDate("");
+        setAlertConfirm(true);
       })
       .catch((err) => {
         alert(err);
@@ -90,6 +94,12 @@ const CreateTripPage = () => {
         <Button onClick={goBack}>Voltar ao Menu</Button>
       </BackButton>
 
+      <Alert
+        title="NOVA VIAGEM"
+        description="A viagem foi cadastrada com sucesso no sistema!"
+        alert={alertConfirm}
+        setAlert={setAlertConfirm}
+      />
       <Confirm
         title="CADASTRO DE VIAGEM"
         description="Tem certeza que deseja criar a viagem?"
@@ -104,7 +114,7 @@ const CreateTripPage = () => {
                 name="name"
                 value={form.name}
                 placeholder="Digite o título da viagem"
-                pattern={"[a-zA-Z]{5,50}$"}
+                pattern={"[a-zA-Z ]{5,50}$"}
                 title={
                   "O título precisa ter entre 5 e 50 caracteres (apenas letras)"
                 }
@@ -137,7 +147,7 @@ const CreateTripPage = () => {
                 name="description"
                 placeholder="Escreva a descrição da viagem"
                 value={form.description}
-                pattern={"[0-9a-zA-Z.()!?-]{30,110}$"}
+                pattern={"[0-9a-zA-Z.()!?- ]{30,110}$"}
                 title={
                   "O texto deve contar entre 30 e 110 caracteres  e apenas os símbolos . () ! ? -"
                 }

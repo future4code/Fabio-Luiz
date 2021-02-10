@@ -25,6 +25,7 @@ import Details from "./Details";
 import { useProtectedPage } from "./../../components/hooks/useProtectedPage";
 import bg from "../../images/standardBG.jpg"
 import { FaBars } from "react-icons/fa";
+import loadingGif from "../../images/loading.svg";
 
 
 const TripDetailsPage = () => {
@@ -37,13 +38,16 @@ const TripDetailsPage = () => {
 
   const [trips, setTrips] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getAllTrips = async () => {
     try {
       const res = await axios.get(`${baseEndpoint}/trips`);
       setTrips(res.data.trips);
+      setLoading(false)
     } catch (err) {
       alert(err);
+      setLoading(false);
     }
   };
 
@@ -65,35 +69,54 @@ const TripDetailsPage = () => {
       <DropMenu openMenu={openMenu} onClick={() => setOpenMenu(!openMenu)}>
         <h1>VIAGEM</h1>
         <hr />
-        {trips.map((trip) => {
-          return (
-            <div className="item" key={trip.id}>
-              <ul>
-                <li>
-                  <Link to={`/trips/details/${trip.id}`}>{trip.name}</Link>
-                </li>
-              </ul>
-            </div>
-          );
-        })}
+        {loading ? (
+          <div className="loading">
+            <img src={loadingGif} />
+          </div>
+        ) : (
+          <>
+            {trips.map((trip) => {
+              return (
+                <div className="item" key={trip.id}>
+                  <ul>
+                    <li>
+                      <Link to={`/trips/details/${trip.id}`}>{trip.name}</Link>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+          </>
+        )}
       </DropMenu>
 
       <TripsContainer>
         <SideMenu>
           <h1>VIAGEM</h1>
           <hr />
-          {trips.map((trip) => {
-            return (
-              <div className="item" key={trip.id}>
-                <ul>
-                  <li>
-                    <Link to={`/trips/details/${trip.id}`}>{trip.name}</Link>
-                  </li>
-                </ul>
-              </div>
-            );
-          })}
+          {loading ? (
+            <div className="loading">
+              <img src={loadingGif} />
+            </div>
+          ) : (
+            <>
+              {trips.map((trip) => {
+                return (
+                  <div className="item" key={trip.id}>
+                    <ul>
+                      <li>
+                        <Link to={`/trips/details/${trip.id}`}>
+                          {trip.name}
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </SideMenu>
+
         <Content>
           <Switch>
             <Route
