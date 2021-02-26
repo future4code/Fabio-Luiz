@@ -42,6 +42,7 @@ export const Container = styled.div`
     h3 {
       margin-bottom: 10px;
     }
+    text-align: justify;
     hyphens: auto;
     overflow-wrap: break-word;
   }

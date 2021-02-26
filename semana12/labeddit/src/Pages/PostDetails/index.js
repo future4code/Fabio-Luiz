@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { Auth, BASE_URL } from "./../../Constants";
 import { useProtectedPage } from "./../../hooks/useProtectedPage";
 
 import { Container } from "./styled";
+import { BsFillBackspaceFill } from "react-icons/bs";
 
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
@@ -17,13 +18,16 @@ const PostDetails = () => {
   useProtectedPage();
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const history = useHistory();
   let { postId } = useParams();
 
-  const getDetails = async () => {
+  const getDetails = () => {
     axios
       .get(`${BASE_URL}/posts/${postId}`, Auth)
       .then((res) => {
         setDetails(res.data.post);
+
         setLoading(false);
       })
       .catch((err) => {
@@ -35,10 +39,27 @@ const PostDetails = () => {
     getDetails();
   }, []);
 
+  // FILTRO DE BUSCA ---------------------------------------------------
+  const filterComments = () => {
+    let filteredItems = details.comments.filter((comment) =>
+      comment.text
+        .concat(comment.username)
+        .toLowerCase()
+        .includes(searchName.toLowerCase())
+    );
+    return filteredItems;
+  };
+  const filteredComments = details && details.comments && filterComments();
+  // --------------------------------------------------------------------
+
   return (
     <>
-      <Header />
+      <Header setSearchName={setSearchName} searchName={searchName} />
       <Container>
+        <div id="back-button" onClick={() => history.goBack()}>
+          <BsFillBackspaceFill />
+          <span>Voltar</span>
+        </div>
         {loading ? (
           <Loading />
         ) : (
@@ -52,10 +73,11 @@ const PostDetails = () => {
               text={details.text}
               comments={details.commentsCount}
               votes={details.votesCount}
+              userVoteDirection={details.userVoteDirection}
             />
             <CreateComment postId={postId} getDetails={getDetails} />
             {details.comments &&
-              details.comments
+              filteredComments
                 .sort((a, b) => {
                   return b.createdAt - a.createdAt;
                 })

@@ -15,6 +15,11 @@ const Header = (props) => {
 
   const [input, setInput] = useState('')
 
+  const clear = () => {
+    setInput('');
+    props.setSearchName('');
+  }
+
   return (
     <>
       <Wrapper>
@@ -27,8 +32,8 @@ const Header = (props) => {
             <p>Labeddit</p>
           </div>
           <div className="input-container">
-            <input value={input} onChange={(e) => setInput(e.target.value)} />
-            <p id="clear" onClick={() => setInput("")}>
+            <input placeholder="Realize sua busca aqui" value={input} onChange={(e) => setInput(e.target.value)} />
+            <p id="clear" onClick={() => clear()}>
               X
             </p>
             <button>
@@ -42,7 +47,7 @@ const Header = (props) => {
 
         <div className="mobile-input-container">
           <input value={input} onChange={(e) => setInput(e.target.value)} />
-          <p id="clear" onClick={() => setInput("")}>
+          <p id="clear" onClick={() => clear()}>
             X
           </p>
           <button>

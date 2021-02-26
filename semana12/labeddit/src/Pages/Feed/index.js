@@ -62,16 +62,20 @@ const Feed = () => {
   // FILTRO DE BUSCA ---------------------------------------------------
   const filterPosts = () => {
     if (searchName.length === 0) {
-      let filteredByTitle = currentPosts.filter((post) =>
-        post.title.toLowerCase().includes(searchName.toLowerCase())
+      let filteredItems = currentPosts.filter((post) =>
+        post.title
+          .concat(post.text, post.username)
+          .toLowerCase()
+          .includes(searchName.toLowerCase())
       );
-      return filteredByTitle;
+      return filteredItems;
     } else {
       currentPosts = posts;
-      let filteredByText = currentPosts.filter((post) =>
-        post.text.toLowerCase().includes(searchName.toLowerCase())
-      );
-      return filteredByText;
+      let filteredItems =
+        currentPosts.filter((post) =>
+          post.title.concat(post.text, post.username).toLowerCase().includes(searchName.toLowerCase())
+        )
+      return filteredItems;
     }
   };
   const filteredPosts = filterPosts();

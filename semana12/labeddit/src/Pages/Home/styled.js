@@ -34,6 +34,7 @@ export const Main = styled.div`
   gap: 20px;
   width: 100vw;
   color: #fff;
+  text-align: center;
   letter-spacing: 3px;
   padding: 30px;
   background-color: rgba(255, 69, 0, 0.8);
