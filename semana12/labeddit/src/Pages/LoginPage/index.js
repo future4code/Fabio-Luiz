@@ -24,7 +24,6 @@ const LoginPage = () => {
     axios
       .post(`${BASE_URL}/login`, form)
       .then((res) => {
-          alert(res.data.token);
         localStorage.setItem("labeddit-token", res.data.token);
         goToPage(history, "/feed")
       })
