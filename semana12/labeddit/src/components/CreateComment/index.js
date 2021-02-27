@@ -25,6 +25,8 @@ const CreateComment = (props) => {
       <textarea
         placeholder="Escreva seu comentário"
         value={text}
+        pattern="^.{5,500}$"
+        title={"O texto deve ter entre 5 e 500 caracteres"}
         onChange={(e) => setText(e.target.value)}
       />
       <div id="send-icon" onClick={sendComment}>

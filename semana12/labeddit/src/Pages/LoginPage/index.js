@@ -41,7 +41,7 @@ const LoginPage = () => {
 
   return (
     <>
-    <BG img={bg}/>
+      <BG img={bg} />
       <Container>
         <h2>Login</h2>
         <form onSubmit={login}>
@@ -56,6 +56,8 @@ const LoginPage = () => {
           <input
             name="password"
             type="password"
+            pattern="^.{6,15}$"
+            title={"A senha deve ter entre 6 e 15 caracteres"}
             value={form.password}
             onChange={onChange}
             placeholder="senha"

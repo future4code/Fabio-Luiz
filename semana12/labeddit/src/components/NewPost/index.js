@@ -34,6 +34,8 @@ const NewPost = (props) => {
             placeholder="Título"
             name="title"
             type="text"
+            pattern="^.{5,100}$"
+            title={"O título deve ter entre 5 e 100 caracteres"}
             value={form.title}
             onChange={onChange}
             required
@@ -42,6 +44,8 @@ const NewPost = (props) => {
             placeholder="Texto"
             name="text"
             type="text"
+            pattern="^.{30,2000}$"
+            title={"O texto deve ter entre 30 e 2000 caracteres"}
             value={form.text}
             onChange={onChange}
             required

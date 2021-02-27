@@ -4,9 +4,10 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import { Nav } from "./styled";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  let pageNumber = Number(
-    window.location.pathname.split("/")[2]
-  ) || 1;
+  let pageNumber =
+    Number(
+      window.location.pathname.split("/")[window.location.pathname.split("/").length-1]
+    ) || 1;
   const lastPage = Math.ceil(totalPosts / postsPerPage);
   const [inputNumber, setInputNumber] = useState(1);
 

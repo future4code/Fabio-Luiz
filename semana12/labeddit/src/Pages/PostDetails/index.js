@@ -13,6 +13,7 @@ import Loading from "../../components/Loading";
 import Post from "./../../components/Post/index";
 import Comment from "./../../components/Comment/index";
 import CreateComment from "./../../components/CreateComment/index";
+import Pagination from './../../components/Pagination/index';
 
 const PostDetails = () => {
   useProtectedPage();
@@ -39,9 +40,33 @@ const PostDetails = () => {
     getDetails();
   }, []);
 
+    // PAGINAÇÃO-----------------------------------------------------------
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = "10";
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  let currentPosts = details && details.comments && details.comments
+    .sort((a, b) => {
+      return b.createdAt - a.createdAt;
+    })
+    .slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => {
+    if (
+      pageNumber > 0 &&
+      pageNumber <= Math.ceil(details.comments.length / postsPerPage)
+    ) {
+      setCurrentPage(pageNumber);
+      history.push(`/post/${details.id}/${pageNumber}`);
+    } else {
+      alert("Escolha um número válido.");
+    }
+  };
+  
+  // -------------------------------------------------------------------
+
   // FILTRO DE BUSCA ---------------------------------------------------
   const filterComments = () => {
-    let filteredItems = details.comments.filter((comment) =>
+    let filteredItems = currentPosts.filter((comment) =>
       comment.text
         .concat(comment.username)
         .toLowerCase()
@@ -51,6 +76,9 @@ const PostDetails = () => {
   };
   const filteredComments = details && details.comments && filterComments();
   // --------------------------------------------------------------------
+  const totalPosts = searchName
+    ? filteredComments && filteredComments.length
+    : details && details.comments && details.comments.length;
 
   return (
     <>
@@ -76,6 +104,11 @@ const PostDetails = () => {
               userVoteDirection={details.userVoteDirection}
             />
             <CreateComment postId={postId} getDetails={getDetails} />
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={totalPosts}
+              paginate={paginate}
+            />
             {details.comments &&
               filteredComments
                 .sort((a, b) => {

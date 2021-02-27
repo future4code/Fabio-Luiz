@@ -48,6 +48,8 @@ const SignUpPage = () => {
           <input
             name="username"
             type="text"
+            min="4"
+            max="15"
             value={form.username}
             onChange={onChange}
             placeholder="Username"
@@ -64,6 +66,8 @@ const SignUpPage = () => {
           <input
             name="password"
             type="password"
+            pattern="^.{6,15}$"
+            title={"A senha deve ter entre 6 e 15 caracteres"}
             value={form.password}
             onChange={onChange}
             placeholder="Senha"

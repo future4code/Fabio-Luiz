@@ -11,7 +11,7 @@ import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import Post from "../../components/Post/index";
 import NewPost from "./../../components/NewPost/index";
-import Pagination from "./../../components/Pagination/index";
+import Pagination from './../../components/Pagination/index';
 
 
 const Feed = () => {

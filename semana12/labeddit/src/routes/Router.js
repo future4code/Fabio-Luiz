@@ -30,6 +30,9 @@ const Router = () => {
         <Route path="/post/:postId">
           <PostDetails />
         </Route>
+        <Route path="/post/:postId/:page">
+          <PostDetails />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
