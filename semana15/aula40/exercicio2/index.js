@@ -6,16 +6,16 @@ if (!operation || !a || !b) {
 } else {
   switch (operation) {
     case "add":
-      console.log(a + b);
+      console.log("\x1b[36m%s\x1b[0m", a + b);
       break;
     case "sub":
-      console.log(a - b);
+      console.log("\x1b[35m%s\x1b[0m", a - b);
       break;
     case "mult":
-      console.log(a * b);
+      console.log("\x1b[37m%s\x1b[0m", a * b);
       break;
     case "div":
-      console.log(a / b);
+      console.log("\x1b[33m%s\x1b[0m", a / b);
       break;
     default:
       console.log(
