@@ -1,0 +1,18 @@
+{
+  "name": "epps-aula40",
+  "version": "1.0.0",
+  "description": "Exercicio 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && node index.js"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "epps",
+    "labenu"
+  ],
+  "author": "Fabio dos Santos",
+  "license": "ISC"
+}
