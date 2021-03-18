@@ -21,7 +21,7 @@ app.get("/users/all", (req: Request, res: Response) => {
     if (users.length < 1) {
       throw new Error("The data is empty");
     }
-    res.status(201).send(users);
+    res.status(200).send(users);
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
@@ -43,9 +43,9 @@ app.get("/users", (req: Request, res: Response) => {
         errorCode = 404;
         throw new Error("Users not found");
       }
-      res.status(201).send(filteredUsers);
+      res.status(200).send(filteredUsers);
     } else {
-      errorCode = 400;
+      errorCode = 422;
       throw new Error("Invalid Type. Please, try another option");
     }
   } catch (error) {
@@ -67,7 +67,7 @@ app.get("/users/:name", (req: Request, res: Response) => {
       errorCode = 404;
       throw new Error("User not found");
     }
-    res.status(201).send(user);
+    res.status(200).send(user);
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
@@ -82,7 +82,7 @@ app.post("/users/create", (req: Request, res: Response) => {
   try {
     const body = req.body;
     if (!body.name || !body.email || !body.type || !body.age) {
-      errorCode = 401;
+      errorCode = 422;
       throw new Error("Missing parameters. Please check your informations");
     }
     const findName = users.find((usr) => {
@@ -92,13 +92,13 @@ app.post("/users/create", (req: Request, res: Response) => {
       return usr.email === body.email;
     });
     if (findName) {
-      errorCode = 401;
+      errorCode = 409;
       throw new Error(
         "This user is already registered. Please choose another name"
       );
     }
     if (findEmail) {
-      errorCode = 401;
+      errorCode = 409;
       throw new Error(
         "This e-mail is already registered. Please choose another e-mail"
       );
@@ -114,7 +114,7 @@ app.post("/users/create", (req: Request, res: Response) => {
       users.push(newUser);
       res.status(201).send({ message: "Success!", newUser });
     } else {
-      errorCode = 401;
+      errorCode = 422;
       throw new Error("Invalid type. Plese, check your informations");
     }
   } catch (error) {
@@ -131,6 +131,7 @@ app.put("/users/edit/:username", (req: Request, res: Response) => {
       return usr.name.toLocaleLowerCase() === name.toLocaleLowerCase();
     });
     if (findName) {
+      errorCode = 409;
       throw new Error("This name exists already. Please, try another name");
     }
     const index = users.findIndex((usr) => {
@@ -144,8 +145,46 @@ app.put("/users/edit/:username", (req: Request, res: Response) => {
 });
 
 // Exercicio 6
+app.patch("/users/edit/:username", (req: Request, res: Response) => {
+  try {
+    const username = req.params.username as string;
+    const name = req.query.name as string;
+    const findName = users.find((usr) => {
+      return usr.name.toLocaleLowerCase().includes(name.toLocaleLowerCase());
+    });
+    if (findName) {
+      errorCode = 409;
+      throw new Error("This name exists already. Please, try another name");
+    }
+    const index = users.findIndex((usr) => {
+      return usr.name
+        .toLocaleLowerCase()
+        .includes(username.toLocaleLowerCase());
+    });
+    users[index].name = name + "-REALTERADO";
+    res.status(201).send({ message: "Success!", user: users[index] });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
 
 // Exercicio 7
+app.delete("/users/delete/:id", (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const index = users.findIndex((usr) => {
+      return usr.id === id;
+    });
+    if (index < 0) {
+      errorCode = 404;
+      throw new Error("User not found. Please, try another id");
+    }
+    users.splice(index, 1);
+    res.status(201).send({ message: "Success! User deleted" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running in http://localhost:${PORT}`);
