@@ -73,12 +73,8 @@ app.put("/countries/edit/:id", (req: Request, res: Response) => {
     if (body.capital) {
       myCountries[index].capital = body.capital;
     }
-    res
-      .status(200)
-      .send({
-        message: "Country sucessfully updated!",
-        country: myCountries[index],
-      });
+    console.log(myCountries[index]);
+    res.status(200).send({ message: "Country sucessfully updated!" });
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
@@ -134,6 +130,7 @@ app.post("/countries/create", (req: Request, res: Response) => {
   let errorCode = 400
   const body = req.body
   const authorization:any = req.headers.authorization
+  let myCountries = countries
   try {
     if (!authorization || authorization.length < 10) {
       errorCode = 404
