@@ -110,28 +110,19 @@ app.get("/accounts/search", (req: Request, res: Response) => {
 });
 
 // Adicionar saldo -----------------------------------------
-app.put("/accounts/:id/deposit", (req: Request, res: Response) => {
+app.post("/accounts/deposit", (req: Request, res: Response) => {
   try {
-    const id = Number(req.params.id);
-    const userName = req.query.name as string;
-    const userCpf = Number(req.query.cpf);
+    const body = req.body
+    const userName = body.name;
+    const userCpf = body.cpf;
     const opDate: string = dateToString(new Date());
-    const valueIn = Number(req.query.value);
+    const valueIn = body.opValue;
     const nameIndex = users.findIndex((usr) => {
       return usr.name.toLocaleLowerCase() === userName.toLocaleLowerCase();
     });
     const cpfIndex = users.findIndex((usr) => {
       return usr.cpf === userCpf;
     });
-
-    // Verifica se o id do usuário está correto
-    const userIndex = users.findIndex((usr) => {
-      return usr.id === id;
-    });
-    if (userIndex < 0) {
-      errorCode = 404;
-      throw new Error("User not found. Please check the id");
-    }
 
     //Verifica se o valor inserido é válido
     if (isNaN(valueIn) || valueIn < 0) {
