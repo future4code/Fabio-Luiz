@@ -33,7 +33,7 @@ export const findAge = (birthDate: string): number => {
 
 // Capitalizar string
 export const capitalize = (string: string) => {
-  const capitalizedString = string.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+  const capitalizedString = string.toLocaleLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
   return capitalizedString
 }
 
