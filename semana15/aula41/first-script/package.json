@@ -1,0 +1,27 @@
+{
+  "name": "epps-aula41",
+  "version": "1.0.0",
+  "description": "Exercicio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "clear && npm run build && node ./build/index.js",
+    "ex1": "clear && tsc ./src/exercicios/exercicio-1.ts && node ./src/exercicios/exercicio-1.js",
+    "ex2": "clear && tsc ./src/exercicios/exercicio-2.ts && node ./src/exercicios/exercicio-2.js",
+    "ex3": "clear && tsc ./src/exercicios/exercicio-3.ts && node ./src/exercicios/exercicio-3.js",
+    "ex4": "clear && tsc ./src/exercicios/exercicio-4.ts && node ./src/exercicios/exercicio-4.js",
+    "ex5": "clear && tsc ./src/exercicios/exercicio-4.ts && node ./src/exercicios/exercicio-5.js"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "epps",
+    "labenu"
+  ],
+  "author": "Fabio dos Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.35"
+  }
+}
