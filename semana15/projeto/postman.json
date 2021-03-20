@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4926bf92-7850-4f34-aecb-088548e71ad0",
+		"_postman_id": "69625f1b-55bd-444e-a7c1-dc105cff1c4b",
 		"name": "Semana15-Projeto-LabeBank",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -89,7 +89,7 @@
 		{
 			"name": "Add Money",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3003/accounts/deposit",
+					"raw": "http://localhost:3003/accounts/deposit?name=José Silva&cpf=98765432101&value=15000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -110,6 +110,20 @@
 					"path": [
 						"accounts",
 						"deposit"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "José Silva"
+						},
+						{
+							"key": "cpf",
+							"value": "98765432101"
+						},
+						{
+							"key": "value",
+							"value": "15000"
+						}
 					]
 				},
 				"description": "Get the balance account"
@@ -159,7 +173,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"date\": \"2021/03/20\",\r\n    \"opValue\": 10,\r\n    \"description\": \"Propina\"\r\n}",
+					"raw": "{\r\n    \"billDate\": \"2021/03/20\",\r\n    \"opValue\": 10,\r\n    \"description\": \"Luz\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -3,7 +3,7 @@ import cors from "cors";
 
 import { AddressInfo } from "net";
 import { userType, users, opList, extractType } from "./data";
-import { findAge, checkName, checkCpf, dateToString } from "./functions";
+import { findAge, checkName, checkCpf, capitalize } from "./functions";
 
 const app = express();
 
@@ -14,7 +14,7 @@ let errorCode: number = 400;
 // Criar Conta -----------------------------------------
 app.post("/accounts/create", (req: Request, res: Response) => {
   try {
-    const body: userType = req.body;
+    const body: any = req.body;
     const userAge = findAge(body.birthdate);
 
     // Verifica se todos os campos foram preenchidos
@@ -60,9 +60,9 @@ app.post("/accounts/create", (req: Request, res: Response) => {
     // Cria usuário novo
     const newUser: userType = {
       id: Number(new Date()),
-      name: body.name,
+      name: capitalize(body.name),
       cpf: body.cpf,
-      birthdate: body.birthdate,
+      birthdate: Date.parse(body.birthdate),
       balance: 0,
       extract: [],
     };
@@ -110,13 +110,12 @@ app.get("/accounts/search", (req: Request, res: Response) => {
 });
 
 // Adicionar saldo -----------------------------------------
-app.post("/accounts/deposit", (req: Request, res: Response) => {
+app.put("/accounts/deposit", (req: Request, res: Response) => {
   try {
-    const body = req.body
-    const userName = body.name;
-    const userCpf = body.cpf;
-    const opDate: string = dateToString(new Date());
-    const valueIn = body.opValue;
+    const userName = req.query.name as string;
+    const userCpf = Number(req.query.cpf);
+    const opDate = Date.parse(Date());
+    const valueIn = Number(req.query.value);
     const nameIndex = users.findIndex((usr) => {
       return usr.name.toLocaleLowerCase() === userName.toLocaleLowerCase();
     });
@@ -151,13 +150,20 @@ app.post("/accounts/deposit", (req: Request, res: Response) => {
       operation: opList.IN,
       opValue: valueIn,
       date: opDate,
-      description: "Depósito",
+      description: "Depósito em dinheiro",
     };
     users[cpfIndex].balance += valueIn;
     users[cpfIndex].extract.push(transactionIn);
     res.status(201).send({
       message: "Success!",
-      user: { name: userName, balance: users[cpfIndex].balance },
+      user: {
+        name: userName,
+        date: new Date(opDate).toUTCString(),
+        operation: opList.IN,
+        value: valueIn,
+        description: "Depósito em dinheiro",
+        balance: users[cpfIndex].balance,
+      },
     });
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
@@ -169,8 +175,8 @@ app.post("/accounts/:id/payment", (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.id);
     const body = req.body;
-    const userDateToNumber = Date.parse(body.date);
-    let billDate: string;
+    const userDateToNumber = Date.parse(body.billDate);
+    let billDate: number;
 
     // Verifica se o id do usuário está correto
     const userIndex = users.findIndex((usr) => {
@@ -183,13 +189,13 @@ app.post("/accounts/:id/payment", (req: Request, res: Response) => {
 
     // Verificação de data
     // Verifica se data foi inserida. Se não, usa o dia de hoje
-    if (!body.date) {
-      billDate = dateToString(new Date());
+    if (!body.billDate) {
+      billDate = Date.parse(Date());
     } else {
-      billDate = body.date;
+      billDate = Date.parse(body.billDate);
     }
     // Verifica formatação da data
-    if (isNaN(Date.parse(body.date))) {
+    if (isNaN(Date.parse(body.billDate))) {
       errorCode = 422;
       throw new Error("Invalid date type. Please use the format YYYY/MM/DD");
     }
@@ -206,7 +212,9 @@ app.post("/accounts/:id/payment", (req: Request, res: Response) => {
     );
     if (userDate < todayDate) {
       errorCode = 422;
-      throw new Error("Invalid date. Plase, choose a future date or today");
+      throw new Error(
+        "Invalid date. Plase, choose a future date or today's date"
+      );
     }
 
     // Verifica se todos os campos obrigatórios foram preenchidos
@@ -248,7 +256,15 @@ app.post("/accounts/:id/payment", (req: Request, res: Response) => {
     users[userIndex].extract.push(transaction);
     res
       .status(201)
-      .send({ message: "Operation done successfully", transaction });
+      .send({
+        message: "Operation done successfully",
+        transaction: {
+          id: transaction.id,
+          date: new Date(billDate).toDateString(),
+          value: body.opValue,
+          descripion: body.description,
+        },
+      });
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
@@ -259,7 +275,7 @@ app.post("/accounts/:id/transfer", (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.id);
     const body = req.body;
-    const transferDate: string = dateToString(new Date());
+    const transferDate = Date.parse(Date());
     const userIndex = users.findIndex((usr) => {
       return usr.id === userId;
     });
@@ -344,7 +360,7 @@ app.post("/accounts/:id/transfer", (req: Request, res: Response) => {
     res.status(201).send({
       message: "Operation done successfully",
       transaction: {
-        Date: transferDate,
+        Date: new Date(transferDate).toUTCString(),
         value: body.transferValue,
         from: body.senderName,
         to: body.recipientName,

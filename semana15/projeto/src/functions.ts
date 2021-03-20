@@ -31,6 +31,12 @@ export const findAge = (birthDate: string): number => {
   }
 };
 
+// Capitalizar string
+export const capitalize = (string: string) => {
+  const capitalizedString = string.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+  return capitalizedString
+}
+
 // Checar padrão do nome - (created by: https://stackoverflow.com/users/6143820/francois-muller)
 export const checkName = (stringName: string): boolean => {
   const result = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(
