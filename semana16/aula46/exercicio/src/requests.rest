@@ -1,0 +1,62 @@
+GET http://localhost:3003/actor/list/all
+
+###
+GET http://localhost:3003/actor/001
+
+###
+
+GET http://localhost:3003/actor/count/gender
+
+###
+
+PUT http://localhost:3003/actor/001/edit
+Content-Type: application/json
+
+{
+    "salary": 800000 
+}
+
+###
+DELETE  http://localhost:3003/actor/delete
+Content-Type: application/json
+{
+    "id": "1616617915961" 
+}
+
+###
+
+GET http://localhost:3003/actor/salary/avg/female
+
+###
+GET http://localhost:3003/actor?gender=male
+
+###
+PUT http://localhost:3003/actor
+Content-Type: application/json
+
+{
+    "id": "001",
+    "salary": 900000
+}
+
+###
+DELETE http://localhost:3003/actor/003
+
+###
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+    "title": "Jogos Mortais",
+    "synopsis": "Dois homens acordam acorrentados em um banheiro como prisioneiros de um assassino em série que leva suas vítimas a situações limítrofes em um jogo macabro. Para sobreviver, eles terão de desvendar juntos as peças desse quebra-cabeças doentio.",
+    "release_date": "2005-02-04",
+    "rating_score": 7,
+    "playing_limit_date": "2005-05-01"
+}
+
+###
+
+GET http://localhost:3003/movies/list
+
+###
+GET http://localhost:3003/movies?query=auto
