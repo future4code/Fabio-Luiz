@@ -97,3 +97,7 @@ DELETE http://localhost:3003/task/1616949515927
 ###
 # 20 Deletar usuário
 DELETE http://localhost:3003/user/1616950039266
+
+###
+# 21 Pegar todas as tarefas
+GET http://localhost:3003/task/all

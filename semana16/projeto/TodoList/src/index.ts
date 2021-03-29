@@ -16,6 +16,7 @@ import deleteResponsibleFromTask from "./endpoints/tasks/deleteResponsibleFromTa
 import getTaskByTerm from "./endpoints/tasks/getTaskByTerm";
 import deleteTaskById from "./endpoints/tasks/deleteTaskById";
 import deleteUser from "./endpoints/users/deleteUser";
+import getAllTasks from "./endpoints/tasks/getAllTasks";
 
 app.put("/user/edit/:id", editUserById);
 app.get("/user/all", getAllUsers);
@@ -30,6 +31,7 @@ app.delete(
 );
 app.put("/task/status/edit", editTaskStatusById);
 app.get("/task/:id/responsible", getResponsiblesByTaskId);
+app.get("/task/all", getAllTasks);
 app.get("/task/delayed", getDelayedTasks);
 app.post("/task/responsible", addResponsibleToTask);
 app.delete("/task/:id", deleteTaskById);
