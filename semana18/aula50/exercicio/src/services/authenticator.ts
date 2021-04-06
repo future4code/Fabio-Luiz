@@ -9,15 +9,10 @@ export const generateToken = (payload: AuthenticationData): string => {
   return token;
 };
 
-export const getTokenData = (token: string): AuthenticationData | null => {
-  try {
-    const { id } = jwt.verify(
-      token,
-      process.env.JWT_KEY!
-    ) as AuthenticationData;
-    return { id };
-  } catch (error) {
-    console.log(error.message);
-    return null;
-  }
+export const getTokenData = (token: string): AuthenticationData => {
+  const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
+  const result = {
+    id: payload.id,
+  };
+  return result;
 };

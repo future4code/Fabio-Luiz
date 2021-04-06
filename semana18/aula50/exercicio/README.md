@@ -9,9 +9,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 * MySQL
 * Knex
 * dotEnv
+* jsonwebtoken
+* uuid
 
 ## 💻 Projeto
-Projeto desenvolvido durante a semana 16 do curso de Fullstack da Labenu. 
+Projeto desenvolvido durante a semana 18 do curso de Fullstack da Labenu. 
 
 ## 🚀 Como executar
 * Instale as dependências com
