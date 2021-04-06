@@ -1,19 +1,16 @@
 import { Request, Response } from "express";
-import createUser from "../data/createUser";
-import { generateId } from "../services/generateId";
 import {generateToken} from "../services/authenticator";
 import validateEmail from '../services/validateEmail';
-import getUserByEmail from './../data/getUserByEmail';
+import getUserByEmail from '../data/getUserByEmail';
 
-type signUpBody = {
+type loginBody = {
   email: string;
   password: string;
 };
 
-const signUp = async (req: Request, res: Response) => {
+const login = async (req: Request, res: Response) => {
   try {
-    const id: string = generateId();
-    const { email, password } = req.body as signUpBody;
+    const { email, password } = req.body as loginBody;
 
     if (!email || !password) {
       res.statusCode = 422;
@@ -30,27 +27,27 @@ const signUp = async (req: Request, res: Response) => {
       throw new Error("Invalid E-mail type!");
     }
 
-    const user = await getUserByEmail(email);
-    if (user) {
-      res.statusCode = 409;
-      throw new Error(`${email} already registered!`);
+    const user = await getUserByEmail(email)
+    
+    if(!user){
+      res.statusCode = 404;
+      throw new Error(`This E-mail is not registered!`);
     }
 
-    const token = generateToken({ id });
+    if (password !== user.password) {
+      res.statusCode = 404;
+      throw new Error(`Invalid password!`);
+    }
 
-    await createUser(id, password, email);
-    
+    const token = generateToken({ id: user.id });
     res.status(201).send({ token });
-  } 
-  catch (error) {
+  } catch (error) {
     if (res.statusCode === 200) {
       res.status(500).send({ message: "Internal server error" });
-    } 
-    else {
+    } else {
       res.status(res.statusCode).send({ message: error.message });
     }
-    res.status(res.statusCode).send({ message: error.message });
   }
 };
 
-export default signUp;
+export default login;
