@@ -1,0 +1,17 @@
+GET http://localhost:3003/user/all
+
+###
+GET http://localhost:3003/user?name=sot
+
+###
+GET http://localhost:3003/user/teacher
+
+###
+GET http://localhost:3003/user?orderBy=name
+
+###
+GET http://localhost:3003/user?page=4
+
+###
+# RESULTADO FINAL
+GET http://localhost:3003/user?orderType=asc
