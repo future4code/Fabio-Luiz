@@ -1,15 +1,15 @@
 {
-    "name": "exercicio-aula54",
+    "name": "labook",
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
+        "mySQL-setup": "tsc && node ./build/MySQL.js",
         "start": "tsc && node ./build/index.js",
         "dev-start": "nodemon ./src/index.ts"
     },
     "author": "Fabio Santos",
     "license": "ISC",
     "dependencies": {
-        "axios": "^0.21.1",
         "bcryptjs": "^2.4.3",
         "cors": "^2.8.5",
         "dotenv": "^8.2.0",

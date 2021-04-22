@@ -19,7 +19,35 @@ export interface createPostInputTDO {
   token: string;
 }
 
+export const checkURL = (url:string):boolean => {
+  return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+}
+
 export interface getPostByIdDTO {
   id: string;
+  token: string;
+}
+
+export interface likeTDO {
+  postId: string;
+  userId: string;
+}
+
+export interface likeInputTDO {
+  postId: string;
+  token: string;
+}
+
+export interface commentTDO {
+  id: string;
+  postId: string;
+  comment: string;
+  createdAt: Date;
+  authorId: string;
+}
+
+export interface commentInputTDO {
+  postId: string;
+  comment: string;
   token: string;
 }
