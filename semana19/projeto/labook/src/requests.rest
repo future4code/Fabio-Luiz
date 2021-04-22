@@ -1,0 +1,37 @@
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "email": "admin@labenu.com.br",
+    "password": "123456",
+    "role": "admin"
+}
+
+###
+# @name login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "admin@labenu.com.br",
+    "password": "123456"
+}
+
+###
+@token = {{login.response.body.token}}
+POST http://localhost:3003/posts
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "photo": "abc",
+    "description": "abc",
+    "type": "normal"
+}
+
+###
+@token = {{login.response.body.token}}
+GET http://localhost:3003/posts/a54a8029_97c9_4a66_ab16_ccde09d1e201
+Content-Type: application/json
+Authorization: {{token}}
