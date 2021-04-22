@@ -14,7 +14,7 @@ export interface user extends authenticationData {
   name: string;
   email: string;
   password: string;
-  posts?: post[]
+  posts?: post[];
 }
 
 export const validateEmail = (email: string) => {
@@ -32,4 +32,25 @@ export interface signupInputDTO {
 export interface loginInputDTO {
   email: string;
   password: string;
+}
+
+export interface friendship {
+  id: string;
+  userId: string;
+  friendId: string;
+}
+
+export interface findFriendInput {
+  userId: string;
+  friendId: string;
+}
+
+export interface friendshipInputDTO {
+  friendId: string;
+  token: string;
+}
+
+export interface friend {
+  id: string;
+  friend_id: string;
 }

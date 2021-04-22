@@ -66,13 +66,48 @@ export class PostsBusiness {
         throw new CustomError(401, "Unauthorized or JWT not found!");
       }
 
-      const postsDB = new PostsDB()
-      const post = await postsDB.getPostById(id)
+      const postsDB = new PostsDB();
+      const post = await postsDB.getPostById(id);
       if (!post) {
         throw new CustomError(404, "Post not found!");
       }
-      return post
+      return post;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 
+  async getFeed(token: string): Promise<post[]> {
+    try {
+      const auth = new Auth();
+      const tokenData: any = auth.getTokenData(token);
+
+      if (!tokenData) {
+        throw new CustomError(401, "Unauthorized or JWT not found!");
+      }
+
+      const postsDB = new PostsDB();
+      const feed = await postsDB.getFeed(tokenData.id);
+
+      return feed;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async getPostByType(type: string): Promise<any> {
+    try {
+      console.log('type',type)
+      if (type.toLowerCase() !== "normal" && type.toLowerCase() !== "event") {
+        throw new CustomError(422, "Invalid post type. Choose between 'normal or 'event'!");
+      }
+
+      const postsDB = new PostsDB();
+      const feed = await postsDB.getPostsByType(type);
+      if (!feed) {
+        throw new CustomError(404, "Posts not found!");
+      }
+      return feed;
     } catch (error) {
       throw new Error(error.message);
     }

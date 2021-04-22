@@ -6,3 +6,5 @@ const userController = new UsersController()
 
 usersRouter.post("/signup", userController.signup);
 usersRouter.post("/login", userController.login);
+usersRouter.post("/friend", userController.makeFriendship);
+usersRouter.post("/unfriend", userController.undoFriendship);
